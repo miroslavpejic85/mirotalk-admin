@@ -8,11 +8,6 @@ A secure and modern web-based dashboard designed to manage **[MiroTalk](https://
 
 ---
 
-> **⚠️ Important:**  
-> For security, **change the default admin username, password, and `ADMIN_JWT_SECRET`** in your backend `.env` or configuration files before deploying to production.
-
----
-
 ## 🚀 Quick Start (Local)
 
 1. **Setup Backend**
@@ -52,5 +47,13 @@ A secure and modern web-based dashboard designed to manage **[MiroTalk](https://
 
 3. **Access the dashboard:**  
    [http://localhost:9999/admin](http://localhost:9999/admin)
+
+---
+
+> ⚠️ **Security Notice**
+>
+> -   Change default `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `ADMIN_JWT_SECRET` in `.env` before production.
+> -   Set `ADMIN_DASHBOARD_ENABLED=true` to enable the dashboard.
+> -   From a local device, configure `SSH_*` to manage MiroTalk on your server.
 
 ---
