@@ -50,10 +50,10 @@ A secure and modern web-based dashboard designed to manage **[MiroTalk](https://
 
 ---
 
-> ⚠️ **Security Notice**
+> ⚠️ **Security Notice** (`.env` )
 >
-> -   Change default `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `ADMIN_JWT_SECRET` in `.env` before production.
 > -   Set `ADMIN_DASHBOARD_ENABLED=true` to enable the dashboard.
+> -   Change default `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `ADMIN_JWT_SECRET`.
 > -   From a local device, configure `SSH_*` to manage MiroTalk on your server.
 
 ---
