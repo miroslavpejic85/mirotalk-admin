@@ -19,7 +19,7 @@ A secure and modern web-based dashboard designed to manage **[MiroTalk](https://
 
     ```bash
     cp backend/config/index.template.js backend/config/index.js
-    cp env.template .env
+    cp .env.template .env
     npm install
     npm start
     ```
@@ -39,7 +39,7 @@ A secure and modern web-based dashboard designed to manage **[MiroTalk](https://
 
     ```bash
     cp backend/config/index.template.js backend/config/index.js
-    cp env.template .env
+    cp .env.template .env
     cp docker-compose.template.yml docker-compose.yml
     ```
 
