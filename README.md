@@ -50,10 +50,38 @@ A secure and modern web-based dashboard designed to manage **[MiroTalk](https://
 
 ---
 
-> ⚠️ **Security Notice** (`.env` )
+> ⚠️ **Security Notice**
 >
-> -   Set `ADMIN_DASHBOARD_ENABLED=true` to enable the dashboard.
-> -   Change default `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `ADMIN_JWT_SECRET`.
-> -   From a local device, configure `SSH_*` to manage MiroTalk on your server.
+> Please review and update the following `.env` settings to secure and manage your MiroTalk instance:
+>
+> ### 🔐 Admin Dashboard
+>
+> -   Set `ADMIN_DASHBOARD_ENABLED=true` to enable the admin dashboard.
+> -   **Important:** Change the default credentials:
+>
+>     -   `ADMIN_USERNAME`
+>     -   `ADMIN_PASSWORD`
+>     -   `ADMIN_JWT_SECRET`
+>
+> ### 🛠️ Manage Mode (APP_MANAGE_MODE)
+>
+> Choose the appropriate management mode based on how you're running MiroTalk:
+>
+> -   **Local Device Management (via SSH)**
+>     Set `APP_MANAGE_MODE=ssh` and configure:
+>
+>     -   `SSH_HOST`
+>     -   `SSH_PORT`
+>     -   `SSH_USERNAME`
+>     -   `SSH_PASSWORD` or `SSH_PRIVATE_KEY`
+>
+> -   **Self-Hosted with Docker**
+>     Set `APP_MANAGE_MODE=docker`
+> -   **Self-Hosted with PM2**
+>     Set `APP_MANAGE_MODE=pm2`
+>
+> ---
+>
+> ✅ Keeping these values updated ensures your MiroTalk instance is secure and manageable.
 
 ---
