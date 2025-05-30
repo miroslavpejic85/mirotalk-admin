@@ -1,0 +1,532 @@
+<!-- Dashboard Section -->
+<div class="container-fluid hidden" id="dashboard">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="collapsed">
+            <button id="sidebar-toggle" class="btn btn-dark btn-sm w-100 my-2">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <div class="menu-item active d-flex align-items-center" id="menu-projects">
+                <i class="fas fa-layer-group me-2"></i>
+                <span class="menu-text">Projects</span>
+            </div>
+            <div class="menu-item d-flex align-items-center" id="menu-system">
+                <i class="fas fa-microchip me-2"></i>
+                <span class="menu-text">System</span>
+            </div>
+            <div class="menu-item d-flex align-items-center" id="menu-server">
+                <i class="fas fa-server me-2"></i>
+                <span class="menu-text">Server</span>
+            </div>
+            <div class="menu-item d-flex align-items-center" id="menu-env">
+                <i class="fas fa-database me-2"></i>
+                <span class="menu-text">Environment</span>
+            </div>
+            <div class="menu-item d-flex align-items-center" id="menu-config">
+                <i class="fas fa-cogs me-2"></i>
+                <span class="menu-text">Configuration</span>
+            </div>
+            <div class="menu-item d-flex align-items-center" id="menu-logs">
+                <i class="fas fa-file-alt me-2"></i>
+                <span class="menu-text">Logs</span>
+            </div>
+            <div class="menu-item d-flex align-items-center" id="menu-status">
+                <i class="fas fa-info-circle me-2"></i>
+                <span class="menu-text">Status</span>
+            </div>
+            <div class="menu-item d-flex align-items-center" id="menu-instance">
+                <i class="fas fa-gear me-2"></i>
+                <span class="menu-text">Instance</span>
+            </div>
+            <div class="menu-item d-flex align-items-center" id="menu-terminal">
+                <i class="fas fa-terminal me-2"></i>
+                <span class="menu-text">Terminal</span>
+            </div>
+            <div class="menu-item d-flex align-items-center text-danger" id="logout-btn">
+                <i class="fas fa-sign-out-alt me-2"></i>
+                <span class="menu-text">Logout</span>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main id="content" class="col">
+            <!-- Projects Section -->
+            <div id="projects-section" class="hidden mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-dark text-light">
+                        <h4 class="mb-0"><i class="fas fa-database me-2"></i>Projects</h4>
+                    </div>
+                    <div class="card-body bg-dark text-light">
+                        <div
+                            id="project-card-group"
+                            style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start"
+                        >
+                            <div
+                                class="project-card card bg-dark text-light border-primary mb-2"
+                                data-value="mirotalksfu"
+                                style="cursor: pointer; min-width: 110px; max-width: 140px"
+                            >
+                                <div class="card-body text-center py-3 px-2">
+                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
+                                    <div class="fw-bold small">mirotalk-sfu</div>
+                                </div>
+                            </div>
+                            <div
+                                class="project-card card bg-dark text-light mb-2"
+                                data-value="mirotalk"
+                                style="cursor: pointer; min-width: 110px; max-width: 140px"
+                            >
+                                <div class="card-body text-center py-3 px-2">
+                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
+                                    <div class="fw-bold small">mirotalk-p2p</div>
+                                </div>
+                            </div>
+                            <div
+                                class="project-card card bg-dark text-light mb-2"
+                                data-value="mirotalkc2c"
+                                style="cursor: pointer; min-width: 110px; max-width: 140px"
+                            >
+                                <div class="card-body text-center py-3 px-2">
+                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
+                                    <div class="fw-bold small">mirotalk-c2c</div>
+                                </div>
+                            </div>
+                            <div
+                                class="project-card card bg-dark text-light mb-2"
+                                data-value="mirotalkbro"
+                                style="cursor: pointer; min-width: 110px; max-width: 140px"
+                            >
+                                <div class="card-body text-center py-3 px-2">
+                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
+                                    <div class="fw-bold small">mirotalk-bro</div>
+                                </div>
+                            </div>
+                            <div
+                                class="project-card card bg-dark text-light mb-2"
+                                data-value="mirotalkwebrtc"
+                                style="cursor: pointer; min-width: 110px; max-width: 140px"
+                            >
+                                <div class="card-body text-center py-3 px-2">
+                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
+                                    <div class="fw-bold small">mirotalk-web</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Section -->
+            <div id="system-section" class="hidden mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-light">
+                        <h4 class="mb-0"><i class="fas fa-microchip me-2"></i>System Info</h4>
+                    </div>
+                    <div class="card-body bg-dark text-light">
+                        <!-- Refresh Button (always visible) -->
+                        <div class="d-flex flex-column flex-md-row gap-2 mb-3">
+                            <button id="system-refresh-btn" class="btn btn-secondary w-100 w-md-auto">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                        <!-- Tabs Navigation -->
+                        <ul class="nav nav-tabs mb-3" id="systemInfoTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button
+                                    class="nav-link active"
+                                    id="overview-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#overview"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="overview"
+                                    aria-selected="true"
+                                >
+                                    Overview
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button
+                                    class="nav-link"
+                                    id="dependencies-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#dependencies"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="dependencies"
+                                    aria-selected="false"
+                                >
+                                    Dependencies
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button
+                                    class="nav-link"
+                                    id="network-tab"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#network"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="network"
+                                    aria-selected="false"
+                                >
+                                    Network
+                                </button>
+                            </li>
+                        </ul>
+                        <!-- Tabs Content -->
+                        <div class="tab-content" id="systemInfoTabsContent">
+                            <!-- Overview Tab -->
+                            <div
+                                class="tab-pane fade show active"
+                                id="overview"
+                                role="tabpanel"
+                                aria-labelledby="overview-tab"
+                            >
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="card p-3 mb-3 shadow-sm">
+                                            <h6 class="fw-bold"><i class="fas fa-desktop me-2"></i>OS Information</h6>
+                                            <p class="mb-1">
+                                                <strong>Type:</strong>
+                                                <span id="sys-os-type" class="text-info"></span>
+                                            </p>
+                                            <p class="mb-0">
+                                                <strong>Architecture:</strong>
+                                                <span id="sys-os-arch" class="text-info"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-3 mb-3 shadow-sm">
+                                            <h6 class="fw-bold">
+                                                <i class="fas fa-microchip me-2"></i>CPU Information
+                                            </h6>
+                                            <p class="mb-1">
+                                                <strong>Model:</strong>
+                                                <span id="sys-cpu-model" class="text-info"></span>
+                                            </p>
+                                            <p class="mb-0">
+                                                <strong>Cores:</strong>
+                                                <span id="sys-cpu-cores" class="text-info"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-3 mb-3 shadow-sm">
+                                            <h6 class="fw-bold"><i class="fas fa-memory me-2"></i>Memory</h6>
+                                            <p class="mb-0">
+                                                <strong>Total:</strong>
+                                                <span id="sys-mem-total" class="text-info"></span> |
+                                                <strong>Swap:</strong>
+                                                <span id="sys-swap-total" class="text-info"></span> |
+                                                <strong>SwapFree:</strong>
+                                                <span id="sys-swap-free" class="text-info"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-3 mb-3 shadow-sm">
+                                            <h6 class="fw-bold"><i class="fas fa-hdd me-2"></i>Disk</h6>
+                                            <p class="mb-0">
+                                                <strong>Total:</strong>
+                                                <span id="sys-disk-total" class="text-info"></span> |
+                                                <strong>Free:</strong>
+                                                <span id="sys-disk-free" class="text-info"></span> |
+                                                <strong>Used:</strong>
+                                                <span id="sys-disk-used" class="text-info"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-3 mb-3 shadow-sm">
+                                            <h6 class="fw-bold"><i class="fas fa-tachometer-alt me-2"></i>Load avg</h6>
+                                            <p class="mb-1">
+                                                <strong>Load:</strong>
+                                                <span id="sys-load" class="text-info"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-3 mb-3 shadow-sm">
+                                            <h6 class="fw-bold"><i class="fas fa-clock me-2"></i>System</h6>
+                                            <p class="mb-1">
+                                                <strong>Time:</strong>
+                                                <span id="sys-time" class="text-info"></span>
+                                            </p>
+                                            <p class="mb-0">
+                                                <strong>Uptime:</strong>
+                                                <span id="sys-uptime" class="text-info"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Dependencies Tab -->
+                            <div
+                                class="tab-pane fade"
+                                id="dependencies"
+                                role="tabpanel"
+                                aria-labelledby="dependencies-tab"
+                            >
+                                <div class="card p-3 mb-3 shadow-sm">
+                                    <h6 class="fw-bold"><i class="fas fa-cubes me-2"></i>Dependencies</h6>
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Dependency</th>
+                                                <th>Installed</th>
+                                                <th>Version</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="sys-dependencies-body">
+                                            <!-- Rows will be dynamically populated -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- Network Tab -->
+                            <div class="tab-pane fade" id="network" role="tabpanel" aria-labelledby="network-tab">
+                                <div class="card p-3 mb-3 shadow-sm">
+                                    <h6 class="fw-bold"><i class="fas fa-network-wired me-2"></i>Network Interfaces</h6>
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Interface</th>
+                                                <th>Address</th>
+                                                <th>Type</th>
+                                                <th>Internal</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="sys-network-body">
+                                            <!-- Rows will be dynamically populated -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Server Section -->
+            <div id="server-section" class="hidden mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-light">
+                        <h4 class="mb-0"><i class="fas fa-server me-2"></i>Server</h4>
+                    </div>
+                    <div class="card-body bg-dark text-light">
+                        <div class="d-flex flex-column flex-md-row gap-2 mb-3">
+                            <button id="server-logs-btn" class="btn btn-secondary w-100 w-md-auto mb-3">
+                                <i class="fas fa-trash"></i> Clear Logs
+                            </button>
+                            <button id="server-update-btn" class="btn btn-warning w-100 w-md-auto mb-3">
+                                <i class="fas fa-sync-alt"></i> Update
+                            </button>
+                            <button id="server-reboot-btn" class="btn btn-danger w-100 w-md-auto mb-3">
+                                <i class="fas fa-sync-alt"></i> Reboot
+                            </button>
+                        </div>
+                        <div id="server-status" class="bg-dark rounded text-light">
+                            <p>
+                                <strong>Status:</strong>
+                                <span id="server-update-status" class="text-success"></span>
+                            </p>
+                        </div>
+                        <pre id="server-logs" class="bg-dark p-3 border rounded border-0"></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Environment Section -->
+            <div id="env-section" class="hidden mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-light">
+                        <h4 class="mb-0"><i class="fas fa-database me-2"></i>Environment</h4>
+                    </div>
+                    <div class="card-body bg-dark text-light">
+                        <div class="d-flex flex-column flex-md-row gap-2 mb-3">
+                            <button id="env-reload-btn" class="btn btn-secondary w-100 w-md-auto">
+                                <i class="fas fa-sync-alt"></i> Reload Env
+                            </button>
+                            <button id="env-backup-btn" class="btn btn-warning w-100 w-md-auto">
+                                <i class="fas fa-file-export"></i> Backup Env
+                            </button>
+                            <button id="env-save-btn" class="btn btn-success w-100 w-md-auto">
+                                <i class="fas fa-save"></i> Save Env
+                            </button>
+                        </div>
+                        <div id="config-env-warning-alert" class="alert alert-warning mt-3 d-none">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Warning:</strong> Changing environment variables may require instance restart to
+                            take effect.
+                        </div>
+                        <div id="env-editor" class="border rounded"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configuration Section -->
+            <div id="config-section" class="hidden mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-light">
+                        <h4 class="mb-0"><i class="fas fa-cogs me-2"></i>Configuration</h4>
+                    </div>
+                    <div class="card-body bg-dark text-light">
+                        <div class="d-flex flex-column flex-md-row gap-2 mb-3">
+                            <button id="config-reload-btn" class="btn btn-secondary w-100 w-md-auto">
+                                <i class="fas fa-sync-alt"></i> Reload Config
+                            </button>
+                            <button id="config-backup-btn" class="btn btn-warning w-100 w-md-auto">
+                                <i class="fas fa-file-export"></i> Backup Config
+                            </button>
+                            <button id="config-save-btn" class="btn btn-success w-100 w-md-auto">
+                                <i class="fas fa-save"></i> Save Config
+                            </button>
+                        </div>
+                        <div id="config-warning-alert" class="alert alert-warning mt-3 d-none">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Warning:</strong> Changing configuration may require instance restart to take
+                            effect.
+                        </div>
+                        <div id="config-editor" class="border rounded"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logs Section -->
+            <div id="logs-section" class="hidden mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-light">
+                        <h4 class="mb-0"><i class="fas fa-file-alt"></i> Logs</h4>
+                    </div>
+                    <div class="card-body bg-dark text-light">
+                        <div class="d-flex flex-column flex-md-row flex-wrap gap-2 mb-3">
+                            <button id="load-logs-btn" class="btn btn-secondary w-100 w-md-auto mb-3">
+                                <i class="fas fa-eye"></i> Refresh
+                            </button>
+                            <button id="clear-logs-btn" class="btn btn-danger w-100 w-md-auto mb-3">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                            <div class="input-group mb-3" style="max-width: 300px">
+                                <input type="text" id="log-search" class="form-control" placeholder="Search logs..." />
+                                <button id="log-search-btn" class="btn btn-outline-secondary">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="auto-log-switch" />
+                                <label class="form-check-label" for="auto-log-switch">Real time</label>
+                            </div>
+                        </div>
+                        <pre id="logs" class="bg-dark p-3 border rounded"></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instance Status Section -->
+            <div id="status-section" class="hidden mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-light">
+                        <h4 class="mb-0"><i class="fas fa-info-circle"></i> Instance Status</h4>
+                    </div>
+                    <div class="card-body bg-dark text-light">
+                        <div class="d-flex flex-column flex-md-row gap-2 mb-3">
+                            <button id="status-refresh-btn" class="btn btn-secondary w-100 w-md-auto">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card text-center shadow-sm p-4">
+                                    <i class="fas fa-clock fa-4x mb-3 text-primary"></i>
+                                    <h6 class="fw-bold">Uptime</h6>
+                                    <span id="uptime" class="badge bg-success fs-6"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card text-center shadow-sm p-4">
+                                    <i class="fas fa-heartbeat fa-4x mb-3 text-danger"></i>
+                                    <h6 class="fw-bold">Current Status</h6>
+                                    <span id="status" class="badge bg-success fs-6"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card text-center shadow-sm p-4">
+                                    <i class="fas fa-calendar-alt fa-4x mb-3 text-warning"></i>
+                                    <h6 class="fw-bold">Finished At</h6>
+                                    <span id="finished" class="badge bg-warning fs-6"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card text-center shadow-sm p-4">
+                                    <i class="fas fa-calendar-check fa-4x mb-3 text-success"></i>
+                                    <h6 class="fw-bold">Started At</h6>
+                                    <span id="started" class="badge bg-success fs-6"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instance Section -->
+            <div id="instance-section" class="hidden mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-light">
+                        <h4 class="mb-0"><i class="fas fa-gear me-2"></i>Instance</h4>
+                    </div>
+                    <div class="card-body bg-dark text-light">
+                        <div class="d-flex flex-column flex-md-row gap-2 mb-3">
+                            <button id="check-version-btn" class="btn btn-secondary w-100 w-md-auto">
+                                <i class="fas fa-sync-alt"></i> Check for Update
+                            </button>
+                            <button id="restart-instance-btn" class="btn btn-warning w-100 w-md-auto">
+                                <i class="fas fa-refresh"></i> Restart Instance
+                            </button>
+                            <button id="update-btn" class="btn btn-success w-100 w-md-auto hidden">
+                                <i class="fas fa-arrow-up"></i> Update Now
+                            </button>
+                        </div>
+                        <div id="instance-status" class="mt-3 p-3 bg-dark rounded text-light">
+                            <p><strong>Last check:</strong> <span id="last-check"></span></p>
+                            <p><strong>Local Version:</strong> <span id="local-version"></span></p>
+                            <p>
+                                <strong>Remote Version:</strong>
+                                <span id="remote-version"></span>
+                            </p>
+                            <p>
+                                <strong>Status:</strong>
+                                <span id="status-text" class="text-success"></span>
+                            </p>
+                        </div>
+                        <div id="update-realtime-logs" class="mt-3 p-3 bg-dark rounded text-light hidden">
+                            <pre id="update-realtime-logs-pre"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal Section -->
+            <div id="terminal-section" class="hidden mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-light d-flex align-items-center justify-content-between">
+                        <span>
+                            <h4 class="mb-0 d-inline"><i class="fas fa-terminal me-2"></i>Terminal</h4>
+                        </span>
+                        <select
+                            id="terminal-type-select"
+                            class="form-select form-select-sm w-auto ms-3 bg-dark text-light border-secondary"
+                        >
+                            <option value="local" class="bg-dark text-light">Local Terminal</option>
+                            <option value="remote" class="bg-dark text-light">Remote Terminal</option>
+                        </select>
+                    </div>
+                    <div class="mt-3 card-body bg-dark text-light">
+                        <div id="terminal-container" tabindex="0"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

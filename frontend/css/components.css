@@ -1,0 +1,94 @@
+.card {
+    background-color: #242424;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: none;
+}
+
+#dashboard-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+}
+
+#env-editor,
+#config-editor {
+    border: none !important;
+}
+
+.CodeMirror {
+    width: 100%;
+    height: calc(100vh - 150px);
+    font-size: 0.95rem;
+    border-radius: 5px;
+}
+
+#logs {
+    width: 100%;
+    height: calc(100vh - 200px);
+    background: #1a1a1a !important;
+    border: none !important;
+    border-radius: 5px;
+}
+
+#server-logs {
+    width: 100%;
+    height: calc(100vh - 200px);
+    background: #1a1a1a !important;
+    border: none !important;
+    border-radius: 5px;
+}
+
+#update-realtime-logs {
+    /* font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace; */
+    font-size: 0.95rem;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+#update-realtime-logs-pre {
+    margin: 0;
+    background: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    white-space: pre-wrap;
+}
+
+#terminal-section .card-body {
+    height: calc(100vh - 120px);
+    padding: 0;
+}
+#terminal-container {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 200px;
+    background: #1a1a1a !important;
+    border: none !important;
+    border-radius: 5px;
+    border: 1px solid red;
+}
+
+.project-card {
+    border: 2px solid transparent;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+.project-card.selected,
+.project-card:hover {
+    border-color: #4895ef;
+    box-shadow: 0 0 10px #4895ef44;
+}
+
+@media (min-width: 768px) {
+    .w-md-auto {
+        width: auto !important;
+    }
+}

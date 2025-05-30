@@ -1,0 +1,12 @@
+services:
+    mirotalkadmin:
+        build: .
+        container_name: mirotalkadmin
+        ports:
+            - '9999:9999'
+        volumes:
+            - ./frontend:/app/frontend:ro
+            - ./backend:/app/backend:ro
+            - ./.env:/app/.env:ro
+            #- ~/.ssh/id_rsa:/app/id_rsa:ro
+        restart: unless-stopped
