@@ -70,6 +70,10 @@ module.exports = function (app) {
     // All routes below require authentication
     app.use('/admin/api', authenticateToken);
 
+    // App
+    app.get('/admin/api/getAppNames', appController.getAppNames);
+    app.post('/admin/api/setAppName', appController.setAppName);
+
     // System
     app.get('/admin/api/system', systemController.getSystem);
 
@@ -77,26 +81,22 @@ module.exports = function (app) {
     app.post('/admin/api/serverReboot', serverController.serverReboot);
     app.get('/admin/api/checkForServerUpdate', serverController.checkForServerUpdate);
 
-    // Instance
-    app.get('/admin/api/version', instanceController.getVersion);
-    app.get('/admin/api/status', instanceController.getStatus);
-    app.post('/admin/api/restart', instanceController.restart);
-    app.post('/admin/api/update', instanceController.update);
+    // Env
+    app.get('/admin/api/env', envController.getEnv);
+    app.post('/admin/api/env', envController.saveEnv);
 
     // Config
     app.get('/admin/api/config', configController.getConfig);
     app.post('/admin/api/config', configController.saveConfig);
 
-    // Env
-    app.get('/admin/api/env', envController.getEnv);
-    app.post('/admin/api/env', envController.saveEnv);
-
     // Logs
     app.get('/admin/api/logs', logsController.getLogs);
 
-    // App
-    app.get('/admin/api/getAppNames', appController.getAppNames);
-    app.post('/admin/api/setAppName', appController.setAppName);
+    // Instance
+    app.get('/admin/api/version', instanceController.getVersion);
+    app.get('/admin/api/status', instanceController.getStatus);
+    app.post('/admin/api/restart', instanceController.restart);
+    app.post('/admin/api/update', instanceController.update);
 
     /**
      * 404 handler for unmatched routes.
