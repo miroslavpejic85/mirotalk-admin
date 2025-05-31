@@ -35,11 +35,6 @@
     display: inline-block;
 }
 
-#sidebar-toggle {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
 #sidebar h4 {
     font-size: 1.3rem;
     font-weight: 600;

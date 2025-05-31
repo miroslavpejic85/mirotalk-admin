@@ -71,8 +71,13 @@
                 handler: () => window.Dashboard.showSection('terminal'),
             },
             {
-                type: 'click',
-                id: 'sidebar-toggle',
+                type: 'mouseover',
+                id: 'sidebar',
+                handler: () => $('sidebar').classList.toggle('collapsed'),
+            },
+            {
+                type: 'mouseout',
+                id: 'sidebar',
                 handler: () => $('sidebar').classList.toggle('collapsed'),
             },
             {
