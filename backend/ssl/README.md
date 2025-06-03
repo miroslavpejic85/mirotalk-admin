@@ -43,8 +43,8 @@ rm csr.pem
 
 You will now have:
 
--   `key.pem` &nbsp;→ Your private key
--   `cert.pem` → Your self-signed certificate
+- `key.pem` &nbsp;→ Your private key
+- `cert.pem` → Your self-signed certificate
 
 ---
 

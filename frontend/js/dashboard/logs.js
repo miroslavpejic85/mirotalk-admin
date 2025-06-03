@@ -30,8 +30,9 @@
      */
     function renderLogs(logs, searchTerm = '') {
         const html = highlightSearchTerm(logs, searchTerm);
-        $('logs').innerHTML = html;
-        hljs.highlightElement($('logs'));
+        const logsEl = $('logs');
+        logsEl.innerHTML = html;
+        hljs.highlightElement(logsEl);
     }
 
     /**

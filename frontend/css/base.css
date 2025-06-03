@@ -17,6 +17,8 @@ html,
 body {
     height: 100%;
     margin: 0;
+    scrollbar-width: thin;
+    scrollbar-color: #444 #222;
 }
 
 body {
@@ -36,4 +38,18 @@ body {
 .highlight {
     background-color: yellow;
     color: black;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: #222;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
