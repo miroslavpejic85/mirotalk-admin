@@ -1,9 +1,10 @@
 services:
     mirotalkadmin:
-        build: .
+        image: mirotalk/admin:latest
         container_name: mirotalkadmin
+        hostname: mirotalkadmin
         ports:
-            - '9999:9999'
+            - '${ADMIN_PORT}:${ADMIN_PORT}'
         volumes:
             - ./frontend:/app/frontend:ro
             - ./backend:/app/backend:ro

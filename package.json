@@ -8,7 +8,15 @@
         "dev": "nodemon backend/server.js",
         "lint": "npx prettier --write ."
     },
-    "keywords": [],
+    "keywords": [
+        "mirotalk",
+        "admin",
+        "webrtc",
+        "socket.io",
+        "ssh",
+        "docker",
+        "pm2"
+    ],
     "author": "miroslav.pejic.85@gmail.com",
     "license": "AGPLv3",
     "dependencies": {
