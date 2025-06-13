@@ -1,6 +1,6 @@
 # MiroTalk Admin
 
-A secure and modern web-based dashboard designed to manage **[MiroTalk](https://docs.mirotalk.com/html/overview.html)** updates, configurations, and settings efficiently.
+A secure, modern web dashboard to manage **[MiroTalk](https://docs.mirotalk.com/html/overview.html)** updates, configuration, and settings with ease.
 
 ---
 
@@ -10,78 +10,83 @@ A secure and modern web-based dashboard designed to manage **[MiroTalk](https://
 
 ## 🚀 Quick Start (Local)
 
-1. **Setup Backend**
+**1. Clone and Set Up the Backend**
 
-    ```bash
-    cp backend/config/index.template.js backend/config/index.js
-    cp .env.template .env
-    npm install
-    npm start
-    ```
+```bash
+git clone https://github.com/miroslavpejic85/mirotalk-admin.git
+cd mirotalk-admin
+cp backend/config/index.template.js backend/config/index.js
+cp .env.template .env
+npm install
+npm start
+```
 
-2. **Open the Dashboard**
+**2. Open the Admin Dashboard**
 
-    Visit: [http://localhost:9999/admin](http://localhost:9999/admin)
-
+- Visit: [http://localhost:9999/admin](http://localhost:9999/admin)
+- Default credentials:
     - **Username:** `admin`
     - **Password:** `admin`
 
 ---
 
-## 🐳 Run with Docker
+## 🐳 Quick Start with Docker
 
-1. **Copy and configure your environment:**
+**1. Prepare your environment files:**
 
-    ```bash
-    cp backend/config/index.template.js backend/config/index.js
-    cp .env.template .env
-    cp docker-compose.template.yml docker-compose.yml
-    ```
+```bash
+cp backend/config/index.template.js backend/config/index.js
+cp .env.template .env
+cp docker-compose.template.yml docker-compose.yml
+```
 
-2. **Build and start the container:**
+**2. Build and run with Docker Compose:**
 
-    ```bash
-    docker compose build
-    docker compose up
-    ```
+```bash
+docker compose build
+docker compose up
+```
 
-3. **Access the dashboard:**  
-   [http://localhost:9999/admin](http://localhost:9999/admin)
+**3. Access the dashboard:**  
+[http://localhost:9999/admin](http://localhost:9999/admin)
 
 ---
 
-> ⚠️ **Security Notice**
->
-> Please review and update the following `.env` settings to secure and manage your MiroTalk instance:
->
-> ### 🔐 Admin Dashboard
->
-> - Set `ADMIN_DASHBOARD_ENABLED=true` to enable the admin dashboard.
-> - **Important:** Change the default credentials:
->
->     - `ADMIN_USERNAME`
->     - `ADMIN_PASSWORD`
->     - `ADMIN_JWT_SECRET`
->
-> ### 🛠️ Manage Mode (APP_MANAGE_MODE)
->
-> Choose the appropriate management mode based on how you're running MiroTalk:
->
-> - **Local Device Management (via SSH)**
->   Set `APP_MANAGE_MODE=ssh` and configure:
->
->     - `SSH_HOST`
->     - `SSH_PORT`
->     - `SSH_USERNAME`
->     - `SSH_PASSWORD` or `SSH_PRIVATE_KEY`
->
-> - **Self-Hosted with Docker**
->   Set `APP_MANAGE_MODE=docker`
-> - **Self-Hosted with PM2**
->   Set `APP_MANAGE_MODE=pm2`
->
-> ---
->
-> ✅ Keeping these values updated ensures your MiroTalk instance is secure and manageable.
+## ⚠️ Security Checklist
+
+Before using MiroTalk Admin, **please update your environment settings** to keep your instance secure:
+
+### 🔐 Admin Dashboard
+
+- Set `ADMIN_DASHBOARD_ENABLED=true` to enable the dashboard.
+- **Change the default credentials:**
+    - `ADMIN_USERNAME`
+    - `ADMIN_PASSWORD`
+    - `ADMIN_JWT_SECRET`
+
+### 🛠️ Management Mode (`APP_MANAGE_MODE`)
+
+Choose how you want to manage your MiroTalk instance:
+
+- **Local Device Management (via SSH):**
+
+    - Set `APP_MANAGE_MODE=ssh`
+    - Configure:
+        - `SSH_HOST`
+        - `SSH_PORT`
+        - `SSH_USERNAME`
+        - `SSH_PASSWORD` or `SSH_PRIVATE_KEY`
+
+- **Self-Hosted with Docker:**
+
+    - Set `APP_MANAGE_MODE=docker`
+
+- **Self-Hosted with PM2:**
+    - Set `APP_MANAGE_MODE=pm2`
+
+---
+
+✅ **Tip:**  
+Regularly review and update your `.env` settings to keep your MiroTalk instance secure and manageable.
 
 ---
