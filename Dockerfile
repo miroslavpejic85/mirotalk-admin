@@ -1,25 +1,30 @@
-# Use official Node.js LTS image
-FROM node:22-alpine
+# Use Node.js 22 LTS as Base Image
+FROM node:22-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install system utilities (only if you really need vim in production)
-RUN apk add --no-cache bash vim
+# Install build tools (equivalent to 'Development Tools' group in yum)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        python3 \
+        make \
+        g++ \
+        bash \
+        vim \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy only package files first for better cache usage
+# Copy package files and install dependencies (including node-pty)
 COPY package.json ./
-
-# Install dependencies
-RUN npm install --production && \
+RUN npm install && \
     npm cache clean --force && \
     rm -rf /tmp/* /var/tmp/* /usr/share/doc/*
 
-# Copy backend and frontend source code
-COPY backend ./backend
+# Copy source code
 COPY frontend ./frontend
+COPY backend ./backend
 
-# Copy config and env templates
+# Copy config files
 COPY .env.template .env
 COPY backend/config/index.template.js ./backend/config/index.js
 
