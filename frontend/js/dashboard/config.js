@@ -36,6 +36,7 @@
             await apiSaveConfig(configContent);
             showConfigWarningAlert();
             showToast('Configuration saved successfully');
+            window.Dashboard.restartInstance();
         } catch (error) {
             handleError(error, 'Failed to save configuration. Please check the content and try again.');
         } finally {

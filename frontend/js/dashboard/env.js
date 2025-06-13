@@ -36,6 +36,7 @@
             await apiSaveEnv(envContent);
             showConfigEnvWarningAlert();
             showToast('Environment saved successfully');
+            window.Dashboard.restartInstance();
         } catch (error) {
             handleError(error, 'Failed to save environment. Please check the content and try again.');
         } finally {
