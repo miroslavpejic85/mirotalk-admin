@@ -66,15 +66,20 @@
      * @returns {boolean} True if valid, false otherwise.
      */
     function validateConfig() {
-        const code = window.Dashboard.configEditor.getValue();
-        const sanitizedCode = code.replace(/^\s*(const|let|var)?\s*\w*\s*=\s*require\((['"`].+?['"`])\);?/gm, '// $&');
+        let code = window.Dashboard.configEditor.getValue();
+        code = code.replace(/^\s*(const|let|var)?\s*\w*\s*=\s*require\((['"`].+?['"`])\);?/gm, '// $&');
+        code = code.replace(/^\s*module\.exports\s*=\s*/, '');
+        code = code.trim();
+        if (code.startsWith('{') && code.endsWith('}')) {
+            code = '(' + code + ')';
+        }
         try {
-            const fn = new Function(sanitizedCode);
+            const fn = new Function('return ' + code);
             fn();
             showToast('Config is valid', 'success');
             return true;
         } catch (error) {
-            if (error.message.includes('require')) return true;
+            if (error.message.includes('require') || error.message.includes('module')) return true;
             showToast('Config error: ' + error.message, 'danger');
             console.error('Code validation error:', error);
             const doc = window.Dashboard.configEditor.getDoc();
