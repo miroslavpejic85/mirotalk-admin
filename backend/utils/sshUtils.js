@@ -25,12 +25,12 @@ function getSSHConfig() {
         port: SSH_PORT,
         username: SSH_USER,
     };
-    if (SSH_PRIVATE_KEY) {
-        configObj.privateKey = SSH_PRIVATE_KEY;
-    } else if (SSH_PASSWORD) {
+    if (SSH_PASSWORD) {
         configObj.password = SSH_PASSWORD;
+    } else if (SSH_PRIVATE_KEY) {
+        configObj.privateKey = SSH_PRIVATE_KEY;
     } else {
-        throw new Error('No SSH private key or password found for authentication.');
+        throw new Error('No SSH password or private key found for authentication.');
     }
     return configObj;
 }
