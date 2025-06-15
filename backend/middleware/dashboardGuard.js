@@ -28,10 +28,6 @@ const dashboardEnabledAndHttps = (req, res, next) => {
         logger.warn('Admin dashboard is disabled', { url: req.originalUrl });
         return res.status(503).json({ error: 'Admin dashboard is disabled' });
     }
-    if (NODE_ENV === 'production' && req.headers['x-forwarded-proto'] !== 'https') {
-        logger.info('Redirecting to HTTPS', { url: req.originalUrl });
-        return res.redirect('https://' + req.headers.host + req.url);
-    }
     next();
 };
 
