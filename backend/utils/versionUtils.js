@@ -9,6 +9,7 @@
  * @module utils/versionUtils
  */
 
+const fs = require('fs');
 const { sshReadFile } = require('./sshUtils');
 const config = require('../config');
 
@@ -16,10 +17,14 @@ const config = require('../config');
  * Compare local and remote package.json versions.
  * @returns {Promise<Object>} Object with localVersion, remoteVersion, and isUpToDate.
  */
+
 async function compareVersions() {
     let localPackage, localVersion;
+    // Read local package.json based on management mode
+    const packageJson = config.APP_MANAGE_MODE === 'ssh' 
+        ? await sshReadFile(config.APP_DEFAULTS.packagePath)
+        : fs.readFileSync(config.APP_DEFAULTS.packagePath, 'utf8');
 
-    const packageJson = await sshReadFile(config.APP_DEFAULTS.packagePath);
     localPackage = JSON.parse(packageJson);
     localVersion = localPackage.version;
 
