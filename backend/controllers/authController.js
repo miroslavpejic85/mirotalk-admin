@@ -24,6 +24,7 @@ const logger = new Logs('AuthController');
  */
 const login = (req, res) => {
     const { username, password } = req.body;
+    logger.debug('Login attempt', { username: username, password: password });
     try {
         const token = authService.authenticate(username, password);
         logger.info('Login successful', { username });
