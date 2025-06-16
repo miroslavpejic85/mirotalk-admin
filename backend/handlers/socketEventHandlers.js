@@ -72,8 +72,11 @@ function getSocketEventHandlers(isSocketValidToken) {
             }
             socket.emit('logsDone', 0);
         },
-        startLocalTerminal: (socket, data = {}) => handleLocalTerminalSession(socket, data, isSocketValidToken),
-        startRemoteTerminal: (socket, data = {}) => handleRemoteTerminalSession(socket, data, isSocketValidToken),
+        startTerminal: (socket, data = {}) => {
+            APP_MANAGE_MODE === 'ssh'
+                ? handleRemoteTerminalSession(socket, data, isSocketValidToken)
+                : handleLocalTerminalSession(socket, data, isSocketValidToken);
+        },
         disconnect: (socket) => {
             if (socket._logsStream) {
                 try {

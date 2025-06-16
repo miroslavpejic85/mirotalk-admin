@@ -136,11 +136,6 @@
                 id: 'auto-log-switch',
                 handler: window.Dashboard.toggleAutoLogs,
             },
-            {
-                type: 'change',
-                id: 'terminal-type-select',
-                handler: window.Dashboard.initTerminal,
-            },
             { type: 'input', id: 'log-search', handler: window.Dashboard.searchLogs },
             {
                 type: 'click',

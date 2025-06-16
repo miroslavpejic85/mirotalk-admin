@@ -10,7 +10,7 @@
     'use strict';
 
     /**
-     * Initialize the dashboard terminal (local or remote) based on user selection.
+     * Initialize the dashboard terminal (local or remote) based on APP manage mode.
      * Disposes any existing terminal instance, stops previous terminal session,
      * and creates a new DashboardTerminal instance.
      */
@@ -30,8 +30,7 @@
             showToast('Terminal container not found in DOM.', 'danger');
             return;
         }
-        const type = $('terminal-type-select').value === 'remote' ? 'remote' : 'local';
-        window.Dashboard.dashboardTerminal = new DashboardTerminal(terminalContainer, socket, token, type);
+        window.Dashboard.dashboardTerminal = new DashboardTerminal(terminalContainer, socket, token);
         window.Dashboard.dashboardTerminal._setTerminalSize(terminalContainer);
     }
 

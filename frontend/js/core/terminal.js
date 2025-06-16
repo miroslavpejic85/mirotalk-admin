@@ -1,7 +1,7 @@
 'use strict';
 
 class DashboardTerminal {
-    constructor(container, socket, token, type) {
+    constructor(container, socket, token) {
         this.term = new Terminal({ theme: { background: '#1e1e1e' } });
         this.fitAddon = new window.FitAddon.FitAddon();
         this.term.loadAddon(this.fitAddon);
@@ -10,7 +10,6 @@ class DashboardTerminal {
         this.term.focus();
         this.socket = socket;
         this.token = token;
-        this.type = type;
 
         this.term.onData((data) => {
             this.socket.emit('terminalInput', { token: this.token, input: data });
@@ -21,7 +20,7 @@ class DashboardTerminal {
         this.socket.on('terminalOutput', (data) => {
             this.term.write(data);
         });
-        this.socket.emit(type === 'remote' ? 'startRemoteTerminal' : 'startLocalTerminal', { token: this.token });
+        this.socket.emit('startTerminal', { token: this.token });
 
         // --- Make terminal responsive to container/browser resize ---
         this._resizeObserver = new ResizeObserver(() => {
