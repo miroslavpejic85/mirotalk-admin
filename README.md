@@ -66,7 +66,9 @@ A secure, modern web dashboard to manage **[MiroTalk](https://docs.mirotalk.com/
 
 ---
 
-## 🐳 Quick Start with Docker (beta)
+## 🐳 Quick Start with Docker
+
+> **Note:** Works only on `APP_MANAGE_MODE=ssh`
 
 1. **Prepare Your Environment Files**
 
