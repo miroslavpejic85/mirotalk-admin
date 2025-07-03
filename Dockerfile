@@ -4,6 +4,9 @@ FROM node:22-slim
 # Set working directory
 WORKDIR /app
 
+# Set environment variables
+ENV NODE_ENV="production"
+
 # Install build tools (equivalent to 'Development Tools' group in yum)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -14,9 +17,11 @@ RUN apt-get update && \
         vim \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy package files and install dependencies (including node-pty)
-COPY package.json ./
-RUN npm install && \
+# Copy all package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production --silent && \
     npm cache clean --force && \
     rm -rf /tmp/* /var/tmp/* /usr/share/doc/*
 

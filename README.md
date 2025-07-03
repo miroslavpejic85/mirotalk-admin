@@ -22,7 +22,6 @@ A secure, modern web dashboard to manage **[MiroTalk](https://docs.mirotalk.com/
     ```
 
 2. **Open the Admin Dashboard**
-
     - Go to: [http://localhost:9999/admin](http://localhost:9999/admin)
     - **Default credentials:**
         - **Username:** `admin`
@@ -110,7 +109,6 @@ A secure, modern web dashboard to manage **[MiroTalk](https://docs.mirotalk.com/
 Choose how you want to manage your MiroTalk instance:
 
 - **Local Device Management (via SSH):**
-
     - Set `APP_MANAGE_MODE=ssh`
     - Configure:
         - `SSH_HOST`
@@ -119,7 +117,6 @@ Choose how you want to manage your MiroTalk instance:
         - `SSH_PASSWORD` or `SSH_PRIVATE_KEY`
 
 - **Self-Hosted with Docker:**
-
     - Set `APP_MANAGE_MODE=docker`
 
 - **Self-Hosted with PM2:**
