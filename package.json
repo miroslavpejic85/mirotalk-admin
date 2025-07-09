@@ -1,6 +1,6 @@
 {
     "name": "mirotalk-admin",
-    "version": "1.0.09",
+    "version": "1.0.10",
     "description": "MiroTalk Admin Dashboard for managing updates of MiroTalk projects",
     "main": "server.js",
     "scripts": {
@@ -22,7 +22,7 @@
     "dependencies": {
         "colors": "^1.4.0",
         "cors": "^2.8.5",
-        "dotenv": "^17.0.1",
+        "dotenv": "^17.2.0",
         "express": "^5.1.0",
         "express-rate-limit": "^7.5.1",
         "httpolyglot": "0.1.2",
