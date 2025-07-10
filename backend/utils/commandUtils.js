@@ -24,7 +24,7 @@ const pm2Commands = {
     realTimeLogs: (cfg) => `pm2 logs ${cfg.APP_NAME} --lines ${REALTIME_LOGS_CHUNK_SIZE}`,
     status: (cfg) => `pm2 show ${cfg.APP_NAME}`,
     update: (cfg) =>
-        [`cd ${cfg.APP_DEFAULTS.dir}`, 'git pull', 'npm install', `pm2 restart ${cfg.APP_NAME}`].join(' && '),
+        [`cd ${cfg.APP_DEFAULTS.dir}`, 'git pull', 'npm ci', `pm2 restart ${cfg.APP_NAME}`].join(' && '),
 };
 
 const dockerCommands = {
