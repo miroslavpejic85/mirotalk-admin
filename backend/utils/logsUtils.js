@@ -14,7 +14,7 @@ const util = require('util');
 const colors = require('colors/safe');
 const config = require('../config');
 
-const { LOGS_DEBUG, LOGS_COLORS, TZ } = config;
+const { LOGS_DEBUG, LOGS_COLORS, LOGS_JSON, LOGS_JSON_PRETTY, TZ } = config;
 
 if (LOGS_COLORS) colors.enable();
 else colors.disable();
@@ -60,6 +60,7 @@ class Logs {
      */
     debug(msg, op = '') {
         if (this.debugOn && this.shouldLog('debug')) {
+            if (LOGS_JSON) return this.jsonLog('debug', msg, op);
             const timeElapsed = this._getElapsed();
             console.debug(`[${this._getDateTime()}] [${this.appName}] ${msg}`, util.inspect(op, options), timeElapsed);
         }
@@ -72,6 +73,7 @@ class Logs {
      */
     log(msg, op = '') {
         if (this.shouldLog('debug')) {
+            if (LOGS_JSON) return this.jsonLog(' ', msg, op);
             console.log(`[${this._getDateTime()}] [${this.appName}] ${msg}`, util.inspect(op, options));
         }
     }
@@ -83,6 +85,7 @@ class Logs {
      */
     info(msg, op = '') {
         if (this.shouldLog('info')) {
+            if (LOGS_JSON) return this.jsonLog('info', msg, op);
             console.info(
                 `[${this._getDateTime()}] [${this.appName}] ${LOGS_COLORS ? colors.green(msg) : msg}`,
                 util.inspect(op, options)
@@ -97,6 +100,7 @@ class Logs {
      */
     warn(msg, op = '') {
         if (this.shouldLog('warn')) {
+            if (LOGS_JSON) return this.jsonLog('warn', msg, op);
             console.warn(
                 `[${this._getDateTime()}] [${this.appName}] ${LOGS_COLORS ? colors.yellow(msg) : msg}`,
                 util.inspect(op, options)
@@ -111,6 +115,7 @@ class Logs {
      */
     error(msg, op = '') {
         if (this.shouldLog('error')) {
+            if (LOGS_JSON) return this.jsonLog('error', msg, op);
             console.error(
                 `[${this._getDateTime()}] [${this.appName}] ${LOGS_COLORS ? colors.red(msg) : msg}`,
                 util.inspect(op, options)
@@ -125,11 +130,33 @@ class Logs {
      */
     trace(msg, op = '') {
         if (this.shouldLog('debug')) {
+            if (LOGS_JSON) return this.jsonLog('trace', msg, op);
             console.trace(
                 `[${this._getDateTime()}] [${this.appName}] ${LOGS_COLORS ? colors.gray(msg) : msg}`,
                 util.inspect(op, options)
             );
         }
+    }
+
+    /**
+     * Output a JSON formatted log.
+     * @param {string} level - Log level.
+     * @param {string} msg - Message to log.
+     * @param {object} [op] - Optional object to include.
+     * @param {object} [extra] - Extra fields to include.
+     */
+    jsonLog(level, msg, op = '', extra = {}) {
+        const logObj = {
+            timestamp: new Date().toISOString(),
+            level,
+            app: colors.strip ? colors.strip(this.appName) : this.appName,
+            message: msg,
+            ...extra,
+        };
+        if (op && typeof op === 'object' && Object.keys(op).length > 0) {
+            logObj.data = op;
+        }
+        LOGS_JSON_PRETTY ? console.log(JSON.stringify(logObj, null, 2)) : console.log(JSON.stringify(logObj));
     }
 
     /**

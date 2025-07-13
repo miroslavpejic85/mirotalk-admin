@@ -91,6 +91,9 @@ module.exports = {
     TZ: process.env.TZ || 'UTC',
     LOGS_DEBUG: process.env.LOGS_DEBUG !== 'false',
     LOGS_COLORS: process.env.LOGS_COLORS !== 'false',
+    LOGS_JSON: process.env.LOGS_JSON === 'true',
+    LOGS_JSON_PRETTY: process.env.LOGS_JSON_PRETTY === 'true',
+
     ADMIN_PORT: process.env.ADMIN_PORT || 9999,
 
     // App version config
