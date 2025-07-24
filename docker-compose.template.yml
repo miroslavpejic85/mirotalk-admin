@@ -3,6 +3,7 @@ services:
         image: mirotalk/admin:latest
         container_name: mirotalkadmin
         hostname: mirotalkadmin
+        restart: unless-stopped
         ports:
             - '${ADMIN_PORT}:${ADMIN_PORT}'
         volumes:
@@ -10,4 +11,3 @@ services:
             - ./backend:/app/backend:ro
             - ./.env:/app/.env:ro
             #- ~/.ssh/id_rsa:/app/id_rsa:ro
-        restart: unless-stopped
