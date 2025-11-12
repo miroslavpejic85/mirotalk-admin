@@ -1,6 +1,6 @@
 {
     "name": "mirotalk-admin",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "description": "MiroTalk Admin Dashboard for managing updates of MiroTalk projects",
     "main": "server.js",
     "scripts": {
@@ -24,7 +24,7 @@
         "cors": "^2.8.5",
         "dotenv": "^17.2.3",
         "express": "^5.1.0",
-        "express-rate-limit": "^8.1.0",
+        "express-rate-limit": "^8.2.1",
         "httpolyglot": "0.1.2",
         "jsonwebtoken": "^9.0.2",
         "node-pty": "^1.0.0",
@@ -32,7 +32,7 @@
         "ssh2": "^1.17.0"
     },
     "devDependencies": {
-        "nodemon": "^3.1.10",
+        "nodemon": "^3.1.11",
         "prettier": "^3.6.2"
     }
 }
