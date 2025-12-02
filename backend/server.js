@@ -34,6 +34,7 @@ const options = {
 const server = require('httpolyglot').createServer(options, app);
 const { Server } = require('socket.io');
 const io = new Server(server, {
+    transports: ['websocket'],
     cors: { origin: '*' },
 });
 

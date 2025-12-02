@@ -1,7 +1,7 @@
 'use strict';
 
 // Connect to Socket.IO
-const socket = io();
+const socket = io({ transports: ['websocket'] });
 
 /**
  * Append text to a <pre> element and scroll to bottom.
