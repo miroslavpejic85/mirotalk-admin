@@ -15,7 +15,7 @@ const routes = require('./routes');
 
 const app = express();
 
-app.set('trust proxy', true);
+app.set('trust proxy', process.env.TRUST_PROXY === 'true');
 
 app.use(
     cors({
