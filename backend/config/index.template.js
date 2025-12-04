@@ -20,44 +20,51 @@ function makeConfig({ dir, packageUrl, packagePath, config = '', env, dep = defa
     return { dir, packageUrl, packagePath, config, env, dep };
 }
 
+// Application directories from environment variables or defaults
+const MIROTALK_SFU_DIR = process.env.MIROTALK_SFU_DIR || '/root/mirotalksfu';
+const MIROTALK_P2P_DIR = process.env.MIROTALK_P2P_DIR || '/root/mirotalk';
+const MIROTALK_C2C_DIR = process.env.MIROTALK_C2C_DIR || '/root/mirotalkc2c';
+const MIROTALK_BRO_DIR = process.env.MIROTALK_BRO_DIR || '/root/mirotalkbro';
+const MIROTALK_WEB_DIR = process.env.MIROTALK_WEB_DIR || '/root/mirotalkwebrtc';
+
 // Edit this object to add or modify application configurations
 const APP_CONFIG = {
     mirotalksfu: makeConfig({
-        dir: '/root/mirotalksfu',
+        dir: MIROTALK_SFU_DIR,
         packageUrl: 'https://raw.githubusercontent.com/miroslavpejic85/mirotalksfu/main/package.json',
-        packagePath: '/root/mirotalksfu/package.json',
-        config: '/root/mirotalksfu/app/src/config.js',
-        env: '/root/mirotalksfu/.env',
+        packagePath: `${MIROTALK_SFU_DIR}/package.json`,
+        config: `${MIROTALK_SFU_DIR}/app/src/config.js`,
+        env: `${MIROTALK_SFU_DIR}/.env`,
         dep: [...defaultDeps, ...mirotalksfuExtraDeps],
     }),
     mirotalk: makeConfig({
-        dir: '/root/mirotalk',
+        dir: MIROTALK_P2P_DIR,
         packageUrl: 'https://raw.githubusercontent.com/miroslavpejic85/mirotalk/master/package.json',
-        packagePath: '/root/mirotalk/package.json',
-        config: '/root/mirotalk/app/src/config.js',
-        env: '/root/mirotalk/.env',
+        packagePath: `${MIROTALK_P2P_DIR}/package.json`,
+        config: `${MIROTALK_P2P_DIR}/app/src/config.js`,
+        env: `${MIROTALK_P2P_DIR}/.env`,
         // dep omitted, uses defaultDeps
     }),
     mirotalkc2c: makeConfig({
-        dir: '/root/mirotalkc2c',
+        dir: MIROTALK_C2C_DIR,
         packageUrl: 'https://raw.githubusercontent.com/miroslavpejic85/mirotalkc2c/main/package.json',
-        packagePath: '/root/mirotalkc2c/package.json',
+        packagePath: `${MIROTALK_C2C_DIR}/package.json`,
         config: '',
-        env: '/root/mirotalkc2c/.env',
+        env: `${MIROTALK_C2C_DIR}/.env`,
     }),
     mirotalkbro: makeConfig({
-        dir: '/root/mirotalkbro',
+        dir: MIROTALK_BRO_DIR,
         packageUrl: 'https://raw.githubusercontent.com/miroslavpejic85/mirotalkbro/main/package.json',
-        packagePath: '/root/mirotalkbro/package.json',
-        config: '/root/mirotalkbro/public/js/config.js',
-        env: '/root/mirotalkbro/.env',
+        packagePath: `${MIROTALK_BRO_DIR}/package.json`,
+        config: `${MIROTALK_BRO_DIR}/public/js/config.js`,
+        env: `${MIROTALK_BRO_DIR}/.env`,
     }),
     mirotalkwebrtc: makeConfig({
-        dir: '/root/mirotalkwebrtc',
+        dir: MIROTALK_WEB_DIR,
         packageUrl: 'https://raw.githubusercontent.com/miroslavpejic85/mirotalkwebrtc/master/package.json',
-        packagePath: '/root/mirotalkwebrtc/package.json',
-        config: '/root/mirotalkwebrtc/backend/config.js',
-        env: '/root/mirotalkwebrtc/.env',
+        packagePath: `${MIROTALK_WEB_DIR}/package.json`,
+        config: `${MIROTALK_WEB_DIR}/backend/config.js`,
+        env: `${MIROTALK_WEB_DIR}/.env`,
     }),
 };
 

@@ -46,7 +46,7 @@ const genericCommands = {
     checkServerUpdate: () =>
         [
             'sudo apt-get update -y',
-            'apt-get -s upgrade | grep -E "^\\d+ upgraded" || echo "0 upgraded, 0 newly installed, 0 to remove, 0 not upgraded."'
+            'apt-get -s upgrade | grep -E "^\\d+ upgraded" || echo "0 upgraded, 0 newly installed, 0 to remove, 0 not upgraded."',
         ].join(' && '),
     serverUpdate: () =>
         ['sudo apt-get update -y', 'sudo apt-get upgrade -y', 'sudo apt-get dist-upgrade -y', 'lsb_release -a'].join(

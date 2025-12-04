@@ -122,6 +122,16 @@ Choose how you want to manage your MiroTalk instance:
 - **Self-Hosted with PM2:**
     - Set `APP_MANAGE_MODE=pm2`
 
+Set the instance you want to manage (comma-separated) and the absolute path where are located:
+
+```bash
+APP_NAME=mirotalksfu,mirotalk,mirotalkc2c,mirotalkbro,mirotalkwebrtc
+MIROTALK_SFU_DIR=/root/mirotalksfu
+MIROTALK_P2P_DIR=/root/mirotalkc2c
+MIROTALK_C2C_DIR=/root/mirotalkbro
+MIROTALK_WEB_DIR=/root/mirotalkwebrtc
+```
+
 ---
 
 > ✅ **Tip:**  
