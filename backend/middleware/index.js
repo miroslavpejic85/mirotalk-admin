@@ -9,7 +9,7 @@
  * @module middleware
  */
 
-const loginLimiter = require('./rateLimiter');
+const { loginLimiter } = require('../middleware/rateLimiter');
 const { authenticateToken, isSocketValidToken } = require('./auth');
 const restrictAllowedIPs = require('./ipRestriction');
 const dashboardEnabledAndHttps = require('./dashboardGuard');
