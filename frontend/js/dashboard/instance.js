@@ -14,6 +14,7 @@
      */
     async function checkVersion() {
         try {
+            $('update-realtime-logs-pre').textContent = '';
             showLoader();
             const json = await apiGetVersion();
             const dateNow = new Date().toLocaleString();
