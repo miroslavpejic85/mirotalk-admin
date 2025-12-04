@@ -26,7 +26,9 @@ async function serverReboot() {
 async function checkForServerUpdate() {
     const cmd = getCommand('checkServerUpdate');
     const output = await runCommand(cmd);
-    const upgradableCount = parseInt(output.trim().split('\n').pop(), 10);
+    // Find the line with the upgrade summary
+    const match = output.match(/(\d+)\s+upgraded,.*?(\d+)\s+newly installed,.*?(\d+)\s+to remove,.*?(\d+)\s+not upgraded\./);
+    const upgradableCount = match ? parseInt(match[1], 10) : 0;
     return {
         updateAvailable: upgradableCount > 0,
         upgradableCount,
