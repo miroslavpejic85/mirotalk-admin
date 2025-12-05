@@ -71,6 +71,11 @@
                 handler: () => window.Dashboard.showSection('terminal'),
             },
             {
+                type: 'click',
+                id: 'menu-self-hosting',
+                handler: () => window.Dashboard.showSection('self-hosting'),
+            },
+            {
                 type: 'mouseover',
                 id: 'sidebar',
                 handler: () => $('sidebar').classList.toggle('collapsed'),
@@ -166,6 +171,17 @@
                 type: 'click',
                 id: 'server-logs-btn',
                 handler: window.Dashboard.serverClearLogs,
+            },
+            {
+                type: 'click',
+                id: 'self-hosting-refresh-btn',
+                handler: () => {
+                    const iframe = $('self-hosting-iframe');
+                    if (iframe) {
+                        iframe.src = iframe.src;
+                        showToast('Documentation refreshed', 'success');
+                    }
+                },
             },
         ];
         bindEvents(bindings);
