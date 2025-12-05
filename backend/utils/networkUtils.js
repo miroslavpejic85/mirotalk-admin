@@ -14,8 +14,17 @@
  * @param {Object} req - Express request object
  * @returns {string} The client IP address.
  */
-function getIP(req) {
-    return req.headers['x-forwarded-for'] || req.headers['X-Forwarded-For'] || req.socket.remoteAddress || req.ip;
-}
+const getIP = (req) => {
+    // Get IP from X-Forwarded-For header (set by nginx/proxy)
+    const forwardedFor = req.headers['x-forwarded-for'];
+
+    if (forwardedFor) {
+        // X-Forwarded-For can contain multiple IPs, get the first one (client IP)
+        const clientIp = forwardedFor.split(',')[0].trim();
+        return clientIp;
+    }
+    // Fallback to req.ip (which Express sets based on trust proxy)
+    return req.socket.remoteAddress || req.ip;
+};
 
 module.exports = { getIP };

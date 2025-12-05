@@ -20,11 +20,12 @@ function appendToPre(id, text, highlight = false) {
 
 /**
  * Listen for real-time update output and append to update logs.
+ * Output is pre-filtered on the server side.
  * @event updateOutput
  * @param {string} data - Output chunk from update process.
  */
 socket.on('updateOutput', (data) => {
-    appendToPre('update-realtime-logs-pre', data);
+    appendToPre('update-realtime-logs-pre', data + '\n');
 });
 
 /**
@@ -33,7 +34,9 @@ socket.on('updateOutput', (data) => {
  * @param {number} code - Exit code of the update process.
  */
 socket.on('updateDone', (code) => {
-    appendToPre('update-realtime-logs-pre', `\nUpdate finished with code: ${code}\n`);
+    const statusIcon = code === 0 ? '✅' : '❌';
+    const statusText = code === 0 ? 'Success' : 'Failed';
+    appendToPre('update-realtime-logs-pre', `\n${statusIcon} Update finished: ${statusText} (exit code: ${code})\n`);
     checkVersion();
 });
 

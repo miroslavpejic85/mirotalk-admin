@@ -11,22 +11,8 @@
 
 const rateLimit = require('express-rate-limit');
 
-/**
- * Custom key generator that properly handles IPv6 addresses
- * and extracts real IP from X-Forwarded-For header
- */
-const getClientIp = (req) => {
-    // Get IP from X-Forwarded-For header (set by nginx/proxy)
-    const forwardedFor = req.headers['x-forwarded-for'];
-
-    if (forwardedFor) {
-        // X-Forwarded-For can contain multiple IPs, get the first one (client IP)
-        const clientIp = forwardedFor.split(',')[0].trim();
-        return clientIp;
-    }
-    // Fallback to req.ip (which Express sets based on trust proxy)
-    return req.ip;
-};
+const utils = require('../utils');
+const { getIP } = utils;
 
 /**
  * Rate limiter middleware for login endpoint.
@@ -49,7 +35,7 @@ const loginLimiter = rateLimit({
     // Just ensure req.ip is set correctly
     keyGenerator: (req, res) => {
         // Get the client IP
-        const ip = getClientIp(req);
+        const ip = getIP(req);
         // Return the IP directly - express-rate-limit will handle IPv6 normalization
         return ip;
     },
@@ -66,7 +52,7 @@ const loginLimiter = rateLimit({
     skip: (req) => {
         // You can add whitelisted IPs here if needed
         // const whitelistedIPs = ['127.0.0.1', '::1'];
-        // const clientIp = getClientIp(req);
+        // const clientIp = getIP(req);
         // return whitelistedIPs.includes(clientIp);
         return false;
     },
@@ -89,7 +75,7 @@ const apiLimiter = rateLimit({
     },
 
     keyGenerator: (req, res) => {
-        return getClientIp(req);
+        return getIP(req);
     },
 });
 
@@ -110,7 +96,7 @@ const strictLimiter = rateLimit({
     },
 
     keyGenerator: (req, res) => {
-        return getClientIp(req);
+        return getIP(req);
     },
 
     handler: (req, res) => {
