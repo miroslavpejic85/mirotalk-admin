@@ -26,6 +26,7 @@ const MIROTALK_P2P_DIR = process.env.MIROTALK_P2P_DIR || '/root/mirotalk';
 const MIROTALK_C2C_DIR = process.env.MIROTALK_C2C_DIR || '/root/mirotalkc2c';
 const MIROTALK_BRO_DIR = process.env.MIROTALK_BRO_DIR || '/root/mirotalkbro';
 const MIROTALK_WEB_DIR = process.env.MIROTALK_WEB_DIR || '/root/mirotalkwebrtc';
+const MIROTALK_ADMIN_DIR = process.env.MIROTALK_ADMIN_DIR || '/root/mirotalkadmin';
 
 // Edit this object to add or modify application configurations
 const APP_CONFIG = {
@@ -65,6 +66,13 @@ const APP_CONFIG = {
         packagePath: `${MIROTALK_WEB_DIR}/package.json`,
         config: `${MIROTALK_WEB_DIR}/backend/config.js`,
         env: `${MIROTALK_WEB_DIR}/.env`,
+    }),
+    mirotalkadmin: makeConfig({
+        dir: MIROTALK_ADMIN_DIR,
+        packageUrl: 'https://raw.githubusercontent.com/miroslavpejic85/mirotalk-admin/main/package.json',
+        packagePath: `${MIROTALK_ADMIN_DIR}/package.json`,
+        config: `${MIROTALK_ADMIN_DIR}/backend/config/index.js`,
+        env: `${MIROTALK_ADMIN_DIR}/.env`,
     }),
 };
 

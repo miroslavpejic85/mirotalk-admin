@@ -14,10 +14,10 @@ const config = require('../config');
 const utils = require('../utils');
 const Logs = utils.Logs;
 const logger = new Logs('DashboardGuardMiddleware');
-const { NODE_ENV, ADMIN_DASHBOARD_ENABLED } = config;
+const { ADMIN_DASHBOARD_ENABLED } = config;
 
 /**
- * Middleware to check if the dashboard is enabled and enforce HTTPS in production.
+ * Middleware to check if the dashboard is enabled.
  *
  * @param {express.Request} req - Express request object
  * @param {express.Response} res - Express response object
