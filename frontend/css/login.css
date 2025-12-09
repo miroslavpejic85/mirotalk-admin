@@ -26,6 +26,33 @@
     padding: 30px;
 }
 
+.login-body .form-control {
+    color: #ffffff !important;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.login-body .form-control:focus {
+    color: #ffffff !important;
+    background: rgba(30, 41, 59, 0.9);
+    border-color: #3b82f6;
+}
+
+.login-body .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.login-body .input-group-text {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #60a5fa;
+}
+
+.login-body .form-label {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
 .login-footer {
     padding: 15px;
     text-align: center;

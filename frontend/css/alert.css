@@ -1,0 +1,45 @@
+/* Alert Text Visibility */
+
+.alert-info {
+    color: #e0f2fe !important;
+    font-weight: 500;
+}
+
+.alert-info strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.alert-info .fas,
+.alert-info .fa {
+    color: #60a5fa;
+}
+
+/* General alert text */
+.alert {
+    color: #f8fafc;
+}
+
+.alert-success {
+    color: #d1fae5 !important;
+}
+
+.alert-success strong {
+    color: #ffffff;
+}
+
+.alert-warning {
+    color: #fef3c7 !important;
+}
+
+.alert-warning strong {
+    color: #ffffff;
+}
+
+.alert-danger {
+    color: #fee2e2 !important;
+}
+
+.alert-danger strong {
+    color: #ffffff;
+}
