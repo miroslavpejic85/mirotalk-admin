@@ -37,7 +37,9 @@ socket.on('updateDone', (code) => {
     const statusIcon = code === 0 ? '✅' : '❌';
     const statusText = code === 0 ? 'Success' : 'Failed';
     appendToPre('update-realtime-logs-pre', `\n${statusIcon} Update finished: ${statusText} (exit code: ${code})\n`);
-    window.Dashboard.checkVersion();
+    setTimeout(() => {
+        window.Dashboard.checkVersion();
+    }, 3000);
 });
 
 /**
