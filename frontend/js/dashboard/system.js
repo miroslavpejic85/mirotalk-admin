@@ -29,7 +29,13 @@
             if (info.system) {
                 $('sys-time').textContent = info.system.time;
                 $('sys-uptime').textContent = info.system.uptime;
-                $('sys-load').textContent = info.system.load;
+                if (info.system.load) {
+                    const loadText = info.system.load
+                        .replace('1min=', 'Last 1 min: ')
+                        .replace(', 5min=', ' | 5 min: ')
+                        .replace(', 15min=', ' | 15 min: ');
+                    $('sys-load').textContent = loadText;
+                }
             }
             if (info.disk) {
                 $('sys-disk-total').textContent = info.disk.total;
