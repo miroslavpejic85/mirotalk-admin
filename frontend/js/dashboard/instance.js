@@ -23,7 +23,6 @@
             $('local-version').textContent = json.localVersion;
             $('remote-version').textContent = json.remoteVersion;
             if (!json.isUpToDate) {
-                $('update-realtime-logs').classList.remove('hidden');
                 $('status-text').textContent = 'New version available!';
                 $('status-text').className = 'text-success';
                 $('update-btn').classList.remove('hidden');
