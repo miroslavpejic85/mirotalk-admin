@@ -26,7 +26,7 @@ const MIROTALK_P2P_DIR = process.env.MIROTALK_P2P_DIR || '/root/mirotalk';
 const MIROTALK_C2C_DIR = process.env.MIROTALK_C2C_DIR || '/root/mirotalkc2c';
 const MIROTALK_BRO_DIR = process.env.MIROTALK_BRO_DIR || '/root/mirotalkbro';
 const MIROTALK_WEB_DIR = process.env.MIROTALK_WEB_DIR || '/root/mirotalkwebrtc';
-const MIROTALK_ADMIN_DIR = process.env.MIROTALK_ADMIN_DIR || '/root/mirotalkadmin';
+const MIROTALK_ADMIN_DIR = process.env.MIROTALK_ADMIN_DIR || '/root/mirotalk-admin';
 
 // Edit this object to add or modify application configurations
 const APP_CONFIG = {
