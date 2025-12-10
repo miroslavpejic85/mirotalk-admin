@@ -37,7 +37,8 @@ const login = async (req, res) => {
 
         // Send email alert for successful login
         const clientIp = utils.getIP(req);
-        emailService.sendLoginAlert(username, clientIp).catch((err) => {
+        const domain = utils.getDomain(req);
+        emailService.sendLoginAlert(domain, username, clientIp).catch((err) => {
             logger.warn('Failed to send login email alert', { error: err.message });
         });
 

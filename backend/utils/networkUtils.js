@@ -27,4 +27,13 @@ const getIP = (req) => {
     return req.socket.remoteAddress || req.ip;
 };
 
-module.exports = { getIP };
+/**
+ * Get the domain from the request.
+ * @param {Object} req
+ * @returns {string} The domain of the request.
+ */
+const getDomain = (req) => {
+    return req.hostname || req.headers.host;
+};
+
+module.exports = { getIP, getDomain };

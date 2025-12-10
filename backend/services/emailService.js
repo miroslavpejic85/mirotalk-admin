@@ -56,12 +56,13 @@ function initializeTransporter() {
 
 /**
  * Get HTML email template for login alert.
+ * @param {string} domain
  * @param {string} username
  * @param {string} ipAddress
  * @param {string} timestamp
  * @returns {string} HTML email content
  */
-function getHtmlTemplate(username, ipAddress, timestamp) {
+function getHtmlTemplate(domain, username, ipAddress, timestamp) {
     return `
 <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; background-color: #f5f5f5;">
 		<div style="background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
@@ -70,6 +71,10 @@ function getHtmlTemplate(username, ipAddress, timestamp) {
 				
 				<div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
 						<table style="width: 100%; border-collapse: collapse;">
+								<tr>
+										<td style="padding: 8px 0; color: #555; font-weight: bold;">Domain:</td>
+										<td style="padding: 8px 0; color: #333;">${domain}</td>
+								</tr>
 								<tr>
 										<td style="padding: 8px 0; color: #555; font-weight: bold;">Username:</td>
 										<td style="padding: 8px 0; color: #333;">${username}</td>
@@ -101,17 +106,19 @@ function getHtmlTemplate(username, ipAddress, timestamp) {
 
 /**
  * Get text email template for login alert.
+ * @param {string} domain
  * @param {string} username
  * @param {string} ipAddress
  * @param {string} timestamp
  * @returns {string} Text email content
  */
-function getTextTemplate(username, ipAddress, timestamp) {
+function getTextTemplate(domain, username, ipAddress, timestamp) {
     return `
 MiroTalk Admin - Login Alert
 
 A successful login was detected on your MiroTalk Admin Dashboard.
 
+Domain: ${domain}
 Username: ${username}
 IP Address: ${ipAddress}
 Timestamp: ${timestamp}
@@ -125,11 +132,12 @@ This is an automated security alert from MiroTalk Admin Dashboard.
 /**
  * Send login alert email to administrator.
  *
+ * @param {string} domain - The domain of the admin dashboard
  * @param {string} username - The username that logged in
  * @param {string} ipAddress - The IP address of the login
  * @returns {Promise<void>}
  */
-async function sendLoginAlert(username, ipAddress) {
+async function sendLoginAlert(domain, username, ipAddress) {
     if (!EMAIL_ALERTS) {
         return;
     }
@@ -146,8 +154,8 @@ async function sendLoginAlert(username, ipAddress) {
         from: EMAIL_FROM || EMAIL_USERNAME,
         to: EMAIL_SEND_TO,
         subject: '🔐 MiroTalk Admin - Login Alert',
-        html: getHtmlTemplate(username, ipAddress, timestamp),
-        text: getTextTemplate(username, ipAddress, timestamp),
+        html: getHtmlTemplate(domain, username, ipAddress, timestamp),
+        text: getTextTemplate(domain, username, ipAddress, timestamp),
     };
 
     try {

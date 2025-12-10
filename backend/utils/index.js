@@ -13,7 +13,7 @@ const { readFile, writeFile } = require('./fileUtils');
 const { getCommand, runCommand } = require('./commandUtils');
 const { getAppDependencies, checkDependency, ALL_DEPENDENCIES } = require('./dependencyUtils');
 const { getSystemInfo } = require('./systemInfoUtils');
-const { getIP } = require('./networkUtils');
+const { getIP, getDomain } = require('./networkUtils');
 const { sshExec, sshExecStream, sshReadFile, sshWriteFile, getSSHConfig, Client } = require('./sshUtils');
 const { parseProcessStatus } = require('./processUtils');
 const { compareVersions } = require('./versionUtils');
@@ -35,6 +35,7 @@ module.exports = {
     compareVersions,
     getSystemInfo,
     getIP,
+    getDomain,
     Client,
     Logs,
     getAppDependencies,
