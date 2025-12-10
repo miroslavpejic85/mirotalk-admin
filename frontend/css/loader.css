@@ -12,10 +12,14 @@
     backdrop-filter: blur(8px);
     z-index: 2000;
     animation: fadeIn 0.3s ease-in;
+    /* Force animation restart on visibility change */
+    will-change: transform, opacity;
 }
 
 #dashboard-loader.d-none {
     display: none !important;
+    /* Reset animations when hidden */
+    animation: none;
 }
 
 @keyframes fadeIn {
@@ -36,6 +40,12 @@
     border-radius: 50%;
     position: relative;
     animation: rotate 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+    /* Force animation restart */
+    animation-play-state: running;
+}
+
+#dashboard-loader.d-none .spinner-border {
+    animation-play-state: paused;
 }
 
 .spinner-border::before {

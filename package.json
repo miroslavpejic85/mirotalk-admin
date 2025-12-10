@@ -1,6 +1,6 @@
 {
     "name": "mirotalk-admin",
-    "version": "1.0.41",
+    "version": "1.0.50",
     "description": "MiroTalk Admin Dashboard for managing updates of MiroTalk projects",
     "main": "server.js",
     "scripts": {
@@ -20,11 +20,14 @@
     "author": "miroslav.pejic.85@gmail.com",
     "license": "AGPLv3",
     "dependencies": {
+        "bcrypt": "^6.0.0",
         "colors": "^1.4.0",
         "cors": "^2.8.5",
+        "crypto": "^1.0.1",
         "dotenv": "^17.2.3",
         "express": "^5.2.1",
         "express-rate-limit": "^8.2.1",
+        "helmet": "^8.1.0",
         "httpolyglot": "0.1.2",
         "jsonwebtoken": "^9.0.3",
         "node-pty": "^1.0.0",

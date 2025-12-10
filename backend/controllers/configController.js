@@ -44,7 +44,12 @@ const getConfig = async (req, res) => {
  */
 const saveConfig = async (req, res) => {
     try {
-        await configService.saveConfig(req.body.content);
+        const { content } = req.body;
+
+        // Validate content
+        utils.validateFileContent(content);
+
+        await configService.saveConfig(content);
         logger.info('Config saved');
         res.json({ message: 'Config saved' });
     } catch (err) {

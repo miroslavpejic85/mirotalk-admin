@@ -92,7 +92,7 @@ let APP_DEFAULTS = APP_CONFIG[APP_NAME] || APP_CONFIG['mirotalksfu'];
  * - ADMIN_JWT_SECRET: JWT secret for admin auth
  * - ADMIN_JWT_EXPIRES_IN: JWT expiration
  * - ADMIN_USERNAME: Admin username
- * - ADMIN_PASSWORD: Admin password
+ * - ADMIN_PASSWORD_HASH: Hashed admin password
  * - ADMIN_ALLOWED_IPS: Allowed IPs for admin
  * - PACKAGE_URL: Remote package.json URL
  * - PACKAGE_PATH: Local package.json path
@@ -119,10 +119,10 @@ module.exports = {
 
     // Dashboard & Auth
     ADMIN_DASHBOARD_ENABLED: process.env.ADMIN_DASHBOARD_ENABLED === 'true',
-    ADMIN_JWT_SECRET: process.env.ADMIN_JWT_SECRET || 'supersecret',
+    ADMIN_JWT_SECRET: process.env.ADMIN_JWT_SECRET,
     ADMIN_JWT_EXPIRES_IN: process.env.ADMIN_JWT_EXPIRES_IN || '1h',
-    ADMIN_USERNAME: process.env.ADMIN_USERNAME || 'admin',
-    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || 'admin',
+    ADMIN_USERNAME: process.env.ADMIN_USERNAME,
+    ADMIN_PASSWORD_HASH: process.env.ADMIN_PASSWORD_HASH,
     ADMIN_ALLOWED_IPS: process.env.ADMIN_ALLOWED_IPS ? process.env.ADMIN_ALLOWED_IPS.split(',') : ['*'],
 
     // SSH config

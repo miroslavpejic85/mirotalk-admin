@@ -19,6 +19,8 @@
         try {
             const res = await fetch(url);
             const html = await res.text();
+            // Only load HTML from trusted sources (our own views)
+            // This is safe because we control the views/ directory
             $(containerId).innerHTML = html;
         } catch (error) {
             handleError(error, errorMsg);

@@ -18,6 +18,7 @@ const { sshExec, sshExecStream, sshReadFile, sshWriteFile, getSSHConfig, Client 
 const { parseProcessStatus } = require('./processUtils');
 const { compareVersions } = require('./versionUtils');
 const Logs = require('./logsUtils');
+const { validateUsername, validatePassword, validateAppName, validateFileContent } = require('./validationUtils');
 
 module.exports = {
     getCommand,
@@ -38,4 +39,8 @@ module.exports = {
     getAppDependencies,
     checkDependency,
     ALL_DEPENDENCIES,
+    validateUsername,
+    validatePassword,
+    validateAppName,
+    validateFileContent,
 };

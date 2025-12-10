@@ -65,11 +65,16 @@
         const searchTerm = $('log-search').value.trim();
         const logsElement = $('logs');
         const logsContent = logsElement.textContent;
-        logsElement.innerHTML = logsContent;
-        if (!searchTerm) return;
-        const regex = new RegExp(`(${searchTerm})`, 'gi');
-        const highlightedContent = logsContent.replace(regex, '<span class="highlight">$1</span>');
-        logsElement.innerHTML = highlightedContent;
+
+        if (!searchTerm) {
+            // No search term - just escape and display
+            logsElement.innerHTML = escapeHtml(logsContent);
+            return;
+        }
+
+        // Use safe highlighting function that escapes HTML
+        const highlighted = highlightSearchTerm(logsContent, searchTerm);
+        logsElement.innerHTML = highlighted;
     }
 
     /**

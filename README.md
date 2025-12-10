@@ -24,7 +24,7 @@ A secure, modern web dashboard to manage **[MiroTalk](https://docs.mirotalk.com/
 2. **Open the Admin Dashboard**
     - Go to: [http://localhost:9999/admin](http://localhost:9999/admin)
     - **Default credentials:**
-        - **Username:** `admin`
+        - **Username:** `mirotalk`
         - **Password:** `admin`
 
 ---
@@ -101,8 +101,10 @@ A secure, modern web dashboard to manage **[MiroTalk](https://docs.mirotalk.com/
 - Set `ADMIN_DASHBOARD_ENABLED=true` to enable the dashboard.
 - **Change the default credentials:**
     - `ADMIN_USERNAME`
-    - `ADMIN_PASSWORD`
-    - `ADMIN_JWT_SECRET`
+    - `ADMIN_PASSWORD_HASH` &mdash; generate it by running:
+        - `node backend/scripts/hashPassword.js`
+    - `ADMIN_JWT_SECRET` &mdash; generate it by running:
+        - `node backend/scripts/generateJwtSecret.js`
 
 ### 🛠️ Management Mode (`APP_MANAGE_MODE`)
 

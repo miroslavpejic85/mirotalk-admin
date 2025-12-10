@@ -1,6 +1,18 @@
 'use strict';
 
 /**
+ * Escape HTML special characters to prevent XSS
+ * @param {string} str - The string to escape
+ * @returns {string} - The escaped string
+ */
+function escapeHtml(str) {
+    if (typeof str !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+/**
  * Download a file with the given content and filename.
  * @param {string} content - The file content.
  * @param {string} filename - The name for the downloaded file.
@@ -34,9 +46,13 @@ function stripAnsiCodes(str) {
  * @returns {string} - The HTML string with highlights.
  */
 function highlightSearchTerm(logs, searchTerm) {
-    if (!searchTerm) return logs;
-    const regex = new RegExp(`(${searchTerm})`, 'gi');
-    return logs.replace(regex, '<span class="highlight">$1</span>');
+    if (!searchTerm) return escapeHtml(logs);
+    // Escape the search term to prevent regex injection
+    const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escapedTerm})`, 'gi');
+    // Escape HTML first, then highlight
+    const escapedLogs = escapeHtml(logs);
+    return escapedLogs.replace(regex, '<span class="highlight">$1</span>');
 }
 
 /**
@@ -105,7 +121,10 @@ function handleError(error, userMessage = 'An unexpected error occurred') {
  * Show the dashboard loader (waiting spinner).
  */
 function showLoader() {
-    $('dashboard-loader').classList.remove('d-none');
+    const loader = $('dashboard-loader');
+    loader.classList.remove('d-none');
+    // Force animation restart by triggering reflow
+    void loader.offsetWidth;
 }
 
 /**

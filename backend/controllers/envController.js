@@ -44,7 +44,12 @@ const getEnv = async (req, res) => {
  */
 const saveEnv = async (req, res) => {
     try {
-        await envService.saveEnv(req.body.content);
+        const { content } = req.body;
+
+        // Validate content
+        utils.validateFileContent(content);
+
+        await envService.saveEnv(content);
         logger.info('.env file updated successfully');
         res.json({ message: '.env file updated successfully' });
     } catch (err) {

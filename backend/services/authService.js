@@ -10,8 +10,10 @@
  */
 
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const config = require('../config');
-const { ADMIN_JWT_SECRET, ADMIN_JWT_EXPIRES_IN, ADMIN_USERNAME, ADMIN_PASSWORD } = config;
+
+const { ADMIN_JWT_SECRET, ADMIN_JWT_EXPIRES_IN, ADMIN_USERNAME, ADMIN_PASSWORD_HASH } = config;
 
 /**
  * Authenticate user and return JWT token if valid.
@@ -21,8 +23,11 @@ const { ADMIN_JWT_SECRET, ADMIN_JWT_EXPIRES_IN, ADMIN_USERNAME, ADMIN_PASSWORD }
  * @returns {string} JWT token if credentials are valid
  * @throws {Error} If credentials are invalid
  */
-function authenticate(username, password) {
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+async function authenticate(username, password) {
+    if (!ADMIN_JWT_SECRET || !ADMIN_USERNAME || !ADMIN_PASSWORD_HASH) {
+        throw new Error('Authentication is not properly configured');
+    }
+    if (username === ADMIN_USERNAME && (await bcrypt.compare(password, ADMIN_PASSWORD_HASH))) {
         return jwt.sign({ username }, ADMIN_JWT_SECRET, {
             expiresIn: ADMIN_JWT_EXPIRES_IN,
         });

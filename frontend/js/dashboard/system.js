@@ -42,38 +42,56 @@
                 $('sys-disk-free').textContent = info.disk.free;
                 $('sys-disk-used').textContent = info.disk.used;
             }
-            $('sys-network-body').innerHTML = '';
-            $('sys-network-body').innerHTML = Object.entries(info.network)
-                .map(([iface, addrs]) =>
-                    addrs
-                        .map(
-                            (addr) => `
-                        <tr>
-                            <td>${iface}</td>
-                            <td>${addr.address}</td>
-                            <td>${addr.family}</td>
-                            <td>${addr.internal ? 'Yes' : 'No'}</td>
-                        </tr>
-                    `
-                        )
-                        .join('')
-                )
-                .join('');
+            // Safely populate network interfaces table
+            const networkBody = $('sys-network-body');
+            networkBody.textContent = ''; // Clear existing content
+            Object.entries(info.network).forEach(([iface, addrs]) => {
+                addrs.forEach((addr) => {
+                    const row = document.createElement('tr');
+
+                    const ifaceCell = document.createElement('td');
+                    ifaceCell.textContent = iface;
+                    row.appendChild(ifaceCell);
+
+                    const addressCell = document.createElement('td');
+                    addressCell.textContent = addr.address;
+                    row.appendChild(addressCell);
+
+                    const familyCell = document.createElement('td');
+                    familyCell.textContent = addr.family;
+                    row.appendChild(familyCell);
+
+                    const internalCell = document.createElement('td');
+                    internalCell.textContent = addr.internal ? 'Yes' : 'No';
+                    row.appendChild(internalCell);
+
+                    networkBody.appendChild(row);
+                });
+            });
             if (info.dependencies) {
-                $('sys-dependencies-body').innerHTML = '';
-                $('sys-dependencies-body').innerHTML = Object.entries(info.dependencies)
-                    .map(
-                        ([dep, val]) => `
-                        <tr>
-                            <td>${dep}</td>
-                            <td>
-                                ${val.installed ? '<span class="badge bg-success">Yes</span>' : '<span class="badge bg-danger">No</span>'}
-                            </td>
-                            <td>${val.version ? val.version : '-'}</td>
-                        </tr>
-                    `
-                    )
-                    .join('');
+                // Safely populate dependencies table
+                const depsBody = $('sys-dependencies-body');
+                depsBody.textContent = ''; // Clear existing content
+                Object.entries(info.dependencies).forEach(([dep, val]) => {
+                    const row = document.createElement('tr');
+
+                    const depCell = document.createElement('td');
+                    depCell.textContent = dep;
+                    row.appendChild(depCell);
+
+                    const installedCell = document.createElement('td');
+                    const badge = document.createElement('span');
+                    badge.className = val.installed ? 'badge bg-success' : 'badge bg-danger';
+                    badge.textContent = val.installed ? 'Yes' : 'No';
+                    installedCell.appendChild(badge);
+                    row.appendChild(installedCell);
+
+                    const versionCell = document.createElement('td');
+                    versionCell.textContent = val.version ? val.version : '-';
+                    row.appendChild(versionCell);
+
+                    depsBody.appendChild(row);
+                });
             }
         } catch (error) {
             handleError(error, 'Failed to load system info.');

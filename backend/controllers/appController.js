@@ -45,6 +45,11 @@ const getAppNames = (req, res) => {
 const setAppName = (req, res) => {
     try {
         const { appName } = req.body;
+
+        // Validate app name against allowed list
+        const allowedApps = appService.getAppNames();
+        utils.validateAppName(appName, allowedApps);
+
         const appNameSettings = appService.setAppName(appName);
         logger.info('Setting app name:', { appNameSettings });
         res.json({ success: true, appName });

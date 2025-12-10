@@ -22,15 +22,20 @@ const logger = new Logs('AuthController');
  * @returns {Object} 200 - JSON object with JWT token
  * @returns {Object} 403 - JSON error object if authentication fails
  */
-const login = (req, res) => {
+const login = async (req, res) => {
     const { username, password } = req.body;
-    logger.debug('Login attempt', { username: username, password: password });
+
     try {
-        const token = authService.authenticate(username, password);
+        // Validate inputs
+        utils.validateUsername(username);
+        utils.validatePassword(password);
+
+        logger.debug('Login attempt', { username });
+        const token = await authService.authenticate(username, password);
         logger.info('Login successful', { username });
         return res.json({ token });
     } catch (error) {
-        logger.warn('Login error: Invalid credentials', { username });
+        logger.warn('Login error', { username, error: error.message });
         res.status(403).json({ error: error.message });
     }
 };

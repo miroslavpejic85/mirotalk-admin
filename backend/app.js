@@ -12,6 +12,7 @@
 const express = require('express');
 const cors = require('cors');
 const routes = require('./routes');
+const helmet = require('helmet');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(
     })
 );
 
+app.use(helmet.noSniff());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
