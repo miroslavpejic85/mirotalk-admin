@@ -56,6 +56,11 @@
 .login-footer {
     padding: 15px;
     text-align: center;
-    background-color: #f8f9fa;
-    border-top: 1px solid #e9ecef;
+    background-color: rgba(30, 41, 59, 0.8);
+    border-top: 1px solid rgba(59, 130, 246, 0.3);
+    color: #94a3b8;
+}
+
+.login-footer .text-muted {
+    color: #94a3b8 !important;
 }

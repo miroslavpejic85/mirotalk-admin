@@ -83,22 +83,6 @@ let APP_DEFAULTS = APP_CONFIG[APP_NAME] || APP_CONFIG['mirotalksfu'];
 /**
  * Main configuration object for the admin-ssh backend.
  * All values can be overridden by environment variables.
- * - APP_DEFAULTS: The selected app's config object from APP_CONFIG
- * - APP_NAME: The selected app name
- * - APP_DIR: Application directory
- * - APP_PATH_CONFIG: Path to main config file
- * - APP_PATH_ENV: Path to .env file
- * - ADMIN_DASHBOARD_ENABLED: Enable/disable dashboard
- * - ADMIN_JWT_SECRET: JWT secret for admin auth
- * - ADMIN_JWT_EXPIRES_IN: JWT expiration
- * - ADMIN_USERNAME: Admin username
- * - ADMIN_PASSWORD_HASH: Hashed admin password
- * - ADMIN_ALLOWED_IPS: Allowed IPs for admin
- * - PACKAGE_URL: Remote package.json URL
- * - PACKAGE_PATH: Local package.json path
- * - APP_MANAGE_MODE: Application management mode
- * - SSH_MANAGE_MODE: SSH management mode
- * - SSH_HOST, SSH_PORT, SSH_USER, SSH_PASSWORD, SSH_PRIVATE_KEY_PATH, SSH_PRIVATE_KEY: SSH connection details
  */
 module.exports = {
     // General settings
@@ -141,4 +125,13 @@ module.exports = {
     SSH_PASSWORD: process.env.SSH_PASSWORD,
     SSH_PRIVATE_KEY_PATH: process.env.SSH_PRIVATE_KEY_PATH,
     SSH_PRIVATE_KEY: process.env.SSH_PRIVATE_KEY_PATH ? fs.readFileSync(process.env.SSH_PRIVATE_KEY_PATH) : undefined,
+
+    // Email alerts
+    EMAIL_ALERTS: process.env.EMAIL_ALERTS === 'true',
+    EMAIL_HOST: process.env.EMAIL_HOST,
+    EMAIL_PORT: process.env.EMAIL_PORT || 587,
+    EMAIL_USERNAME: process.env.EMAIL_USERNAME,
+    EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
+    EMAIL_FROM: process.env.EMAIL_FROM,
+    EMAIL_SEND_TO: process.env.EMAIL_SEND_TO,
 };

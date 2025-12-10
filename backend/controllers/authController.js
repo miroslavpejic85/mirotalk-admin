@@ -9,6 +9,7 @@
  */
 
 const authService = require('../services/authService');
+const emailService = require('../services/emailService');
 const utils = require('../utils');
 const Logs = utils.Logs;
 const logger = new Logs('AuthController');
@@ -33,6 +34,13 @@ const login = async (req, res) => {
         logger.debug('Login attempt', { username });
         const token = await authService.authenticate(username, password);
         logger.info('Login successful', { username });
+
+        // Send email alert for successful login
+        const clientIp = utils.getIP(req);
+        emailService.sendLoginAlert(username, clientIp).catch((err) => {
+            logger.warn('Failed to send login email alert', { error: err.message });
+        });
+
         return res.json({ token });
     } catch (error) {
         logger.warn('Login error', { username, error: error.message });
