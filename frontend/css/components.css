@@ -199,6 +199,10 @@
     color: #ffffff;
 }
 
+#sys-load-descr {
+    color: #94a3b8 !important; 
+}
+
 /* Responsive adjustments for tablets and small screens */
 @media (max-width: 1024px) {
     .project-card {
