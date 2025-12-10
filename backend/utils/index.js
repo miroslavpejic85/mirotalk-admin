@@ -19,6 +19,7 @@ const { parseProcessStatus } = require('./processUtils');
 const { compareVersions } = require('./versionUtils');
 const Logs = require('./logsUtils');
 const { validateUsername, validatePassword, validateAppName, validateFileContent } = require('./validationUtils');
+const { getCorsOptions } = require('./corsUtilis');
 
 module.exports = {
     getCommand,
@@ -43,4 +44,5 @@ module.exports = {
     validatePassword,
     validateAppName,
     validateFileContent,
+    getCorsOptions,
 };

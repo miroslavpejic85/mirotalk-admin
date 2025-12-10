@@ -13,6 +13,7 @@ const path = require('path');
 const fs = require('fs');
 const app = require('./app');
 const config = require('./config');
+const utils = require('./utils');
 const Logs = require('./utils/logsUtils');
 const logger = new Logs('AdminServer');
 
@@ -34,10 +35,7 @@ const options = {
 const server = require('httpolyglot').createServer(options, app);
 const { Server } = require('socket.io');
 const io = new Server(server, {
-    cors: {
-        origin: '*',
-        methods: ['GET', 'POST'],
-    },
+    cors: utils.getCorsOptions(),
     transports: ['websocket'],
 });
 

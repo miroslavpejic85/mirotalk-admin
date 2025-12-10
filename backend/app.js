@@ -11,18 +11,17 @@
 
 const express = require('express');
 const cors = require('cors');
-const routes = require('./routes');
 const helmet = require('helmet');
+const routes = require('./routes');
+const config = require('./config');
+const utils = require('./utils');
+
+const { TRUST_PROXY } = config;
 
 const app = express();
 
-app.set('trust proxy', process.env.TRUST_PROXY === 'true');
-
-app.use(
-    cors({
-        methods: ['GET', 'POST'],
-    })
-);
+app.set('trust proxy', TRUST_PROXY === 'true');
+app.use(cors(utils.getCorsOptions()));
 
 app.use(helmet.noSniff());
 app.use(express.urlencoded({ extended: true }));

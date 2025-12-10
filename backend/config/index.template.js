@@ -104,6 +104,13 @@ module.exports = {
     // General settings
     NODE_ENV: process.env.NODE_ENV || 'development',
     TZ: process.env.TZ || 'UTC',
+    TRUST_PROXY: process.env.TRUST_PROXY === 'true',
+
+    // CORS settings
+    CORS_ORIGIN: process.env.CORS_ORIGIN || '*',
+    CORS_METHODS: process.env.CORS_METHODS ? JSON.parse(process.env.CORS_METHODS) : ['GET', 'POST'],
+
+    // Logging settings
     LOGS_DEBUG: process.env.LOGS_DEBUG !== 'false',
     LOGS_COLORS: process.env.LOGS_COLORS !== 'false',
     LOGS_JSON: process.env.LOGS_JSON === 'true',
