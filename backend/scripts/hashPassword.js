@@ -25,7 +25,7 @@ rl.question('Enter password to hash: ', async (password) => {
         console.log('\nGenerated hash:');
         console.log(hash);
         console.log('\n➡️ Copy and set this in your .env file as:');
-        console.log(`ADMIN_PASSWORD_HASH="${hash}"`);
+        console.log(`ADMIN_PASSWORD_HASH='${hash}'`);
     } catch (error) {
         console.error('Error hashing password:', error);
     } finally {

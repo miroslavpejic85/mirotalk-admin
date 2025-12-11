@@ -18,4 +18,4 @@ const jwtSecret = generateJwtSecret();
 console.log('Generated JWT Secret (128 hex characters):');
 console.log(jwtSecret);
 console.log('\n➡️ Copy and set this in your .env file as:');
-console.log(`ADMIN_JWT_SECRET="${jwtSecret}"`);
+console.log(`ADMIN_JWT_SECRET='${jwtSecret}'`);
