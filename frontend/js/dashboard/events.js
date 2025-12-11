@@ -76,14 +76,27 @@
                 handler: () => window.Dashboard.showSection('self-hosting'),
             },
             {
+                type: 'click',
+                id: 'sidebar-toggle-btn',
+                handler: () => $('sidebar').classList.toggle('hidden'),
+            },
+            {
                 type: 'mouseover',
                 id: 'sidebar',
-                handler: () => $('sidebar').classList.toggle('collapsed'),
+                handler: () => {
+                    if (!$('sidebar').classList.contains('hidden')) {
+                        $('sidebar').classList.remove('collapsed');
+                    }
+                },
             },
             {
                 type: 'mouseout',
                 id: 'sidebar',
-                handler: () => $('sidebar').classList.toggle('collapsed'),
+                handler: () => {
+                    if (!$('sidebar').classList.contains('hidden')) {
+                        $('sidebar').classList.add('collapsed');
+                    }
+                },
             },
             {
                 type: 'click',
