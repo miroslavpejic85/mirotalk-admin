@@ -24,8 +24,8 @@ function validateUsername(username) {
         throw new Error('Username must be between 3 and 50 characters');
     }
 
-    // Allow alphanumeric, underscore, hyphen, dot
-    const usernameRegex = /^[a-zA-Z0-9._-]+$/;
+    // Allow alphanumeric, underscore, hyphen, dot, and @ (for email)
+    const usernameRegex = /^[a-zA-Z0-9._@-]+$/;
     if (!usernameRegex.test(username)) {
         throw new Error('Username contains invalid characters');
     }
