@@ -1,12 +1,12 @@
 .sidebar-toggle-btn {
     z-index: 101;
-    position: fixed;
+    position: absolute;
     top: 10px;
-    left: 14px;
+    right: 14px;
     padding: 12px;
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
     color: #adb5bd;
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.2);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -37,15 +37,16 @@
 }
 
 #sidebar {
-    margin-top: 10px;
+    margin-top: 0;
     transition: all 0.3s ease;
     width: var(--sidebar-width, 200px);
     min-width: 70px;
     background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
     color: #e0e0e0;
-    height: 100vh;
+    height: 100vh !important;
+    min-height: 100vh !important;
     position: fixed;
-    top: 60px;
+    top: 0;
     left: 0;
     overflow-y: auto;
     z-index: 100;
