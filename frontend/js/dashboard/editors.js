@@ -17,7 +17,7 @@
      */
     function initEditors() {
         configEditor = CodeMirror($('config-editor'), {
-            mode: 'javascript',
+            mode: { name: 'javascript', json: false },
             theme: 'material-darker',
             lineNumbers: true,
             tabSize: 4,

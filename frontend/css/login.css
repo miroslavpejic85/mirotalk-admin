@@ -9,42 +9,46 @@
 .login-card {
     width: 100%;
     max-width: 420px;
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(47, 47, 47, 0.1);
-    border: none;
+    box-shadow: 0 2px 8px rgba(20, 23, 28, 0.25);
+    border: 1px solid #373e47 !important;
 }
 
 .login-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
+    background: #2d333b !important;
+    color: #adbac7 !important;
     padding: 25px;
     text-align: center;
+    border-bottom: 1px solid #373e47 !important;
 }
 
 .login-body {
     padding: 30px;
+    background: #22272e !important;
+    color: #adbac7 !important;
 }
 
 .login-body .form-control {
-    color: #ffffff !important;
-    background: rgba(30, 41, 59, 0.8);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #adbac7 !important;
+    background: #2d333b !important;
+    border: 1px solid #373e47 !important;
 }
 
 .login-body .form-control:focus {
-    color: #ffffff !important;
-    background: rgba(30, 41, 59, 0.9);
-    border-color: #3b82f6;
+    color: #fff !important;
+    background: #22272e !important;
+    border-color: #539bf5 !important;
 }
 
-.login-body .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+input::placeholder,
+.form-control::placeholder {
+    color: #768390 !important;
 }
 
 .login-body .input-group-text {
-    background: rgba(30, 41, 59, 0.8);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    background: #2d333b !important;
+    border: 1px solid #373e47 !important;
     color: #60a5fa;
 }
 
@@ -56,11 +60,20 @@
 .login-footer {
     padding: 15px;
     text-align: center;
-    background-color: rgba(30, 41, 59, 0.8);
-    border-top: 1px solid rgba(59, 130, 246, 0.3);
+    background-color: #22272e !important;
+    border-top: 1px solid #373e47 !important;
     color: #94a3b8;
 }
 
 .login-footer .text-muted {
     color: #94a3b8 !important;
+}
+
+a,
+.link {
+    color: #539bf5;
+}
+a:hover,
+.link:hover {
+    color: #316dca;
 }
