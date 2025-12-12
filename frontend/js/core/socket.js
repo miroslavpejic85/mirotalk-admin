@@ -19,6 +19,18 @@ function appendToPre(id, text, highlight = false) {
 }
 
 /**
+ * Get status icon and text for a process exit code.
+ * @param {number} code - Exit code (0 = success, else failure)
+ * @returns {{icon: string, text: string}}
+ */
+function getStatusInfo(code) {
+    return {
+        icon: code === 0 ? '✅' : '❌',
+        text: code === 0 ? 'Success' : 'Failed',
+    };
+}
+
+/**
  * Listen for real-time update output and append to update logs.
  * Output is pre-filtered on the server side.
  * @event updateOutput
@@ -34,9 +46,8 @@ socket.on('updateOutput', (data) => {
  * @param {number} code - Exit code of the update process.
  */
 socket.on('updateDone', (code) => {
-    const statusIcon = code === 0 ? '✅' : '❌';
-    const statusText = code === 0 ? 'Success' : 'Failed';
-    appendToPre('update-realtime-logs-pre', `\n${statusIcon} Update finished: ${statusText} (exit code: ${code})\n`);
+    const { icon, text } = getStatusInfo(code);
+    appendToPre('update-realtime-logs-pre', `\n${icon} Update finished: ${text} (exit code: ${code})\n`);
     setTimeout(() => {
         window.Dashboard.checkVersion();
     }, 3000);
@@ -75,5 +86,9 @@ socket.on('serverUpdateOutput', (data) => {
  * @param {number} code - Exit code of the server update process.
  */
 socket.on('serverUpdateDone', (code) => {
-    appendToPre('server-logs', `\nServer update finished with code: ${code}\n`);
+    const { icon, text } = getStatusInfo(code);
+    appendToPre('server-logs', `\n${icon} Update finished: ${text} (exit code: ${code})\n`);
+    setTimeout(() => {
+        window.Dashboard.checkServerUpdate();
+    }, 3000);
 });

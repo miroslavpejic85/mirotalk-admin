@@ -26,7 +26,16 @@ async function serverReboot() {
 async function checkForServerUpdate() {
     const cmd = getCommand('checkServerUpdate');
     const output = await runCommand(cmd);
-    // Find the line with the upgrade summary
+    // Try to match the Ubuntu MOTD message (e.g., '27 updates can be applied immediately.')
+    const motdMatch = output.match(/(\d+) updates can be applied immediately/);
+    if (motdMatch) {
+        const upgradableCount = parseInt(motdMatch[1], 10);
+        return {
+            updateAvailable: upgradableCount > 0,
+            upgradableCount,
+        };
+    }
+    // Fallback: Find the line with the apt-get upgrade summary
     const match = output.match(
         /(\d+)\s+upgraded,.*?(\d+)\s+newly installed,.*?(\d+)\s+to remove,.*?(\d+)\s+not upgraded\./
     );

@@ -46,8 +46,14 @@ const genericCommands = {
     checkServerUpdate: () =>
         [
             'sudo apt-get update -y',
-            'apt-get -s upgrade | grep -E "^\\d+ upgraded" || echo "0 upgraded, 0 newly installed, 0 to remove, 0 not upgraded."',
-        ].join(' && '),
+            'updates_msg=$(grep -m1 "updates can be applied immediately" /var/run/motd.dynamic 2>/dev/null || true)',
+            `if [ -n "$updates_msg" ]; then
+    echo "$updates_msg"
+    echo "$updates_msg" | grep -oE "^\\d+" || true
+else
+    apt-get -s upgrade | grep -E "^\\d+ upgraded" || echo "0 upgraded, 0 newly installed, 0 to remove, 0 not upgraded."
+fi`,
+        ].join(' ; '),
     serverUpdate: () =>
         ['sudo apt-get update -y', 'sudo apt-get upgrade -y', 'sudo apt-get dist-upgrade -y', 'lsb_release -a'].join(
             ' && '
