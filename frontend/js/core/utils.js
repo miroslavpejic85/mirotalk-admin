@@ -90,7 +90,7 @@ async function showConfirmModal(message) {
  */
 function showToast(message, type = 'success') {
     const toastEl = document.createElement('div');
-    toastEl.className = `toast show align-items-center text-white bg-${type} border-0`;
+    toastEl.className = `toast show align-items-center text-white bg-${type} border-0 mb-3`;
     toastEl.setAttribute('role', 'alert');
     toastEl.setAttribute('aria-live', 'assertive');
     toastEl.setAttribute('aria-atomic', 'true');
