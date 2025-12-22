@@ -1,6 +1,6 @@
 {
     "name": "mirotalk-admin",
-    "version": "1.0.61",
+    "version": "1.0.62",
     "description": "MiroTalk Admin Dashboard for managing updates of MiroTalk projects",
     "main": "server.js",
     "scripts": {
@@ -29,9 +29,9 @@
         "helmet": "^8.1.0",
         "httpolyglot": "0.1.2",
         "jsonwebtoken": "^9.0.3",
-        "node-pty": "^1.0.0",
-        "nodemailer": "^7.0.11",
-        "socket.io": "4.8.1",
+        "node-pty": "^1.1.0",
+        "nodemailer": "^7.0.12",
+        "socket.io": "4.8.2",
         "ssh2": "^1.17.0"
     },
     "devDependencies": {
