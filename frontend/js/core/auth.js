@@ -43,7 +43,7 @@ async function login() {
             setToken(data.token);
             $('login').classList.add('hidden');
             $('dashboard').classList.remove('hidden');
-            await window.Dashboard.loadAppNameSelect();
+            await showDefaultSection();
             showToast('Login successful');
         } else {
             throw new Error('Invalid credentials');
@@ -62,8 +62,16 @@ async function restoreSession() {
         token = savedToken;
         $('login').classList.add('hidden');
         $('dashboard').classList.remove('hidden');
-        await window.Dashboard.loadAppNameSelect();
+        await showDefaultSection();
     }
+}
+
+/**
+ * Show the default section of the dashboard.
+ */
+async function showDefaultSection() {
+    await window.Dashboard.loadAppNameSelect();
+    window.Dashboard.showSection('system');
 }
 
 /**

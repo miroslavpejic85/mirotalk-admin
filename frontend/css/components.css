@@ -46,6 +46,34 @@
     z-index: 1100;
 }
 
+.project-selectbox label {
+    margin-right: 0.5rem;
+    font-weight: bold;
+    color: var(--gh-text-heading, #cdd9e5);
+    white-space: nowrap;
+}
+
+.project-selectbox select.form-select {
+    max-width: 200px;
+    min-width: 120px;
+    width: 100%;
+    background: var(--gh-bg-primary, #22272e);
+    color: var(--gh-text-primary, #adbac7);
+    border: 1.5px solid var(--gh-accent-blue, #539bf5);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+.project-selectbox select.form-select:focus {
+    border-color: var(--gh-accent-blue-hover, #316dca);
+    box-shadow: 0 0 0 2px var(--gh-accent-blue, #539bf5);
+    outline: none;
+}
+
 #env-editor,
 #config-editor {
     border: none !important;
@@ -127,165 +155,8 @@
     border-radius: 8px;
 }
 
-/* Project Card Group - Responsive Grid */
-#project-card-group {
-    display: flex !important;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: flex-start;
-}
-
-.project-card {
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    background: rgba(30, 41, 59, 0.6);
-    backdrop-filter: blur(10px);
-    cursor: pointer;
-    text-align: center;
-    min-width: 160px;
-    max-width: 180px;
-    flex: 0 0 auto;
-}
-
-.project-card .card-body {
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100px;
-}
-
-.project-card i {
-    color: #3b82f6;
-    transition: all 0.3s ease;
-    font-size: 2.5rem;
-    margin-bottom: 0.75rem;
-}
-
-.project-card .fw-bold {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    word-break: break-word;
-    color: #e0e0e0;
-}
-
-.project-card.selected,
-.project-card:hover {
-    border-color: #3b82f6;
-    box-shadow:
-        0 0 20px rgba(59, 130, 246, 0.4),
-        0 8px 16px rgba(0, 0, 0, 0.3);
-    transform: translateY(-4px) scale(1.02);
-    background: rgba(59, 130, 246, 0.1);
-}
-
-.project-card:hover i {
-    transform: scale(1.15);
-    color: #60a5fa;
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
-}
-
-.project-card.selected {
-    border-color: #10b981;
-    background: rgba(16, 185, 129, 0.1);
-}
-
-.project-card.selected i {
-    color: #10b981;
-}
-
-.project-card:hover .fw-bold {
-    color: #ffffff;
-}
-
 #sys-load-descr {
     color: #94a3b8 !important;
-}
-
-/* Responsive adjustments for tablets and small screens */
-@media (max-width: 1024px) {
-    .project-card {
-        min-width: 145px;
-        max-width: 165px;
-    }
-
-    .project-card .card-body {
-        padding: 1.75rem 0.875rem;
-        min-height: 130px;
-    }
-
-    .project-card i {
-        font-size: 2.25rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .project-card {
-        min-width: 130px;
-        max-width: 150px;
-    }
-
-    .project-card .card-body {
-        padding: 1.5rem 0.75rem;
-        min-height: 120px;
-    }
-
-    .project-card i {
-        font-size: 2rem;
-        margin-bottom: 0.625rem;
-    }
-
-    .project-card .fw-bold {
-        font-size: 0.875rem;
-    }
-}
-
-@media (max-width: 576px) {
-    #project-card-group {
-        gap: 0.625rem;
-    }
-
-    .project-card {
-        min-width: 110px;
-        max-width: 130px;
-    }
-
-    .project-card .card-body {
-        padding: 1.25rem 0.625rem;
-        min-height: 110px;
-    }
-
-    .project-card i {
-        font-size: 1.75rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .project-card .fw-bold {
-        font-size: 0.8125rem;
-        line-height: 1.2;
-    }
-}
-
-@media (max-width: 400px) {
-    .project-card {
-        min-width: 100%;
-        max-width: 100%;
-        flex: 1 1 100%;
-    }
-
-    .project-card .card-body {
-        padding: 1.5rem 1rem;
-        min-height: 120px;
-    }
-
-    .project-card i {
-        font-size: 2rem;
-    }
-
-    .project-card .fw-bold {
-        font-size: 0.9rem;
-    }
 }
 
 @media (min-width: 768px) {

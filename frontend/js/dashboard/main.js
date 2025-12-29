@@ -22,7 +22,6 @@
             await restoreSession();
             window.Dashboard.initEditors();
             window.Dashboard.loadEventListeners();
-            window.Dashboard.showSection('projects');
         } finally {
             hideLoader();
         }

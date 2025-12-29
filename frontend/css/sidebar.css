@@ -1,29 +1,22 @@
+/* Sidebar Toggle Button Top Right */
 .sidebar-toggle-btn {
-    z-index: 101;
     position: absolute;
-    top: 10px;
-    right: 14px;
-    padding: 12px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
-    color: #adb5bd;
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
+    right: 0.3rem;
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1200;
+    background: transparent;
+    border: none;
+    color: var(--gh-text-heading, #cdd9e5);
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s;
 }
-
 .sidebar-toggle-btn:hover {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.1));
-    color: #60a5fa;
-    transform: scale(1.05);
-    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+    color: var(--gh-accent-blue, #539bf5);
+    background: rgba(59, 130, 246, 0.08);
+    border-radius: 6px;
 }
 
 .sidebar-toggle-btn i {
@@ -43,10 +36,10 @@
     min-width: 70px;
     background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
     color: #e0e0e0;
-    height: 100vh !important;
-    min-height: 100vh !important;
+    height: calc(100vh - 60px) !important;
+    min-height: calc(100vh - 60px) !important;
     position: fixed;
-    top: 0;
+    top: 60px; /* Height of dashboard header 54px */
     left: 0;
     overflow-y: auto;
     z-index: 100;

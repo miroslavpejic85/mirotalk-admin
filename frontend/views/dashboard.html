@@ -1,17 +1,33 @@
 <!-- Dashboard Section -->
 <div class="container-fluid hidden" id="dashboard">
-    <!-- Sidebar Toggle Button -->
-    <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" title="Toggle Sidebar">
-        <i class="fas fa-bars"></i>
-    </button>
+    <!-- Dashboard Header: Project Selectbox and Sidebar Toggle Button -->
+    <header
+        class="dashboard-header d-flex align-items-center justify-content-between px-3 py-2 mb-3 bg-dark border-bottom shadow-sm"
+        style="min-height: 56px"
+    >
+        <!-- Sidebar Toggle Button (top left) -->
+        <button class="sidebar-toggle-btn me-3" id="sidebar-toggle-btn" title="Toggle Sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+        <!-- Project Selectbox (top right) -->
+        <div class="project-selectbox">
+            <label for="project-select" class="me-2 fw-bold text-light">
+                <i class="fas fa-layer-group me-1"></i>Project:
+            </label>
+            <select id="project-select" class="form-select form-select-sm">
+                <option value="mirotalksfu">mirotalk-sfu</option>
+                <option value="mirotalk">mirotalk-p2p</option>
+                <option value="mirotalkc2c">mirotalk-c2c</option>
+                <option value="mirotalkbro">mirotalk-bro</option>
+                <option value="mirotalkwebrtc">mirotalk-web</option>
+                <option value="mirotalkadmin">mirotalk-adm</option>
+            </select>
+        </div>
+    </header>
 
     <div class="row">
         <!-- Sidebar -->
         <nav id="sidebar" class="collapsed">
-            <div class="menu-item active d-flex mt-3 align-items-center" id="menu-projects">
-                <i class="fas fa-layer-group me-2"></i>
-                <span class="menu-text">Projects</span>
-            </div>
             <div class="menu-item d-flex align-items-center" id="menu-system">
                 <i class="fas fa-microchip me-2"></i>
                 <span class="menu-text">System</span>
@@ -56,82 +72,6 @@
 
         <!-- Main Content -->
         <main id="content" class="col">
-            <!-- Projects Section -->
-            <div id="projects-section" class="hidden mb-4">
-                <div class="card shadow-sm h-100">
-                    <div class="card-header bg-dark text-light">
-                        <h4 class="mb-0"><i class="fas fa-database me-2"></i>Projects</h4>
-                    </div>
-                    <div class="card-body bg-dark text-light">
-                        <div
-                            id="project-card-group"
-                            style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start"
-                        >
-                            <div
-                                class="project-card card bg-dark text-light border-primary mb-2"
-                                data-value="mirotalksfu"
-                                style="cursor: pointer; min-width: 110px; max-width: 140px"
-                            >
-                                <div class="card-body text-center py-3 px-2">
-                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
-                                    <div class="fw-bold small">mirotalk-sfu</div>
-                                </div>
-                            </div>
-                            <div
-                                class="project-card card bg-dark text-light mb-2"
-                                data-value="mirotalk"
-                                style="cursor: pointer; min-width: 110px; max-width: 140px"
-                            >
-                                <div class="card-body text-center py-3 px-2">
-                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
-                                    <div class="fw-bold small">mirotalk-p2p</div>
-                                </div>
-                            </div>
-                            <div
-                                class="project-card card bg-dark text-light mb-2"
-                                data-value="mirotalkc2c"
-                                style="cursor: pointer; min-width: 110px; max-width: 140px"
-                            >
-                                <div class="card-body text-center py-3 px-2">
-                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
-                                    <div class="fw-bold small">mirotalk-c2c</div>
-                                </div>
-                            </div>
-                            <div
-                                class="project-card card bg-dark text-light mb-2"
-                                data-value="mirotalkbro"
-                                style="cursor: pointer; min-width: 110px; max-width: 140px"
-                            >
-                                <div class="card-body text-center py-3 px-2">
-                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
-                                    <div class="fw-bold small">mirotalk-bro</div>
-                                </div>
-                            </div>
-                            <div
-                                class="project-card card bg-dark text-light mb-2"
-                                data-value="mirotalkwebrtc"
-                                style="cursor: pointer; min-width: 110px; max-width: 140px"
-                            >
-                                <div class="card-body text-center py-3 px-2">
-                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
-                                    <div class="fw-bold small">mirotalk-web</div>
-                                </div>
-                            </div>
-                            <div
-                                class="project-card card bg-dark text-light mb-2"
-                                data-value="mirotalkadmin"
-                                style="cursor: pointer; min-width: 110px; max-width: 140px"
-                            >
-                                <div class="card-body text-center py-3 px-2">
-                                    <i class="fas fa-layer-group fa-lg mb-2"></i>
-                                    <div class="fw-bold small">mirotalk-adm</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- System Section -->
             <div id="system-section" class="hidden mb-4">
                 <div class="card shadow-sm">
