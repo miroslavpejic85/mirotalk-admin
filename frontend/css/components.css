@@ -49,7 +49,7 @@
 .project-selectbox label {
     margin-right: 0.5rem;
     font-weight: bold;
-    color: var(--gh-text-heading, #cdd9e5);
+    color: var(--text-heading, #cdd9e5);
     white-space: nowrap;
 }
 
@@ -57,9 +57,9 @@
     max-width: 200px;
     min-width: 120px;
     width: 100%;
-    background: var(--gh-bg-primary, #22272e);
-    color: var(--gh-text-primary, #adbac7);
-    border: 1.5px solid var(--gh-accent-blue, #539bf5);
+    background: var(--bg-primary, #22272e);
+    color: var(--text-primary, #adbac7);
+    border: 1.5px solid var(--accent-blue, #539bf5);
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
     font-weight: 600;
     border-radius: 8px;
@@ -69,8 +69,8 @@
         box-shadow 0.2s;
 }
 .project-selectbox select.form-select:focus {
-    border-color: var(--gh-accent-blue-hover, #316dca);
-    box-shadow: 0 0 0 2px var(--gh-accent-blue, #539bf5);
+    border-color: var(--accent-blue-hover, #316dca);
+    box-shadow: 0 0 0 2px var(--accent-blue, #539bf5);
     outline: none;
 }
 

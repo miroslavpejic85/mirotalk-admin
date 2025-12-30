@@ -1,18 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 :root {
-    --primary-color: #4361ee;
-    --secondary-color: #3f37c9;
-    --accent-color: #4895ef;
-    --dark-color: #1a1a2e;
-    --light-color: #f8f9fa;
-    --success-color: #4cc9f0;
-    --danger-color: #f72585;
-    --warning-color: #f8961e;
-    --info-color: #4895ef;
-    --sidebar-width: 200px;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+    --sidebar-width: 200px;
+    --bg-primary: #22272e;
+    --bg-secondary: #2d333b;
+    --bg-tertiary: #373e47;
+    --border: #373e47;
+    --border-light: #444c56;
+    --text-primary: #adbac7;
+    --text-secondary: #768390;
+    --text-heading: #cdd9e5;
+    --accent-blue: #539bf5;
+    --accent-blue-hover: #316dca;
+    --success: #347d39;
+    --success-light: #2ea043;
+    --warning: #b7791f;
+    --warning-light: #c69026;
+    --danger: #842029;
+    --danger-light: #da3633;
+    --shadow: 0 2px 8px rgba(20, 23, 28, 0.25);
 }
 
 html,
@@ -25,8 +33,6 @@ body {
 
 body {
     font-family: var(--font-body);
-    background-color: #1a1a1a;
-    color: #dcdcdc;
     margin: 0;
     display: flex;
     min-height: 100vh;
@@ -35,6 +41,55 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     flex-direction: column;
+}
+
+body,
+.bg-dark,
+.modal-content,
+.dropdown-menu,
+.card,
+.form-control,
+.form-select,
+.table,
+pre {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border) !important;
+}
+
+.card,
+.modal-content,
+.dropdown-menu,
+.form-control,
+.form-select,
+.table,
+pre {
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+}
+
+.card-header,
+.modal-header,
+.table thead th {
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+.card-body,
+.modal-body,
+.dropdown-item,
+.table tbody tr,
+.form-control,
+.form-select {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+.card-footer,
+.modal-footer {
+    background: var(--bg-secondary) !important;
+    border-top: 1px solid var(--border) !important;
 }
 
 /* Typography */

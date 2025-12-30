@@ -1,76 +1,3 @@
-/* GitHub-Inspired Grey Dark Theme */
-:root {
-    /* Dark Theme Palette */
-    --gh-bg-primary: #22272e;
-    --gh-bg-secondary: #2d333b;
-    --gh-bg-tertiary: #373e47;
-    --gh-border: #373e47;
-    --gh-border-light: #444c56;
-    --gh-text-primary: #adbac7;
-    --gh-text-secondary: #768390;
-    --gh-text-heading: #cdd9e5;
-    --gh-accent-blue: #539bf5;
-    --gh-accent-blue-hover: #316dca;
-    --gh-success: #347d39;
-    --gh-success-light: #2ea043;
-    --gh-warning: #b7791f;
-    --gh-warning-light: #c69026;
-    --gh-danger: #842029;
-    --gh-danger-light: #da3633;
-    --gh-shadow: 0 2px 8px rgba(20, 23, 28, 0.25);
-}
-
-body,
-.bg-dark,
-.modal-content,
-.dropdown-menu,
-.card,
-.form-control,
-.form-select,
-.table,
-pre {
-    background: var(--gh-bg-primary) !important;
-    color: var(--gh-text-primary) !important;
-    border-color: var(--gh-border) !important;
-}
-
-.card,
-.modal-content,
-.dropdown-menu,
-.form-control,
-.form-select,
-.table,
-pre {
-    box-shadow: var(--gh-shadow);
-    border-radius: 8px;
-}
-
-.card-header,
-.modal-header,
-.table thead th {
-    background: var(--gh-bg-secondary) !important;
-    color: var(--gh-text-primary) !important;
-    border-bottom: 1px solid var(--gh-border) !important;
-}
-
-.card-body,
-.modal-body,
-.dropdown-item,
-.table tbody tr,
-.form-control,
-.form-select {
-    background: var(--gh-bg-primary) !important;
-    color: var(--gh-text-primary) !important;
-}
-
-.card-footer,
-.modal-footer {
-    background: var(--gh-bg-secondary) !important;
-    border-top: 1px solid var(--gh-border) !important;
-}
-
-/* End GitHub-Inspired Grey Dark Theme */
-
 /* Modern Button Styles */
 .btn {
     position: relative;
@@ -507,7 +434,7 @@ pre {
 }
 
 .dashboard-header .project-selectbox label {
-    color: var(--gh-text-heading, #cdd9e5);
+    color: var(--text-heading, #cdd9e5);
     font-weight: bold;
     margin-bottom: 0;
 }
@@ -516,9 +443,9 @@ pre {
     max-width: 200px;
     min-width: 120px;
     width: 100%;
-    background: var(--gh-bg-primary, #22272e);
-    color: var(--gh-text-primary, #adbac7);
-    border: 1.5px solid var(--gh-accent-blue, #539bf5);
+    background: var(--bg-primary, #22272e);
+    color: var(--text-primary, #adbac7);
+    border: 1.5px solid var(--accent-blue, #539bf5);
     box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
     font-weight: 600;
     border-radius: 8px;
@@ -529,8 +456,8 @@ pre {
 }
 
 .dashboard-header .project-selectbox select.form-select:focus {
-    border-color: var(--gh-accent-blue-hover, #316dca);
-    box-shadow: 0 0 0 2px var(--gh-accent-blue, #539bf5);
+    border-color: var(--accent-blue-hover, #316dca);
+    box-shadow: 0 0 0 2px var(--accent-blue, #539bf5);
     outline: none;
 }
 
