@@ -73,9 +73,6 @@
                             case 'system':
                                 await window.Dashboard.loadSystemInfo();
                                 break;
-                            case 'server':
-                                await window.Dashboard.loadServerInfo();
-                                break;
                             case 'env':
                                 await window.Dashboard.loadEnv();
                                 break;
@@ -90,15 +87,6 @@
                                 break;
                             case 'instance':
                                 await window.Dashboard.checkVersion();
-                                break;
-                            // case 'terminal':
-                            //     await window.Dashboard.loadTerminal();
-                            //     break;
-                            // case 'self-hosting':
-                            //     await window.Dashboard.loadSelfHosting();
-                            //     break;
-                            case 'projects':
-                                // Just update the label, handled by DOM event
                                 break;
                             default:
                                 // No action
