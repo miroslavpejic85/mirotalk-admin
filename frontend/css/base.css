@@ -4,23 +4,28 @@
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
     --sidebar-width: 200px;
-    --bg-primary: #22272e;
-    --bg-secondary: #2d333b;
-    --bg-tertiary: #373e47;
-    --border: #373e47;
-    --border-light: #444c56;
-    --text-primary: #adbac7;
-    --text-secondary: #768390;
-    --text-heading: #cdd9e5;
-    --accent-blue: #539bf5;
-    --accent-blue-hover: #316dca;
-    --success: #347d39;
+    /* Gradients for backgrounds */
+    --bg-primary: linear-gradient(135deg, #232a34 0%, #20232a 100%);
+    --bg-secondary: linear-gradient(135deg, #273043 0%, #232a34 100%);
+    --bg-tertiary: linear-gradient(135deg, #2d3646 0%, #232a34 100%);
+    /* Border and shadow */
+    --border: #2d3646;
+    --border-light: #3a4252;
+    --shadow: 0 2px 16px 0 rgba(20, 23, 28, 0.22);
+    /* Text colors */
+    --text-primary: #c7d0e0;
+    --text-secondary: #8a97ad;
+    --text-heading: #e3eaf7;
+    /* Accent gradients */
+    --accent-blue: linear-gradient(90deg, #539bf5 0%, #316dca 100%);
+    --accent-blue-hover: linear-gradient(90deg, #316dca 0%, #539bf5 100%);
+    /* Status gradients */
+    --success: linear-gradient(90deg, #2ea043 0%, #347d39 100%);
     --success-light: #2ea043;
-    --warning: #b7791f;
+    --warning: linear-gradient(90deg, #c69026 0%, #b7791f 100%);
     --warning-light: #c69026;
-    --danger: #842029;
+    --danger: linear-gradient(90deg, #da3633 0%, #842029 100%);
     --danger-light: #da3633;
-    --shadow: 0 2px 8px rgba(20, 23, 28, 0.25);
 }
 
 html,

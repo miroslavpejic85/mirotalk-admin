@@ -94,13 +94,18 @@ function showToast(message, type = 'success') {
     toastEl.setAttribute('role', 'alert');
     toastEl.setAttribute('aria-live', 'assertive');
     toastEl.setAttribute('aria-atomic', 'true');
+    toastEl.style.position = 'fixed';
+    toastEl.style.top = '5px';
+    toastEl.style.right = '20px';
+    toastEl.style.left = 'auto';
+    toastEl.style.zIndex = '99999';
     toastEl.innerHTML = `
         <div class="d-flex">
             <div class="toast-body">${message}</div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     `;
-    $('dashboard-toast').appendChild(toastEl);
+    document.body.appendChild(toastEl);
     setTimeout(() => {
         toastEl.classList.remove('show');
         setTimeout(() => toastEl.remove(), 300);
