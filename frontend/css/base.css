@@ -5,9 +5,9 @@
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
     --sidebar-width: 200px;
     /* Gradients for backgrounds */
-    --bg-primary: linear-gradient(135deg, #232a34 0%, #20232a 100%);
-    --bg-secondary: linear-gradient(135deg, #273043 0%, #232a34 100%);
-    --bg-tertiary: linear-gradient(135deg, #2d3646 0%, #232a34 100%);
+    --bg-primary: linear-gradient(135deg, #181c23 0%, #23283b 100%);
+    --bg-secondary: linear-gradient(135deg, #23283b 0%, #181c23 100%);
+    --bg-tertiary: linear-gradient(135deg, #23283b 0%, #22273a 100%);
     /* Border and shadow */
     --border: #2d3646;
     --border-light: #3a4252;
