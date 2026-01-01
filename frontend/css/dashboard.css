@@ -153,22 +153,7 @@
 
 .badge.bg-success {
     background: var(--success) !important;
-    position: relative;
     box-shadow: var(--success-glow);
-}
-
-.badge.bg-success::before {
-    content: '';
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
-    background: var(--color-green-400);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-    box-shadow: 0 0 10px var(--rgba-green-400-80);
 }
 
 .badge.bg-danger {

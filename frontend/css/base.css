@@ -3,7 +3,6 @@
 :root {
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
-    --sidebar-width: 200px;
 
     /* Base Colors */
     --color-slate-950: #0f172a;
@@ -189,6 +188,7 @@
         var(--rgba-blue-500-08)
     );
     --sidebar-border-bottom: var(--rgba-blue-500-40);
+    --sidebar-width: 200px;
 
     /* Card specific */
     --card-border: var(--rgba-blue-500-30);

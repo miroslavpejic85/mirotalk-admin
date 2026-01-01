@@ -62,7 +62,9 @@
                     row.appendChild(familyCell);
 
                     const internalCell = document.createElement('td');
-                    internalCell.textContent = addr.internal ? 'Yes' : 'No';
+                    const badge = document.createElement('span');
+                    badge.textContent = addr.internal ? 'Yes' : 'No';
+                    internalCell.appendChild(badge);
                     row.appendChild(internalCell);
 
                     networkBody.appendChild(row);
