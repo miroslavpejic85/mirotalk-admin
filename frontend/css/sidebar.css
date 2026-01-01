@@ -14,8 +14,8 @@
     transition: color 0.2s;
 }
 .sidebar-toggle-btn:hover {
-    color: var(--accent-blue, #539bf5);
-    background: rgba(59, 130, 246, 0.08);
+    color: var(--color-blue-500);
+    background: var(--rgba-blue-500-08);
     border-radius: 6px;
 }
 
@@ -34,8 +34,8 @@
     transition: all 0.3s ease;
     width: var(--sidebar-width, 200px);
     min-width: 70px;
-    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-    color: #e0e0e0;
+    background: var(--bg-sidebar);
+    color: var(--text-primary);
     height: calc(100vh - 60px) !important;
     min-height: calc(100vh - 60px) !important;
     position: fixed;
@@ -43,8 +43,11 @@
     left: 0;
     overflow-y: auto;
     z-index: 100;
-    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
-    border-right: 1px solid rgba(59, 130, 246, 0.15);
+    box-shadow:
+        4px 0 20px var(--rgba-black-40),
+        0 0 20px var(--rgba-blue-500-08);
+    border-right: 1px solid var(--rgba-blue-500-25);
+    backdrop-filter: blur(10px);
 }
 
 #sidebar.hidden {
@@ -82,21 +85,25 @@
 
 #sidebar h4 {
     font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
     padding: 18px 0;
     margin: 0;
-    background: rgba(59, 130, 246, 0.1);
-    border-bottom: 1px solid rgba(59, 130, 246, 0.3);
-    color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    background: var(--sidebar-header-bg);
+    border-bottom: 2px solid var(--sidebar-border-bottom);
+    color: var(--text-white);
+    box-shadow:
+        0 2px 10px var(--rgba-black-20),
+        0 0 15px var(--rgba-blue-500-15);
+    text-shadow: 0 0 10px var(--rgba-blue-500-30);
+    letter-spacing: 0.5px;
 }
 
 #sidebar .menu-item {
     display: flex;
     padding: 14px 16px;
     cursor: pointer;
-    color: #adb5bd;
+    color: var(--color-gray-700);
     transition: all 0.3s ease;
     border-radius: 0 10px 10px 0;
     margin: 3px 6px 3px 0;
@@ -112,19 +119,24 @@
 
 #sidebar .menu-item:hover,
 #sidebar .menu-item.active {
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05));
-    color: #60a5fa;
+    background: var(--sidebar-menu-hover);
+    color: var(--color-blue-400);
     font-weight: 600;
-    transform: translateX(4px);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+    transform: translateX(2px);
+    box-shadow:
+        0 2px 8px var(--rgba-blue-500-20),
+        inset 0 0 10px var(--rgba-blue-500-08);
 }
 
 #sidebar .menu-item.active {
-    border-left: 3px solid #3b82f6;
+    border-left: 3px solid var(--color-blue-500);
+    box-shadow:
+        0 2px 10px var(--rgba-blue-500-25),
+        inset 0 0 15px var(--rgba-blue-500-10);
 }
 
 #sidebar .menu-item:hover i {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 #sidebar.collapsed ~ #content,
