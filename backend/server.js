@@ -44,3 +44,13 @@ const { attachSocketHandlers } = require('./handlers');
 attachSocketHandlers(io);
 
 server.listen(ADMIN_PORT, () => logger.info(`Dashboard with auth running on https://localhost:${ADMIN_PORT}/admin`));
+
+// Handle client errors (malformed/incomplete HTTP requests) gracefully
+server.on('clientError', (err, socket) => {
+    err.code === 'HPE_HEADER_OVERFLOW' || err.message === 'Parse Error'
+        ? logger.warn('Client HTTP parse error', { error: err.message, code: err.code })
+        : logger.warn('Client connection error', { error: err.message, code: err.code });
+    if (socket && !socket.destroyed) {
+        socket.end('HTTP/1.1 400 Bad Request\r\nConnection: close\r\n\r\n');
+    }
+});
