@@ -404,6 +404,8 @@ pre {
 #project-select {
     min-width: 135px;
     width: auto;
+    font-size: 0.8125rem;
+    font-weight: 500;
 }
 
 /* Fix nav bar margin below header */
