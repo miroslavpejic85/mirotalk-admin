@@ -6,3 +6,4 @@ backend/config/index.js
 docker-compose.yml
 node_modules
 npm-debug.log
+security

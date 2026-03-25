@@ -81,6 +81,11 @@
                 handler: () => $('sidebar').classList.toggle('hidden'),
             },
             {
+                type: 'click',
+                id: 'theme-toggle-btn',
+                handler: () => window.ThemeManager.toggleTheme(),
+            },
+            {
                 type: 'mouseover',
                 id: 'sidebar',
                 handler: () => {

@@ -1,0 +1,209 @@
+/* ===== CUSTOM CODEMIRROR THEME: mirotalk-dark ===== */
+/* A clean, modern dark editor theme matching the admin design system */
+
+.cm-s-mirotalk-dark.CodeMirror {
+    background: #1a1a23;
+    color: #d4d4d8;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+}
+
+/* Cursor */
+.cm-s-mirotalk-dark .CodeMirror-cursor {
+    border-left: 2px solid #60a5fa;
+}
+
+/* Selection */
+.cm-s-mirotalk-dark div.CodeMirror-selected {
+    background: rgba(96, 165, 250, 0.18);
+}
+
+.cm-s-mirotalk-dark .CodeMirror-focused div.CodeMirror-selected {
+    background: rgba(96, 165, 250, 0.25);
+}
+
+.cm-s-mirotalk-dark .CodeMirror-line::selection,
+.cm-s-mirotalk-dark .CodeMirror-line > span::selection,
+.cm-s-mirotalk-dark .CodeMirror-line > span > span::selection {
+    background: rgba(96, 165, 250, 0.25);
+}
+
+/* Gutters */
+.cm-s-mirotalk-dark .CodeMirror-gutters {
+    background: #16161e;
+    border-right: 1px solid #2a2a36;
+}
+
+.cm-s-mirotalk-dark .CodeMirror-linenumber {
+    color: #4a4a58;
+    padding: 0 8px 0 4px;
+    font-size: 0.75rem;
+}
+
+.cm-s-mirotalk-dark .CodeMirror-guttermarker {
+    color: #f87171;
+}
+
+.cm-s-mirotalk-dark .CodeMirror-guttermarker-subtle {
+    color: #4a4a58;
+}
+
+/* Active line */
+.cm-s-mirotalk-dark .CodeMirror-activeline-background {
+    background: rgba(96, 165, 250, 0.06);
+}
+
+.cm-s-mirotalk-dark .CodeMirror-activeline-gutter .CodeMirror-linenumber {
+    color: #9a9aa8;
+}
+
+/* Matching brackets */
+.cm-s-mirotalk-dark .CodeMirror-matchingbracket {
+    color: #60a5fa !important;
+    background: rgba(96, 165, 250, 0.15);
+    border-bottom: 1px solid #60a5fa;
+}
+
+.cm-s-mirotalk-dark .CodeMirror-nonmatchingbracket {
+    color: #f87171 !important;
+}
+
+/* Scrollbar */
+.cm-s-mirotalk-dark .CodeMirror-scrollbar-filler {
+    background: #16161e;
+}
+
+/* ===== SYNTAX HIGHLIGHTING ===== */
+
+/* Comments */
+.cm-s-mirotalk-dark span.cm-comment {
+    color: #5f5f6e;
+    font-style: italic;
+}
+
+/* Keywords: if, else, return, const, let, var, function, etc. */
+.cm-s-mirotalk-dark span.cm-keyword {
+    color: #c084fc;
+}
+
+/* Atoms: true, false, null, undefined */
+.cm-s-mirotalk-dark span.cm-atom {
+    color: #fb923c;
+}
+
+/* Numbers */
+.cm-s-mirotalk-dark span.cm-number {
+    color: #fb923c;
+}
+
+/* Strings */
+.cm-s-mirotalk-dark span.cm-string {
+    color: #34d399;
+}
+
+.cm-s-mirotalk-dark span.cm-string-2 {
+    color: #34d399;
+}
+
+/* Variables / identifiers */
+.cm-s-mirotalk-dark span.cm-variable {
+    color: #d4d4d8;
+}
+
+.cm-s-mirotalk-dark span.cm-variable-2 {
+    color: #60a5fa;
+}
+
+.cm-s-mirotalk-dark span.cm-variable-3,
+.cm-s-mirotalk-dark span.cm-type {
+    color: #67e8f9;
+}
+
+/* Definitions */
+.cm-s-mirotalk-dark span.cm-def {
+    color: #60a5fa;
+}
+
+/* Properties (after dot) */
+.cm-s-mirotalk-dark span.cm-property {
+    color: #93c5fd;
+}
+
+/* Operators: =, +, -, *, /, etc. */
+.cm-s-mirotalk-dark span.cm-operator {
+    color: #67e8f9;
+}
+
+/* Punctuation / brackets */
+.cm-s-mirotalk-dark span.cm-bracket {
+    color: #9a9aa8;
+}
+
+.cm-s-mirotalk-dark span.cm-punctuation {
+    color: #9a9aa8;
+}
+
+/* Tags (for HTML/XML) */
+.cm-s-mirotalk-dark span.cm-tag {
+    color: #f87171;
+}
+
+.cm-s-mirotalk-dark span.cm-attribute {
+    color: #93c5fd;
+}
+
+/* Meta */
+.cm-s-mirotalk-dark span.cm-meta {
+    color: #9a9aa8;
+}
+
+/* Builtin */
+.cm-s-mirotalk-dark span.cm-builtin {
+    color: #67e8f9;
+}
+
+/* Qualifier */
+.cm-s-mirotalk-dark span.cm-qualifier {
+    color: #fbbf24;
+}
+
+/* Link */
+.cm-s-mirotalk-dark span.cm-link {
+    color: #60a5fa;
+    text-decoration: underline;
+}
+
+/* Error */
+.cm-s-mirotalk-dark span.cm-error {
+    color: #f87171;
+}
+
+/* Header */
+.cm-s-mirotalk-dark span.cm-header {
+    color: #c084fc;
+    font-weight: 600;
+}
+
+/* ===== SEARCH / DIALOG ===== */
+.cm-s-mirotalk-dark .CodeMirror-dialog {
+    background: #22222d;
+    color: #d4d4d8;
+    border-bottom: 1px solid #2a2a36;
+    padding: 4px 8px;
+}
+
+.cm-s-mirotalk-dark .CodeMirror-dialog input {
+    background: #1a1a23;
+    color: #d4d4d8;
+    border: 1px solid #2a2a36;
+    border-radius: 4px;
+    padding: 2px 6px;
+    outline: none;
+}
+
+.cm-s-mirotalk-dark .CodeMirror-dialog input:focus {
+    border-color: #60a5fa;
+}
+
+.cm-s-mirotalk-dark .CodeMirror-searching {
+    background: rgba(251, 191, 36, 0.2);
+}

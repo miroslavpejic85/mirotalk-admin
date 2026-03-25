@@ -16,23 +16,27 @@
      * Initialize CodeMirror editors for config and env.
      */
     function initEditors() {
-        configEditor = CodeMirror($('config-editor'), {
+        const editorDefaults = {
             mode: { name: 'javascript', json: false },
-            theme: 'material-darker',
+            theme: 'mirotalk-dark',
             lineNumbers: true,
             tabSize: 4,
             indentWithTabs: true,
+            matchBrackets: true,
+            autoCloseBrackets: true,
+            styleActiveLine: true,
+            scrollbarStyle: 'overlay',
+        };
+
+        configEditor = CodeMirror($('config-editor'), {
+            ...editorDefaults,
             extraKeys: {
                 'Ctrl-S': window.Dashboard.saveConfig,
                 'Cmd-S': window.Dashboard.saveConfig,
             },
         });
         envEditor = CodeMirror($('env-editor'), {
-            mode: { name: 'javascript', json: false },
-            theme: 'ayu-dark',
-            lineNumbers: true,
-            tabSize: 4,
-            indentWithTabs: true,
+            ...editorDefaults,
             extraKeys: {
                 'Ctrl-S': window.Dashboard.saveEnv,
                 'Cmd-S': window.Dashboard.saveEnv,

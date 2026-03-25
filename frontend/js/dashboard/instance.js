@@ -67,7 +67,7 @@
             }
             showLoader();
             $('update-realtime-logs-pre').textContent = '';
-            $('update-realtime-logs-pre').className = 'text-light';
+            $('update-realtime-logs-pre').className = '';
             $('update-realtime-logs').classList.remove('hidden');
             socket.emit('performUpdate', { token });
             $('update-btn').classList.add('hidden');

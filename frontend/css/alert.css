@@ -1,45 +1,29 @@
-/* Alert Text Visibility */
-
-.alert-info {
-    color: #e0f2fe !important;
-    font-weight: 500;
+/* ===== ALERT TEXT ===== */
+.alert {
+    color: var(--text-primary) !important;
 }
 
-.alert-info strong {
-    color: #ffffff;
-    font-weight: 700;
+.alert strong {
+    font-weight: 600;
+}
+
+.alert-info {
+    color: var(--text-primary) !important;
 }
 
 .alert-info .fas,
 .alert-info .fa {
-    color: #60a5fa;
-}
-
-/* General alert text */
-.alert {
-    color: #f8fafc;
+    color: var(--accent);
 }
 
 .alert-success {
-    color: #d1fae5 !important;
-}
-
-.alert-success strong {
-    color: #ffffff;
+    color: var(--success) !important;
 }
 
 .alert-warning {
-    color: #fef3c7 !important;
-}
-
-.alert-warning strong {
-    color: #ffffff;
+    color: var(--text-primary) !important;
 }
 
 .alert-danger {
-    color: #fee2e2 !important;
-}
-
-.alert-danger strong {
-    color: #ffffff;
+    color: var(--danger) !important;
 }
