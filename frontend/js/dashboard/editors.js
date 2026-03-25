@@ -37,6 +37,7 @@
         });
         envEditor = CodeMirror($('env-editor'), {
             ...editorDefaults,
+            mode: 'shell',
             extraKeys: {
                 'Ctrl-S': window.Dashboard.saveEnv,
                 'Cmd-S': window.Dashboard.saveEnv,

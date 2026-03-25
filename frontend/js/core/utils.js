@@ -126,17 +126,14 @@ function handleError(error, userMessage = 'An unexpected error occurred') {
  * Show the dashboard loader (waiting spinner).
  */
 function showLoader() {
-    const loader = $('dashboard-loader');
-    loader.classList.remove('d-none');
-    // Force animation restart by triggering reflow
-    void loader.offsetWidth;
+    $('dashboard-loader').classList.remove('hidden');
 }
 
 /**
  * Hide the dashboard loader (waiting spinner).
  */
 function hideLoader() {
-    $('dashboard-loader').classList.add('d-none');
+    $('dashboard-loader').classList.add('hidden');
 }
 
 /**

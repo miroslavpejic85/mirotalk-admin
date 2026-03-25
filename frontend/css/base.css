@@ -26,7 +26,7 @@
     /* Sidebar */
     --sidebar-width: 220px;
     --sidebar-collapsed: 64px;
-    --header-height: 56px;
+    --header-height: 64px;
 
     /* Transitions */
     --transition-fast: 150ms ease;
@@ -157,7 +157,7 @@ body,
 .form-select,
 .table,
 pre {
-    background: var(--bg-surface) !important;
+    background-color: var(--bg-surface) !important;
     color: var(--text-primary) !important;
     border-color: var(--border-color) !important;
 }
@@ -187,7 +187,7 @@ pre {
 .table tbody tr,
 .form-control,
 .form-select {
-    background: var(--bg-surface) !important;
+    background-color: var(--bg-surface) !important;
     color: var(--text-primary) !important;
 }
 

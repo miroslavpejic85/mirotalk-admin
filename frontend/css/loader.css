@@ -12,21 +12,17 @@
     background: var(--bg-overlay);
     backdrop-filter: blur(4px);
     z-index: 2000;
-    animation: fadeIn 0.2s ease-in;
+    opacity: 1;
+    visibility: visible;
+    transition:
+        opacity 0.2s ease-in,
+        visibility 0.2s ease-in;
 }
 
-#dashboard-loader.d-none {
-    display: none !important;
-    animation: none;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+#dashboard-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 /* Spinner */

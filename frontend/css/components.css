@@ -63,7 +63,7 @@
     max-width: 200px;
     min-width: 120px;
     width: 100%;
-    background: var(--bg-input) !important;
+    background-color: var(--bg-input) !important;
     color: var(--text-primary) !important;
     border: 1px solid var(--border-color) !important;
     font-weight: 500;

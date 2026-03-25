@@ -86,7 +86,7 @@
 /* ===== FORMS ===== */
 .form-control,
 .form-select {
-    background: var(--bg-input) !important;
+    background-color: var(--bg-input) !important;
     border: 1px solid var(--border-color) !important;
     color: var(--text-primary) !important;
     border-radius: var(--radius-md);
@@ -100,7 +100,7 @@
 
 .form-control:focus,
 .form-select:focus {
-    background: var(--bg-input) !important;
+    background-color: var(--bg-input) !important;
     border-color: var(--accent) !important;
     box-shadow: 0 0 0 3px var(--accent-muted) !important;
     outline: none;
@@ -401,6 +401,11 @@ pre {
     min-width: 120px;
 }
 
+#project-select {
+    min-width: 135px;
+    width: auto;
+}
+
 /* Fix nav bar margin below header */
 #dashboard > .row {
     margin-top: var(--header-height) !important;
@@ -432,12 +437,14 @@ pre {
     color: var(--text-muted) !important;
 }
 
-.btn-close-white {
+.btn-close-white,
+.btn-close {
     filter: none;
 }
 
-[data-theme='dark'] .btn-close-white {
-    filter: invert(1) grayscale(100%) brightness(200%);
+[data-theme='dark'] .btn-close-white,
+[data-theme='dark'] .btn-close {
+    filter: invert(1);
 }
 
 /* ===== INSTANCE / SERVER STATUS ===== */
