@@ -25,6 +25,10 @@
     border-bottom: 1px solid var(--border-color) !important;
 }
 
+.login-header .fa-user-shield {
+    color: var(--accent);
+}
+
 .login-header h3 {
     color: var(--text-heading);
     font-size: 1.25rem;
