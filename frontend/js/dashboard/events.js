@@ -78,7 +78,7 @@
             {
                 type: 'click',
                 id: 'sidebar-toggle-btn',
-                handler: () => $('sidebar').classList.toggle('hidden'),
+                handler: () => window.Dashboard.toggleSidebar(),
             },
             {
                 type: 'click',

@@ -25,6 +25,19 @@
             if ($('auto-log-switch')) $('auto-log-switch').checked = false;
         }
     }
+
+    /**
+     * Toggle the visibility of the sidebar and update the toggle button icon accordingly.
+     */
+    function toggleSidebar() {
+        const sidebar = $('sidebar');
+        sidebar.classList.toggle('hidden');
+        const isHidden = sidebar.classList.contains('hidden');
+        const btn = $('sidebar-toggle-btn');
+        btn.innerHTML = isHidden ? '<i class="fas fa-angles-right"></i>' : '<i class="fas fa-angles-left"></i>';
+    }
+
     window.Dashboard = window.Dashboard || {};
     window.Dashboard.setSectionVisible = setSectionVisible;
+    window.Dashboard.toggleSidebar = toggleSidebar;
 })();
