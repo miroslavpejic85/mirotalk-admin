@@ -3,13 +3,8 @@
     <!-- Dashboard Header: Project Selectbox and Sidebar Toggle Button -->
     <header class="dashboard-header d-flex align-items-center justify-content-between px-3">
         <div class="d-flex align-items-center gap-2">
-            <button
-                class="btn btn-sm btn-secondary"
-                id="sidebar-toggle-btn"
-                title="Toggle Sidebar"
-                style="min-width: 36px; padding: 6px 8px"
-            >
-                <i class="fas fa-bars"></i>
+            <button class="btn btn-sm btn-secondary btn-icon-sm" id="sidebar-toggle-btn" title="Toggle Sidebar">
+                <i class="fas fa-angles-left"></i>
             </button>
             <select id="project-select" class="form-select form-select-sm">
                 <option value="mirotalksfu">mirotalk-sfu</option>
@@ -21,20 +16,10 @@
             </select>
         </div>
         <div class="d-flex align-items-center gap-2">
-            <button
-                id="theme-toggle-btn"
-                class="btn btn-sm btn-secondary"
-                title="Toggle theme"
-                style="min-width: 36px; padding: 6px 8px"
-            >
+            <button id="theme-toggle-btn" class="btn btn-sm btn-secondary btn-icon-sm" title="Toggle theme">
                 <i class="fas fa-moon" id="theme-icon"></i>
             </button>
-            <button
-                class="btn btn-sm btn-outline-danger"
-                id="logout-btn"
-                title="Logout"
-                style="min-width: 36px; padding: 6px 8px"
-            >
+            <button class="btn btn-sm btn-outline-danger btn-icon-sm" id="logout-btn" title="Logout">
                 <i class="fas fa-sign-out-alt"></i>
             </button>
         </div>
@@ -380,7 +365,7 @@
                             <button id="clear-logs-btn" class="btn btn-outline-danger w-100 w-md-auto mb-3">
                                 <i class="fas fa-trash"></i> Clear
                             </button>
-                            <div class="input-group mb-3" style="max-width: 300px">
+                            <div class="input-group mb-3 log-search-group">
                                 <input type="text" id="log-search" class="form-control" placeholder="Search logs..." />
                                 <button id="log-search-btn" class="btn btn-outline-secondary">
                                     <i class="fas fa-search"></i>
@@ -517,14 +502,10 @@
                             <strong>Self-Hosting Scripts:</strong> Deploy any MiroTalk project fast with our automated
                             scripts. Copy and run the commands in your terminal.
                         </div>
-                        <div
-                            id="self-hosting-frame-container"
-                            style="height: calc(100vh - 300px); min-height: 800px; position: relative"
-                        >
+                        <div id="self-hosting-frame-container">
                             <iframe
                                 id="self-hosting-iframe"
                                 src="https://docs.mirotalk.com/scripts/about/"
-                                style="width: 100%; height: 100%; border: none; background: #fff"
                                 title="MiroTalk Self-Hosting Documentation"
                             ></iframe>
                         </div>

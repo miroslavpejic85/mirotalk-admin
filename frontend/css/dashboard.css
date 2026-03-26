@@ -1,3 +1,28 @@
+/* ===== HEADER ICON BUTTONS ===== */
+.btn-icon-sm {
+    min-width: 36px;
+    padding: 6px 8px;
+}
+
+/* ===== LOG SEARCH ===== */
+.log-search-group {
+    max-width: 300px;
+}
+
+/* ===== SELF-HOSTING FRAME ===== */
+#self-hosting-frame-container {
+    height: calc(100vh - 300px);
+    min-height: 800px;
+    position: relative;
+}
+
+#self-hosting-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+}
+
 /* ===== BUTTONS ===== */
 .btn {
     font-weight: 500;
