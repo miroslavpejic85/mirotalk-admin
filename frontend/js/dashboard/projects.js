@@ -56,6 +56,14 @@
                 select.appendChild(opt);
             });
             select.value = currentAppName;
+
+            // Sync the backend with the frontend's remembered project
+            try {
+                await apiSetAppName(currentAppName);
+            } catch (err) {
+                console.error('Failed to sync app name on load', err);
+            }
+
             select.onchange = async function () {
                 const appName = select.value;
                 localStorage.setItem('mirotalk_admin_project', appName);
