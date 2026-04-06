@@ -34,7 +34,7 @@
         sidebar.classList.toggle('hidden');
         const isHidden = sidebar.classList.contains('hidden');
         const btn = $('sidebar-toggle-btn');
-        btn.innerHTML = isHidden ? '<i class="fas fa-angles-right"></i>' : '<i class="fas fa-angles-left"></i>';
+        btn.innerHTML = isHidden ? '<i class="fas fa-angle-right"></i>' : '<i class="fas fa-angle-left"></i>';
     }
 
     window.Dashboard = window.Dashboard || {};
