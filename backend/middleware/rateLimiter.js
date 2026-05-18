@@ -17,6 +17,11 @@ const { getIP } = utils;
 /**
  * Rate limiter middleware for login endpoint.
  * Limits repeated login attempts to prevent brute-force attacks.
+ *
+ * Security: keying the limiter must be done using the trusted transport-layer
+ * source address (or `req.ip` validated by Express' `trust proxy` setting),
+ * NOT the client-controlled `X-Forwarded-For` header. We use `getIP(req)`
+ * which enforces this. Manually rotating XFF values must not bypass the limit.
  */
 const loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -25,20 +30,7 @@ const loginLimiter = rateLimit({
     standardHeaders: true,
     legacyHeaders: false,
 
-    // Validate that the trust proxy setting is configured correctly
-    validate: {
-        trustProxy: false, // Disable the trust proxy validation
-        xForwardedForHeader: false, // We handle it manually
-    },
-
-    // Use the default key generator which properly handles IPv6
-    // Just ensure req.ip is set correctly
-    keyGenerator: (req, res) => {
-        // Get the client IP
-        const ip = getIP(req);
-        // Return the IP directly - express-rate-limit will handle IPv6 normalization
-        return ip;
-    },
+    keyGenerator: (req) => getIP(req),
 
     // Custom handler for rate limit exceeded
     handler: (req, res) => {
@@ -46,15 +38,6 @@ const loginLimiter = rateLimit({
             error: 'Too many login attempts from this IP. Please try again later.',
             retryAfter: Math.ceil(req.rateLimit.resetTime / 1000),
         });
-    },
-
-    // Skip rate limiting for specific IPs (optional)
-    skip: (req) => {
-        // You can add whitelisted IPs here if needed
-        // const whitelistedIPs = ['127.0.0.1', '::1'];
-        // const clientIp = getIP(req);
-        // return whitelistedIPs.includes(clientIp);
-        return false;
     },
 });
 
@@ -69,14 +52,7 @@ const apiLimiter = rateLimit({
     standardHeaders: true,
     legacyHeaders: false,
 
-    validate: {
-        trustProxy: false,
-        xForwardedForHeader: false,
-    },
-
-    keyGenerator: (req, res) => {
-        return getIP(req);
-    },
+    keyGenerator: (req) => getIP(req),
 });
 
 /**
@@ -90,14 +66,7 @@ const strictLimiter = rateLimit({
     standardHeaders: true,
     legacyHeaders: false,
 
-    validate: {
-        trustProxy: false,
-        xForwardedForHeader: false,
-    },
-
-    keyGenerator: (req, res) => {
-        return getIP(req);
-    },
+    keyGenerator: (req) => getIP(req),
 
     handler: (req, res) => {
         res.status(429).json({

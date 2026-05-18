@@ -20,7 +20,10 @@ const { TRUST_PROXY } = config;
 
 const app = express();
 
-app.set('trust proxy', TRUST_PROXY === 'true');
+// TRUST_PROXY is already coerced to a boolean by config; pass it through
+// directly so Express correctly validates X-Forwarded-For when behind a
+// reverse proxy and otherwise ignores client-supplied forwarding headers.
+app.set('trust proxy', TRUST_PROXY === true);
 app.use(cors(utils.getCorsOptions()));
 
 app.use(helmet.noSniff());
