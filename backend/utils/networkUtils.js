@@ -27,8 +27,18 @@ const { TRUST_PROXY } = config;
  * @returns {string} The client IP address.
  */
 const getIP = (req) => {
-    if (TRUST_PROXY === true && req.ip) {
-        return req.ip;
+    if (TRUST_PROXY === true) {
+        // Express-handled requests already have a validated req.ip.
+        if (req.ip) return req.ip;
+        // Raw IncomingMessage (e.g. Socket.IO handshake) — Express middleware
+        // did not run, so honor X-Forwarded-For only because the operator has
+        // explicitly opted in via TRUST_PROXY and is responsible for ensuring
+        // a real proxy terminates the connection in front of the admin port.
+        const xff = req.headers && req.headers['x-forwarded-for'];
+        if (xff) {
+            const first = String(xff).split(',')[0].trim();
+            if (first) return first;
+        }
     }
     return (req.socket && req.socket.remoteAddress) || req.connection?.remoteAddress || '';
 };

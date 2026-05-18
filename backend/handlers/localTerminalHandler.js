@@ -24,13 +24,22 @@ function handleLocalTerminalSession(socket, data = {}, isSocketValidToken) {
     if (socket._terminalProcess) return;
 
     const shell = process.env.SHELL || '/bin/sh';
-    const ptyProcess = pty.spawn(shell, [], {
-        name: 'xterm-color',
-        cols: 80,
-        rows: 24,
-        cwd: process.env.HOME,
-        env: process.env,
-    });
+    let ptyProcess;
+    try {
+        ptyProcess = pty.spawn(shell, [], {
+            name: 'xterm-color',
+            cols: 80,
+            rows: 24,
+            cwd: process.env.HOME,
+            env: process.env,
+        });
+    } catch (err) {
+        // node-pty can throw synchronously (e.g. posix_spawnp failed). Surface
+        // the failure to the client instead of letting it crash the process.
+        socket.emit('terminalOutput', `\n[Failed to start terminal: ${err.message}]\n`);
+        socket.emit('terminalDone', 1);
+        return;
+    }
     socket._terminalProcess = ptyProcess;
 
     ptyProcess.on('data', (data) => socket.emit('terminalOutput', data));
