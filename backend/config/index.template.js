@@ -125,6 +125,10 @@ module.exports = {
     SSH_PASSWORD: process.env.SSH_PASSWORD,
     SSH_PRIVATE_KEY_PATH: process.env.SSH_PRIVATE_KEY_PATH,
     SSH_PRIVATE_KEY: process.env.SSH_PRIVATE_KEY_PATH ? fs.readFileSync(process.env.SSH_PRIVATE_KEY_PATH) : undefined,
+    // Required when APP_MANAGE_MODE=ssh. Pin the remote host key fingerprint
+    // (SHA-256) to prevent MITM. Obtain with:
+    //   ssh-keyscan -t ed25519 <host> | ssh-keygen -lf - -E sha256
+    SSH_HOST_FINGERPRINT_SHA256: process.env.SSH_HOST_FINGERPRINT_SHA256,
 
     // Email alerts
     EMAIL_ALERTS: process.env.EMAIL_ALERTS === 'true',
