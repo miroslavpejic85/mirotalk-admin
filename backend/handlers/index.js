@@ -15,7 +15,9 @@ const { Logs, getIP } = require('../utils');
 const config = require('../config');
 const logger = new Logs('AdminSocket');
 
-const { ADMIN_DASHBOARD_ENABLED, ADMIN_ALLOWED_IPS } = config;
+const { ADMIN_DASHBOARD_ENABLED, ADMIN_ALLOWED_IPS, NODE_ENV } = config;
+
+const IS_PRODUCTION = NODE_ENV === 'production';
 
 /**
  * Socket.IO transport-level gate.
@@ -33,6 +35,19 @@ function socketAccessGate(socket, next) {
     if (!ADMIN_DASHBOARD_ENABLED) {
         logger.warn('Socket connection refused: dashboard disabled');
         return next(new Error('dashboard disabled'));
+    }
+    // Reject plaintext ws:// upgrades in production. httpolyglot accepts
+    // both HTTP and HTTPS on the same port, so without this check an
+    // attacker on the wire could open an unauthenticated WebSocket in the
+    // clear and intercept the JWT used to upgrade it.
+    if (IS_PRODUCTION) {
+        const encrypted = Boolean(socket.request && socket.request.socket && socket.request.socket.encrypted);
+        const xfProto = socket.request && socket.request.headers && socket.request.headers['x-forwarded-proto'];
+        const viaTlsProxy = typeof xfProto === 'string' && xfProto.split(',')[0].trim().toLowerCase() === 'https';
+        if (!encrypted && !viaTlsProxy) {
+            logger.warn('Socket connection refused: plaintext transport');
+            return next(new Error('https required'));
+        }
     }
     const allowed = Array.isArray(ADMIN_ALLOWED_IPS) ? ADMIN_ALLOWED_IPS : [];
     if (allowed.length > 0 && !allowed.includes('*')) {

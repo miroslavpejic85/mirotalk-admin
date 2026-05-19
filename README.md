@@ -162,3 +162,119 @@ MIROTALK_ADMIN_DIR=/root/mirotalk-admin
 > Regularly review and update your `.env` settings to keep your MiroTalk instance secure and manageable.
 
 ---
+
+### 🔒 TLS / HTTPS in Production
+
+The dashboard listens on a single HTTPS port (`ADMIN_PORT`) via the
+Node.js stdlib `https` module, plaintext HTTP requests on this port are
+rejected at the TLS layer and cannot reach the application.
+
+- Defense-in-depth: when `NODE_ENV=production`, any request whose
+  `req.secure` is false (e.g. arriving through a misconfigured reverse
+  proxy that did not set `X-Forwarded-Proto: https`) is 301-redirected
+  to HTTPS for `GET`/`HEAD` and rejected with `403` for any other
+  method. Plaintext `ws://` socket upgrades are likewise refused.
+- The bundled certificate in [backend/ssl/](backend/ssl/) is **self-signed**
+  and intended for first-boot / local development only. For production,
+  either:
+    - replace `backend/ssl/key.pem` and `backend/ssl/cert.pem` with a
+      certificate issued by a trusted CA (e.g. Let's Encrypt), or
+    - put the dashboard behind a TLS-terminating reverse proxy
+      (nginx, Caddy, Traefik, an ALB, etc.) and bind the dashboard to
+      `127.0.0.1`. When doing so, set `TRUST_PROXY=true` so the
+      `X-Forwarded-Proto` and `X-Forwarded-For` headers are honored.
+- Responses include `Strict-Transport-Security: max-age=63072000; includeSubDomains`
+  to pin compliant browsers to HTTPS.
+
+#### Local development with a trusted cert
+
+The bundled `backend/ssl/cert.pem` is self-signed, so on the first visit
+your browser will show a "Not secure / self-signed certificate" warning.
+Click through it once (Chrome: type `thisisunsafe` on the warning page,
+or **Advanced → Proceed**; Firefox: **Accept the Risk and Continue**) and
+the dashboard at <https://localhost:9999/admin> will load.
+
+To remove the warning entirely in development, install
+[`mkcert`](https://github.com/FiloSottile/mkcert) and issue a cert that
+your OS / browsers actually trust. Place the dev cert in
+`backend/ssl/dev/`, the server auto-detects it when `NODE_ENV` is not
+`production` and falls back to `backend/ssl/` otherwise:
+
+<details>
+<summary>🍎 macOS</summary>
+
+<br/>
+
+```bash
+brew install mkcert nss
+mkcert -install
+
+mkdir -p backend/ssl/dev
+cd backend/ssl/dev
+mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1
+```
+
+</details>
+
+<details>
+<summary>🐧 Linux (Debian / Ubuntu)</summary>
+
+<br/>
+
+```bash
+sudo apt update
+sudo apt install -y libnss3-tools
+# install the mkcert binary (pick the latest release for your arch)
+curl -fsSLo /tmp/mkcert "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
+sudo install -m 0755 /tmp/mkcert /usr/local/bin/mkcert
+mkcert -install
+
+mkdir -p backend/ssl/dev
+cd backend/ssl/dev
+mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1
+```
+
+> On Fedora/RHEL use `sudo dnf install nss-tools`; on Arch use
+> `sudo pacman -S nss mkcert`. For Firefox to trust the cert, make sure
+> `libnss3-tools` (or `nss-tools`) is installed **before** running
+> `mkcert -install`.
+
+</details>
+
+<details>
+<summary>🪟 Windows (PowerShell, run as Administrator)</summary>
+
+<br/>
+
+```powershell
+# Easiest path: Chocolatey
+choco install mkcert
+# …or Scoop:
+# scoop bucket add extras; scoop install mkcert
+mkcert -install
+
+mkdir backend\ssl\dev
+cd backend\ssl\dev
+mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1
+```
+
+> Firefox on Windows uses its own trust store. After `mkcert -install`,
+> restart Firefox so it picks up the new local CA. Chrome / Edge use the
+> Windows trust store and work immediately.
+
+</details>
+
+<br/>
+
+`backend/ssl/dev/` is gitignored, so the locally-trusted cert never
+ships with the repo. In production the server always uses
+`backend/ssl/key.pem` + `backend/ssl/cert.pem`, which should hold a
+CA-issued cert (or be replaced by a TLS-terminating reverse proxy as
+described above).
+
+Restart the server and the lock icon will be green. The dev workflow is
+otherwise unchanged, the dashboard is HTTPS-only in every environment
+so behavior in dev matches production (`Secure` cookies, HSTS, mixed
+content, `wss://` upgrades, etc.).
+
+---

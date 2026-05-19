@@ -27,6 +27,17 @@ app.set('trust proxy', TRUST_PROXY === true);
 app.use(cors(utils.getCorsOptions()));
 
 app.use(helmet.noSniff());
+// HTTP Strict Transport Security: instruct compliant browsers to only ever
+// reach this origin over HTTPS for the next 2 years, mitigating the
+// plaintext-HTTP fall-through that httpolyglot would otherwise allow on
+// the same port.
+app.use(
+    helmet.hsts({
+        maxAge: 63072000,
+        includeSubDomains: true,
+        preload: false,
+    })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

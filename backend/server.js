@@ -11,6 +11,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const https = require('https');
 const app = require('./app');
 const config = require('./config');
 const utils = require('./utils');
@@ -21,9 +22,26 @@ const logger = new Logs('AdminServer');
 
 const { ADMIN_PORT } = config;
 
-// Define paths to the SSL key and certificate files
-const keyPath = path.join(__dirname, 'ssl/key.pem');
-const certPath = path.join(__dirname, 'ssl/cert.pem');
+// Define paths to the SSL key and certificate files.
+// In non-production environments, prefer `backend/ssl/dev/` if present
+// (e.g. a locally-trusted cert issued via `mkcert`), so the browser does
+// not show a self-signed-cert warning during day-to-day development.
+// In production, always use the canonical `backend/ssl/` pair, which
+// should hold a CA-issued certificate (Let's Encrypt, internal PKI, …)
+// or be fronted by a TLS-terminating reverse proxy.
+const IS_PRODUCTION = config.NODE_ENV === 'production';
+const devKeyPath = path.join(__dirname, 'ssl/dev/key.pem');
+const devCertPath = path.join(__dirname, 'ssl/dev/cert.pem');
+const prodKeyPath = path.join(__dirname, 'ssl/key.pem');
+const prodCertPath = path.join(__dirname, 'ssl/cert.pem');
+
+const useDevCerts = !IS_PRODUCTION && fs.existsSync(devKeyPath) && fs.existsSync(devCertPath);
+const keyPath = useDevCerts ? devKeyPath : prodKeyPath;
+const certPath = useDevCerts ? devCertPath : prodCertPath;
+
+if (useDevCerts) {
+    logger.info('Using development SSL certificates from backend/ssl/dev/');
+}
 
 // Read SSL key and certificate files securely
 const options = {
@@ -31,8 +49,11 @@ const options = {
     cert: fs.readFileSync(certPath, 'utf-8'),
 };
 
-// Serve both http and https and attach Socket.IO
-const server = require('httpolyglot').createServer(options, app);
+// HTTPS-only listener. Previously this used `httpolyglot`, which accepts
+// both HTTP and HTTPS on the same port and made the dashboard reachable
+// in cleartext (login + JWT). Using `https.createServer` makes plaintext
+// access structurally impossible on this port.
+const server = https.createServer(options, app);
 const { Server } = require('socket.io');
 const io = new Server(server, {
     cors: utils.getCorsOptions(),
