@@ -17,7 +17,7 @@ const utils = require('./utils');
 const Logs = require('./utils/logsUtils');
 const logger = new Logs('AdminServer');
 
-logger.info('Loaded config', config);
+// logger.info('Loaded config', { config });
 
 const { ADMIN_PORT } = config;
 
