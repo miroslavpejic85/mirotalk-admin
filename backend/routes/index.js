@@ -40,12 +40,21 @@ module.exports = function (app) {
     // Middleware
     // ###########################
 
-    // Serve static frontend files for /admin
-    app.use('/admin', express.static(frontendPath));
-    // Restrict access to allowed IPs
+    // Restrict access to allowed IPs. Registered BEFORE the static mount
+    // so that ADMIN_ALLOWED_IPS protects the entire /admin/** surface
+    // (HTML, JS, CSS, views) and not only the JSON API.
     app.use(restrictAllowedIPs);
-    // Enforce dashboard enabled and HTTPS in production
+
+    // Enforce dashboard enabled and HTTPS in production. Also registered
+    // before the static mount so that ADMIN_DASHBOARD_ENABLED=false is a
+    // real kill-switch (otherwise the login page and dashboard HTML
+    // would still be served even with the dashboard administratively
+    // disabled).
     app.use(dashboardEnabledAndHttps);
+
+    // Serve static frontend files for /admin (guarded by the two
+    // middlewares above).
+    app.use('/admin', express.static(frontendPath));
 
     // ###########################
     // Routes
