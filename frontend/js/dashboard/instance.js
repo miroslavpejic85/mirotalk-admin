@@ -23,13 +23,13 @@
             $('local-version').textContent = json.localVersion;
             $('remote-version').textContent = json.remoteVersion;
             if (!json.isUpToDate) {
-                $('status-text').textContent = 'New version available!';
-                $('status-text').className = 'text-success';
+                $('status-text').innerHTML = '<i class="fas fa-arrow-up me-1"></i>New version available!';
+                $('status-text').className = 'text-info';
                 $('update-btn').classList.remove('hidden');
             } else {
                 $('update-realtime-logs').classList.add('hidden');
-                $('status-text').textContent = 'Already up-to-date';
-                $('status-text').className = 'text-info';
+                $('status-text').innerHTML = '<i class="fas fa-check-circle me-1"></i>Already up-to-date';
+                $('status-text').className = 'text-success';
                 $('update-btn').classList.add('hidden');
             }
             showToast('Check for update completed');
