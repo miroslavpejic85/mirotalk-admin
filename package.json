@@ -27,11 +27,11 @@
         "cors": "^2.8.6",
         "dotenv": "^17.4.2",
         "express": "^5.2.1",
-        "express-rate-limit": "^8.6.2",
+        "express-rate-limit": "^8.7.0",
         "helmet": "^8.3.0",
         "jsonwebtoken": "^9.0.3",
         "node-pty": "^1.1.0",
-        "nodemailer": "^9.0.5",
+        "nodemailer": "^9.0.6",
         "socket.io": "4.8.3",
         "ssh2": "^1.17.0"
     },

@@ -1,6 +1,10 @@
 # MiroTalk Admin
 
-A secure, modern web dashboard to manage **[MiroTalk](https://docs.mirotalk.com/html/overview.html)** updates, configuration, and settings with ease.
+<h1 align="center">MiroTalk Admin - Self-Hosted WebRTC Platform Management & Monitoring</h1>
+
+<h3 align="center">
+Open source self-hosted admin dashboard for managing, monitoring, updating, and configuring your MiroTalk WebRTC applications and infrastructure.
+</h3>
 
 ---
 
