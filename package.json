@@ -1,6 +1,6 @@
 {
     "name": "mirotalk-admin",
-    "version": "1.1.10",
+    "version": "1.1.11",
     "description": "MiroTalk Admin Dashboard for managing updates of MiroTalk projects",
     "main": "server.js",
     "scripts": {
@@ -37,6 +37,6 @@
     },
     "devDependencies": {
         "nodemon": "^3.1.14",
-        "prettier": "^3.9.7"
+        "prettier": "^3.9.8"
     }
 }
