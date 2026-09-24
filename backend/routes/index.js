@@ -26,6 +26,7 @@ const {
     envController,
     logsController,
     appController,
+    installationController,
 } = controllers;
 
 const frontendPath = path.join(__dirname, '../../', 'frontend');
@@ -82,6 +83,9 @@ module.exports = function (app) {
     // App
     app.get('/admin/api/getAppNames', appController.getAppNames);
     app.post('/admin/api/setAppName', appController.setAppName);
+
+    // Installations
+    app.get('/admin/api/installationStatus', installationController.getStatus);
 
     // System
     app.get('/admin/api/system', systemController.getSystem);

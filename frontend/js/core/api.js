@@ -68,6 +68,15 @@ async function apiSetAppName(appName) {
 }
 
 /**
+ * Get installation status for a supported product.
+ * @param {string} product - Product identifier.
+ * @returns {Promise<Object>} - Resolves with { product, status }.
+ */
+async function apiGetInstallationStatus(product) {
+    return apiRequest(`/admin/api/installationStatus?product=${encodeURIComponent(product)}`);
+}
+
+/**
  * Get system information.
  * @returns {Promise<Object>} - Resolves with system info.
  */

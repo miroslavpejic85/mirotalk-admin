@@ -158,6 +158,56 @@
     white-space: pre-wrap;
 }
 
+.command-output {
+    min-height: 18rem;
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-terminal) !important;
+    color: #e4e4e8 !important;
+    padding: var(--space-4);
+}
+
+.command-output pre {
+    margin: 0;
+    color: inherit;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+#installations-section .form-text {
+    color: var(--text-secondary);
+}
+
+.installation-status-row {
+    min-height: 31px;
+}
+
+.installation-status-refresh {
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0;
+    color: var(--text-secondary);
+}
+
+.installation-status-refresh:hover {
+    color: var(--text-link);
+}
+
+.installation-product-fields {
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-color);
+}
+
+#installations-section .installation-password-control {
+    flex: 0 0 44px;
+    width: 44px;
+    margin-bottom: 0;
+}
+
 /* ===== TERMINAL ===== */
 #terminal-section .card-body {
     height: calc(100vh - 120px);

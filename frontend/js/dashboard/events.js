@@ -67,6 +67,11 @@
             },
             {
                 type: 'click',
+                id: 'menu-installations',
+                handler: () => window.Dashboard.showSection('installations'),
+            },
+            {
+                type: 'click',
                 id: 'menu-terminal',
                 handler: () => window.Dashboard.showSection('terminal'),
             },
@@ -174,6 +179,41 @@
                 type: 'click',
                 id: 'update-btn',
                 handler: window.Dashboard.performUpdate,
+            },
+            {
+                type: 'click',
+                id: 'installation-install-btn',
+                handler: () => window.Dashboard.runInstallation('install'),
+            },
+            {
+                type: 'click',
+                id: 'installation-update-btn',
+                handler: () => window.Dashboard.runInstallation('update'),
+            },
+            {
+                type: 'click',
+                id: 'installation-uninstall-btn',
+                handler: () => window.Dashboard.runInstallation('uninstall'),
+            },
+            {
+                type: 'change',
+                id: 'installation-product',
+                handler: window.Dashboard.changeInstallationProduct,
+            },
+            {
+                type: 'click',
+                id: 'installation-status-refresh-btn',
+                handler: window.Dashboard.refreshInstallationStatus,
+            },
+            {
+                type: 'click',
+                id: 'installation-coturn-password-generate-btn',
+                handler: window.Dashboard.generateCoturnPassword,
+            },
+            {
+                type: 'click',
+                id: 'installation-coturn-password-toggle-btn',
+                handler: window.Dashboard.toggleCoturnPasswordVisibility,
             },
             {
                 type: 'click',

@@ -16,6 +16,7 @@
         { value: 'mirotalkc2c', label: 'mirotalk-c2c' },
         { value: 'mirotalkbro', label: 'mirotalk-bro' },
         { value: 'mirotalkwebrtc', label: 'mirotalk-web' },
+        { value: 'callme', label: 'mirotalk-cme' },
         { value: 'mirotalkadmin', label: 'mirotalk-adm' },
     ];
 
@@ -95,6 +96,9 @@
                                 break;
                             case 'instance':
                                 await window.Dashboard.checkVersion();
+                                break;
+                            case 'installations':
+                                window.Dashboard.loadInstallations();
                                 break;
                             default:
                                 // No action

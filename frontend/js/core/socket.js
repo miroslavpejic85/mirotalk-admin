@@ -53,6 +53,17 @@ socket.on('updateDone', (code) => {
     }, 3000);
 });
 
+socket.on('installationOutput', (data) => {
+    appendToPre('installation-output', stripAnsiCodes(data));
+});
+
+socket.on('installationDone', (code) => {
+    const { icon, text } = getStatusInfo(code);
+    appendToPre('installation-output', `\n${icon} Installation operation finished: ${text} (exit code: ${code})\n`);
+    window.Dashboard.setInstallationRunning(false);
+    window.Dashboard.refreshInstallationStatus();
+});
+
 /**
  * Listen for real-time logs output and append to logs.
  * @event logsOutput

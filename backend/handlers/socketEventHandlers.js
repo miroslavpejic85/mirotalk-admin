@@ -10,13 +10,14 @@
  * @module handlers/socketEventHandlers
  */
 
-const { getCommand, Logs } = require('../utils');
+const { getCommand, getInstallationCommand, getInstallationInput, Logs } = require('../utils');
 const config = require('../config');
 const { handleCommandStream } = require('./commandStreamHandler');
 const { handleLocalTerminalSession } = require('./localTerminalHandler');
 const { handleRemoteTerminalSession } = require('./remoteTerminalHandler');
 const { APP_MANAGE_MODE } = config;
 const logger = new Logs('AdminSocket');
+const installationState = { running: false };
 
 /**
  * Returns a map of socket event handlers.
@@ -52,6 +53,17 @@ function getSocketEventHandlers(isSocketValidToken) {
                 getCmd: () => getCommand('serverUpdate'),
                 manageMode: APP_MANAGE_MODE,
                 isSocketValidToken,
+            }),
+        performInstallation: (socket, data = {}) =>
+            handleCommandStream({
+                socket,
+                token: data.token,
+                eventType: 'installation',
+                getCmd: () => getInstallationCommand(data.product, data.action),
+                getInput: () => getInstallationInput(data.product, data.action, data.answers),
+                manageMode: APP_MANAGE_MODE,
+                isSocketValidToken,
+                operationState: installationState,
             }),
         stopPerformLogs: (socket) => {
             logger.info('Received stopPerformLogs event');

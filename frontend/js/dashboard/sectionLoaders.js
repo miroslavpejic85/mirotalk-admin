@@ -20,6 +20,7 @@
         config: window.Dashboard.loadConfig,
         logs: window.Dashboard.loadLogs,
         instance: window.Dashboard.checkVersion,
+        installations: window.Dashboard.loadInstallations,
         terminal: window.Dashboard.initTerminal,
     };
 

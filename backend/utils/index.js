@@ -10,7 +10,13 @@
  */
 
 const { readFile, writeFile } = require('./fileUtils');
-const { getCommand, runCommand } = require('./commandUtils');
+const {
+    getCommand,
+    getInstallationCommand,
+    getInstallationInput,
+    getInstallationStatusCommand,
+    runCommand,
+} = require('./commandUtils');
 const { getAppDependencies, checkDependency, ALL_DEPENDENCIES } = require('./dependencyUtils');
 const { getSystemInfo } = require('./systemInfoUtils');
 const { getIP, getDomain } = require('./networkUtils');
@@ -23,6 +29,9 @@ const { getCorsOptions } = require('./corsUtilis');
 
 module.exports = {
     getCommand,
+    getInstallationCommand,
+    getInstallationInput,
+    getInstallationStatusCommand,
     runCommand,
     readFile,
     writeFile,

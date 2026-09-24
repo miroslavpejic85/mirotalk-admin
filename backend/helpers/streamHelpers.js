@@ -148,8 +148,9 @@ function shouldFilterOutput(eventType) {
  * @param {import('stream').Readable} [stderrStream] - Optional stderr stream
  * @param {string} outputEvent - Name of the socket event for output data
  * @param {string} doneEvent - Name of the socket event for stream/process completion
+ * @param {import('events').EventEmitter} [completionEmitter=stream] - Emitter whose close event includes the exit code
  */
-function streamToSocket(socket, stream, stderrStream, outputEvent, doneEvent) {
+function streamToSocket(socket, stream, stderrStream, outputEvent, doneEvent, completionEmitter = stream) {
     const applyFilter = shouldFilterOutput(outputEvent);
 
     if (stream) {
@@ -162,8 +163,9 @@ function streamToSocket(socket, stream, stderrStream, outputEvent, doneEvent) {
                 socket.emit(outputEvent, data);
             }
         });
-        stream.on('close', (code) => socket.emit(doneEvent, code));
     }
+
+    if (completionEmitter) completionEmitter.on('close', (code) => socket.emit(doneEvent, code));
 
     if (stderrStream) {
         stderrStream.on('data', (chunk) => {

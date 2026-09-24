@@ -17,6 +17,7 @@ const configController = require('./configController');
 const envController = require('./envController');
 const logsController = require('./logsController');
 const appController = require('./appController');
+const installationController = require('./installationController');
 
 module.exports = {
     systemController,
@@ -27,4 +28,5 @@ module.exports = {
     envController,
     logsController,
     appController,
+    installationController,
 };

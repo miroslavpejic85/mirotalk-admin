@@ -26,7 +26,10 @@ const MIROTALK_P2P_DIR = process.env.MIROTALK_P2P_DIR || '/root/mirotalk';
 const MIROTALK_C2C_DIR = process.env.MIROTALK_C2C_DIR || '/root/mirotalkc2c';
 const MIROTALK_BRO_DIR = process.env.MIROTALK_BRO_DIR || '/root/mirotalkbro';
 const MIROTALK_WEB_DIR = process.env.MIROTALK_WEB_DIR || '/root/mirotalkwebrtc';
+const MIROTALK_CME_DIR = process.env.MIROTALK_CME_DIR || '/root/call-me';
 const MIROTALK_ADMIN_DIR = process.env.MIROTALK_ADMIN_DIR || '/root/mirotalk-admin';
+const COTURN_DIR = process.env.COTURN_DIR || '/root/coturn';
+const WHISPER_DIR = process.env.WHISPER_DIR || '/root/whisper';
 
 // Edit this object to add or modify application configurations
 const APP_CONFIG = {
@@ -67,6 +70,13 @@ const APP_CONFIG = {
         config: `${MIROTALK_WEB_DIR}/backend/config.js`,
         env: `${MIROTALK_WEB_DIR}/.env`,
     }),
+    callme: makeConfig({
+        dir: MIROTALK_CME_DIR,
+        packageUrl: 'https://raw.githubusercontent.com/miroslavpejic85/call-me/main/package.json',
+        packagePath: `${MIROTALK_CME_DIR}/package.json`,
+        config: `${MIROTALK_CME_DIR}/public/config.js`,
+        env: `${MIROTALK_CME_DIR}/.env`,
+    }),
     mirotalkadmin: makeConfig({
         dir: MIROTALK_ADMIN_DIR,
         packageUrl: 'https://raw.githubusercontent.com/miroslavpejic85/mirotalk-admin/main/package.json',
@@ -74,6 +84,17 @@ const APP_CONFIG = {
         config: `${MIROTALK_ADMIN_DIR}/backend/config/index.js`,
         env: `${MIROTALK_ADMIN_DIR}/.env`,
     }),
+};
+
+const SERVICE_CONFIG = {
+    coturn: {
+        dir: COTURN_DIR,
+        markerPath: `${COTURN_DIR}/turnserver.conf`,
+    },
+    whisper: {
+        dir: WHISPER_DIR,
+        markerPath: `${WHISPER_DIR}/docker-compose-whisper.yml`,
+    },
 };
 
 // Get app name from env or default to mirotalksfu
@@ -104,6 +125,7 @@ module.exports = {
 
     // App version config
     APP_CONFIG,
+    SERVICE_CONFIG,
     APP_DEFAULTS,
     APP_NAME,
     APP_NAMES: process.env.APP_NAME ? process.env.APP_NAME : ['mirotalksfu'],
