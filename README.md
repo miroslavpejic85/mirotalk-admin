@@ -291,6 +291,6 @@ content, `wss://` upgrades, etc.).
 
 ---
 
-<p align="center">🌐 Explore the full MiroTalk suite (SFU, P2P, BRO, C2C, WEB, CME, ADM) → <a href="https://docs.mirotalk.com/overview/"><strong>MiroTalk Overview</strong></a></p>
+<p align="center">🌐 Explore the full MiroTalk suite (SFU, P2P, BRO, C2C, WEB, CME, ADM) → <a href="https://docs.mirotalk.com/sites/overview"><strong>MiroTalk Overview</strong></a></p>
 
 ---
