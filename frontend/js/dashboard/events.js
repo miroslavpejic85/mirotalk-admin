@@ -17,13 +17,38 @@
     function loadEventListeners() {
         const bindings = [
             {
-                type: 'keypress',
-                id: 'pass',
+                type: 'submit',
+                id: 'login-form',
                 handler: (e) => {
-                    if (e.key === 'Enter') login();
+                    e.preventDefault();
+                    login();
                 },
             },
-            { type: 'click', id: 'login-btn', handler: login },
+            {
+                type: 'click',
+                id: 'password-toggle-btn',
+                handler: () => {
+                    const password = $('pass');
+                    const button = $('password-toggle-btn');
+                    const showPassword = password.type === 'password';
+                    password.type = showPassword ? 'text' : 'password';
+                    button.innerHTML = showPassword ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+                    button.title = showPassword ? 'Hide password' : 'Show password';
+                    button.setAttribute('aria-label', button.title);
+                    button.setAttribute('aria-pressed', String(showPassword));
+                    password.focus();
+                },
+            },
+            {
+                type: 'keyup',
+                id: 'pass',
+                handler: (e) => $('caps-lock-status').classList.toggle('hidden', !e.getModifierState('CapsLock')),
+            },
+            {
+                type: 'blur',
+                id: 'pass',
+                handler: () => $('caps-lock-status').classList.add('hidden'),
+            },
             { type: 'click', id: 'logout-btn', handler: logout },
             {
                 type: 'click',
@@ -89,24 +114,6 @@
                 type: 'click',
                 id: 'theme-toggle-btn',
                 handler: () => window.ThemeManager.toggleTheme(),
-            },
-            {
-                type: 'mouseover',
-                id: 'sidebar',
-                handler: () => {
-                    if (!$('sidebar').classList.contains('hidden')) {
-                        $('sidebar').classList.remove('collapsed');
-                    }
-                },
-            },
-            {
-                type: 'mouseout',
-                id: 'sidebar',
-                handler: () => {
-                    if (!$('sidebar').classList.contains('hidden')) {
-                        $('sidebar').classList.add('collapsed');
-                    }
-                },
             },
             {
                 type: 'click',
@@ -243,6 +250,7 @@
             },
         ];
         bindEvents(bindings);
+        window.Dashboard.initializeNavigation();
     }
 
     window.Dashboard = window.Dashboard || {};

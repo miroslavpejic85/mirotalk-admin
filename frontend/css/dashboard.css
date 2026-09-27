@@ -402,6 +402,25 @@ pre {
     border-bottom: 1px solid var(--border-color);
 }
 
+.dashboard-context {
+    min-width: 0;
+}
+
+.current-section-label {
+    min-width: 92px;
+    color: var(--text-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.project-select-label {
+    margin: 0 0 0 var(--space-3);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
 .dashboard-header .project-selectbox {
     background: transparent;
     box-shadow: none;
@@ -509,6 +528,14 @@ pre {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+    .current-section-label {
+        display: none;
+    }
+
+    .project-select-label {
+        margin-left: 0;
+    }
+
     .btn {
         font-size: 0.8125rem;
         padding: var(--space-2) var(--space-3);
@@ -563,14 +590,101 @@ pre {
 }
 
 @media (max-width: 576px) {
+    .dashboard-header {
+        padding-right: var(--space-2) !important;
+        padding-left: var(--space-2) !important;
+    }
+
+    .project-select-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    #project-select {
+        min-width: 0;
+        width: 124px;
+    }
+
+    .dashboard-header .btn {
+        width: 36px;
+        margin-bottom: 0;
+    }
+
     .btn {
         width: 100%;
         margin-bottom: var(--space-2);
     }
 
-    .btn-group .btn {
+    .btn-group .btn,
+    .input-group .btn {
         width: auto;
         margin-bottom: 0;
+    }
+
+    #installations-section .installation-status-refresh {
+        flex: 0 0 32px;
+        width: 32px;
+        margin-bottom: 0;
+    }
+
+    #status-section .row {
+        --bs-gutter-y: var(--space-3);
+    }
+
+    #status-section .card.text-center {
+        display: grid;
+        grid-template-columns: 40px minmax(0, 1fr);
+        align-items: center;
+        gap: var(--space-1) var(--space-3);
+        padding: var(--space-3) !important;
+        text-align: left !important;
+    }
+
+    #status-section .card.text-center > .svg-inline--fa,
+    #status-section .card.text-center > i {
+        grid-row: 1 / span 2;
+        margin-bottom: 0 !important;
+        font-size: 1.75rem;
+    }
+
+    #status-section .card.text-center h6 {
+        margin-bottom: 0;
+    }
+
+    #status-section .card.text-center .badge {
+        justify-self: start;
+        max-width: 100%;
+        white-space: normal;
+        text-align: left;
+    }
+
+    #self-hosting-section .card-header {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: var(--space-3);
+    }
+
+    #self-hosting-section .card-header > .d-flex {
+        width: 100%;
+    }
+
+    #self-hosting-section .card-header .btn {
+        flex: 1 1 0;
+        width: auto;
+        margin-bottom: 0;
+        white-space: nowrap;
+    }
+
+    #self-hosting-frame-container {
+        height: calc(100vh - 260px);
+        min-height: 500px;
     }
 
     .card-header h4 {

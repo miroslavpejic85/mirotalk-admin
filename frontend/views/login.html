@@ -7,27 +7,53 @@
             <h3>MiroTalk Dashboard</h3>
             <p class="mb-0">Sign in to your admin panel</p>
         </div>
-        <div class="login-body">
+        <form id="login-form" class="login-body">
             <div class="mb-3">
                 <label for="user" class="form-label">Username</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
-                    <input id="user" type="text" class="form-control" placeholder="Enter your username" />
+                    <input
+                        id="user"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                    />
                 </div>
             </div>
             <div class="mb-4">
                 <label for="pass" class="form-label">Password</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                    <input id="pass" type="password" class="form-control" placeholder="Enter your password" />
+                    <input
+                        id="pass"
+                        type="password"
+                        class="form-control"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        aria-describedby="caps-lock-status"
+                    />
+                    <button
+                        id="password-toggle-btn"
+                        class="btn btn-outline-secondary password-toggle-btn"
+                        type="button"
+                        title="Show password"
+                        aria-label="Show password"
+                        aria-pressed="false"
+                    >
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div id="caps-lock-status" class="caps-lock-status hidden" role="status">
+                    <i class="fas fa-triangle-exclamation me-1"></i>Caps Lock is on
                 </div>
             </div>
-            <button id="login-btn" class="btn btn-primary w-100 py-2">
+            <button id="login-btn" type="submit" class="btn btn-primary w-100 py-2">
                 <i class="fas fa-sign-in-alt me-2"></i> Login
             </button>
-        </div>
+        </form>
         <div class="login-footer">
-            <small class="text-muted">Version 1.1.21</small>
+            <small class="text-muted">Version 1.1.30</small>
         </div>
     </div>
 </div>

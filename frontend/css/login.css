@@ -71,6 +71,18 @@ input::placeholder,
     color: var(--accent);
 }
 
+.login-body .password-toggle-btn {
+    width: 44px;
+    margin-bottom: 0;
+    border-color: var(--border-color) !important;
+}
+
+.caps-lock-status {
+    margin-top: var(--space-2);
+    color: var(--warning);
+    font-size: 0.8125rem;
+}
+
 .login-body .form-label {
     color: var(--text-primary);
     font-weight: 500;

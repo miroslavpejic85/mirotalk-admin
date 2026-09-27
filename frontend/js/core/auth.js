@@ -71,7 +71,9 @@ async function restoreSession() {
  */
 async function showDefaultSection() {
     await window.Dashboard.loadAppNameSelect();
-    window.Dashboard.showSection('system');
+    const savedSection = sessionStorage.getItem('mirotalk_admin_section');
+    const section = savedSection && $(`${savedSection}-section`) ? savedSection : 'system';
+    window.Dashboard.showSection(section);
 }
 
 /**

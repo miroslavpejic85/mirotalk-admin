@@ -19,9 +19,10 @@
             await window.Dashboard.loadDashboardLogin();
             await window.Dashboard.loadDashboardView();
             await window.Dashboard.loadDashboardModal();
-            await restoreSession();
             window.Dashboard.initEditors();
             window.Dashboard.loadEventListeners();
+            hideLoader();
+            await restoreSession();
         } finally {
             hideLoader();
         }

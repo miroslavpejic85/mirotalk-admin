@@ -2,10 +2,19 @@
 <div class="container-fluid hidden" id="dashboard">
     <!-- Dashboard Header: Project Selectbox and Sidebar Toggle Button -->
     <header class="dashboard-header d-flex align-items-center justify-content-between px-3">
-        <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-sm btn-secondary btn-icon-sm" id="sidebar-toggle-btn" title="Toggle Sidebar">
-                <i class="fas fa-angle-left"></i>
+        <div class="dashboard-context d-flex align-items-center gap-2">
+            <button
+                class="btn btn-sm btn-secondary btn-icon-sm"
+                id="sidebar-toggle-btn"
+                title="Toggle navigation"
+                aria-label="Toggle navigation"
+                aria-controls="sidebar"
+                aria-expanded="false"
+            >
+                <i class="fas fa-bars"></i>
             </button>
+            <span id="current-section-label" class="current-section-label">System</span>
+            <label for="project-select" class="project-select-label">Project</label>
             <select id="project-select" class="form-select form-select-sm">
                 <option value="mirotalksfu">mirotalk-sfu</option>
                 <option value="mirotalk">mirotalk-p2p</option>
@@ -28,48 +37,59 @@
 
     <div class="row">
         <!-- Sidebar -->
-        <nav id="sidebar" class="collapsed">
-            <div class="menu-item d-flex align-items-center" id="menu-system">
+        <nav id="sidebar" class="collapsed" aria-label="Dashboard navigation">
+            <button type="button" class="menu-item d-flex align-items-center" id="menu-system" title="System">
                 <i class="fas fa-microchip me-2"></i>
                 <span class="menu-text">System</span>
-            </div>
-            <div class="menu-item d-flex align-items-center" id="menu-server">
+            </button>
+            <button type="button" class="menu-item d-flex align-items-center" id="menu-server" title="Server">
                 <i class="fas fa-server me-2"></i>
                 <span class="menu-text">Server</span>
-            </div>
-            <div class="menu-item d-flex align-items-center" id="menu-env">
+            </button>
+            <button type="button" class="menu-item d-flex align-items-center" id="menu-env" title="Environment">
                 <i class="fas fa-database me-2"></i>
                 <span class="menu-text">Environment</span>
-            </div>
-            <div class="menu-item d-flex align-items-center" id="menu-config">
+            </button>
+            <button type="button" class="menu-item d-flex align-items-center" id="menu-config" title="Configuration">
                 <i class="fas fa-cogs me-2"></i>
                 <span class="menu-text">Configuration</span>
-            </div>
-            <div class="menu-item d-flex align-items-center" id="menu-logs">
+            </button>
+            <button type="button" class="menu-item d-flex align-items-center" id="menu-logs" title="Logs">
                 <i class="fas fa-file-alt me-2"></i>
                 <span class="menu-text">Logs</span>
-            </div>
-            <div class="menu-item d-flex align-items-center" id="menu-status">
+            </button>
+            <button type="button" class="menu-item d-flex align-items-center" id="menu-status" title="Status">
                 <i class="fas fa-info-circle me-2"></i>
                 <span class="menu-text">Status</span>
-            </div>
-            <div class="menu-item d-flex align-items-center" id="menu-instance">
+            </button>
+            <button type="button" class="menu-item d-flex align-items-center" id="menu-instance" title="Updates">
                 <i class="fas fa-gear me-2"></i>
                 <span class="menu-text">Updates</span>
-            </div>
-            <div class="menu-item d-flex align-items-center" id="menu-installations">
+            </button>
+            <button
+                type="button"
+                class="menu-item d-flex align-items-center"
+                id="menu-installations"
+                title="Installations"
+            >
                 <i class="fas fa-download me-2"></i>
                 <span class="menu-text">Installations</span>
-            </div>
-            <div class="menu-item d-flex align-items-center" id="menu-terminal">
+            </button>
+            <button type="button" class="menu-item d-flex align-items-center" id="menu-terminal" title="Terminal">
                 <i class="fas fa-terminal me-2"></i>
                 <span class="menu-text">Terminal</span>
-            </div>
-            <div class="menu-item d-flex align-items-center" id="menu-self-hosting">
+            </button>
+            <button
+                type="button"
+                class="menu-item d-flex align-items-center"
+                id="menu-self-hosting"
+                title="Self-Hosting"
+            >
                 <i class="fas fa-book me-2"></i>
                 <span class="menu-text">Self-Hosting</span>
-            </div>
+            </button>
         </nav>
+        <button id="sidebar-backdrop" class="sidebar-backdrop" type="button" aria-label="Close navigation"></button>
 
         <!-- Main Content -->
         <main id="content" class="col">

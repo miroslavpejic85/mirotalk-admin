@@ -40,7 +40,7 @@
 /* Responsive Layout */
 @media (max-width: 768px) {
     #content {
-        margin-left: var(--sidebar-collapsed);
+        margin-left: 0;
         padding: var(--space-4);
     }
 
