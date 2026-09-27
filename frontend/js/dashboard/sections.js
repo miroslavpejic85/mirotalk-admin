@@ -76,9 +76,13 @@
             sidebar.classList.add('hidden');
             sidebar.classList.remove('collapsed');
             updateSidebarControls(false);
+        } else if (!wideDesktopNavigation.matches) {
+            sidebar.classList.remove('hidden');
+            sidebar.classList.add('collapsed');
+            updateSidebarControls(false);
         } else {
             const savedPreference = localStorage.getItem('mirotalk_admin_sidebar_expanded');
-            const isExpanded = savedPreference === null ? wideDesktopNavigation.matches : savedPreference === 'true';
+            const isExpanded = savedPreference === null || savedPreference === 'true';
             sidebar.classList.remove('hidden');
             sidebar.classList.toggle('collapsed', !isExpanded);
             updateSidebarControls(isExpanded);
