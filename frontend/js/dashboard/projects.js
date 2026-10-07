@@ -13,6 +13,7 @@
     const PROJECTS = [
         { value: 'mirotalksfu', label: 'mirotalk-sfu' },
         { value: 'mirotalk', label: 'mirotalk-p2p' },
+        { value: 'mirotalkrnd', label: 'mirotalk-rnd' },
         { value: 'mirotalkc2c', label: 'mirotalk-c2c' },
         { value: 'mirotalkbro', label: 'mirotalk-bro' },
         { value: 'mirotalkwebrtc', label: 'mirotalk-web' },

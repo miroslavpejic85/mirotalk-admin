@@ -154,9 +154,10 @@ Choose how you want to manage your MiroTalk instance:
 Specify which MiroTalk applications you want to manage by listing their names (comma-separated), and provide the absolute paths to the application and supporting-service directories:
 
 ```bash
-APP_NAME=mirotalksfu,mirotalk,mirotalkc2c,mirotalkbro,mirotalkwebrtc,callme,mirotalkadmin
+APP_NAME=mirotalksfu,mirotalk,mirotalkrnd,mirotalkc2c,mirotalkbro,mirotalkwebrtc,callme,mirotalkadmin
 MIROTALK_SFU_DIR=/root/mirotalksfu
 MIROTALK_P2P_DIR=/root/mirotalk
+MIROTALK_RND_DIR=/root/mirotalkrnd
 MIROTALK_BRO_DIR=/root/mirotalkbro
 MIROTALK_C2C_DIR=/root/mirotalkc2c
 MIROTALK_WEB_DIR=/root/mirotalkwebrtc
@@ -291,6 +292,6 @@ content, `wss://` upgrades, etc.).
 
 ---
 
-<p align="center">🌐 Explore the full MiroTalk suite (SFU, P2P, BRO, C2C, WEB, CME, ADM) → <a href="https://docs.mirotalk.com/sites/overview"><strong>MiroTalk Overview</strong></a></p>
+<p align="center">🌐 Explore the full MiroTalk suite (SFU, P2P, RND, BRO, C2C, WEB, CME, ADM) → <a href="https://docs.mirotalk.com/sites/overview"><strong>MiroTalk Overview</strong></a></p>
 
 ---

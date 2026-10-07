@@ -11,6 +11,7 @@
     const PROJECT_PRODUCTS = {
         mirotalksfu: 'sfu',
         mirotalk: 'p2p',
+        mirotalkrnd: 'rnd',
         mirotalkc2c: 'c2c',
         mirotalkbro: 'bro',
         mirotalkwebrtc: 'web',

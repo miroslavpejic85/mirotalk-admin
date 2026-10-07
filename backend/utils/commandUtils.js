@@ -18,7 +18,7 @@ const { APP_MANAGE_MODE, SSH_MANAGE_MODE } = config;
 const LOGS_CHUNK_SIZE = 1000;
 const REALTIME_LOGS_CHUNK_SIZE = 300;
 const INSTALLATION_SCRIPT_BASE_URL = 'https://docs.mirotalk.com/scripts';
-const INSTALLATION_PRODUCTS = new Set(['sfu', 'p2p', 'c2c', 'bro', 'web', 'cme', 'coturn', 'whisper']);
+const INSTALLATION_PRODUCTS = new Set(['sfu', 'p2p', 'rnd', 'c2c', 'bro', 'web', 'cme', 'coturn', 'whisper']);
 const INSTALLATION_ACTIONS = new Set(['install', 'update', 'uninstall']);
 const DOMAIN_PATTERN = /^(?=.{1,253}$)(?!-)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/i;
 const USERNAME_PATTERN = /^[a-z0-9_.-]{1,64}$/i;
@@ -33,6 +33,7 @@ function getInstallationMarkers() {
     return {
         sfu: config.APP_CONFIG.mirotalksfu.packagePath,
         p2p: config.APP_CONFIG.mirotalk.packagePath,
+        rnd: config.APP_CONFIG.mirotalkrnd.packagePath,
         c2c: config.APP_CONFIG.mirotalkc2c.packagePath,
         bro: config.APP_CONFIG.mirotalkbro.packagePath,
         web: config.APP_CONFIG.mirotalkwebrtc.packagePath,
