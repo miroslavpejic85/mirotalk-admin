@@ -1,11 +1,11 @@
 {
     "name": "mirotalk-admin",
-    "version": "1.1.36",
+    "version": "1.1.37",
     "description": "MiroTalk Admin Dashboard for managing updates of MiroTalk projects",
     "main": "server.js",
     "scripts": {
         "start": "node backend/server.js",
-        "dev": "nodemon backend/server.js",
+        "dev": "node --watch backend/server.js",
         "lint": "npx prettier --write .",
         "mailpit:up": "docker-compose -f docker-compose-mailpit.yml up -d",
         "mailpit:down": "docker-compose -f docker-compose-mailpit.yml down"
@@ -36,7 +36,6 @@
         "ssh2": "^1.17.0"
     },
     "devDependencies": {
-        "nodemon": "^3.1.14",
         "prettier": "^3.9.9"
     }
 }
