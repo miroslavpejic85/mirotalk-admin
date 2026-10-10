@@ -116,6 +116,8 @@ Open source self-hosted admin dashboard for managing, monitoring, updating, and 
         node backend/scripts/hashPassword.js
         ```
 
+        If you install with `sudo ./install.sh`, it auto-generates this value when the template default hash is still present.
+
         The hash contains `$` characters, so keep it wrapped in **single quotes** exactly as printed
         (`ADMIN_PASSWORD_HASH='$2b$10$...'`). Do not paste it unquoted into a shell, `pm2` ecosystem file,
         systemd unit or `docker-compose.yml`, where `$...` is expanded and the hash gets corrupted.
@@ -128,6 +130,8 @@ Open source self-hosted admin dashboard for managing, monitoring, updating, and 
         ```js
         node backend/scripts/generateJwtSecret.js
         ```
+
+        If you install with `sudo ./install.sh`, it auto-generates this value when the template default (`supersecret`) is still present.
 
 ### 🛠️ Management Mode (`APP_MANAGE_MODE`)
 
@@ -153,6 +157,8 @@ Choose how you want to manage your MiroTalk instance:
             ```bash
             bash backend/scripts/getSshHostFingerprint.sh <host> [port] [key_type]
             ```
+
+            If you install with `sudo ./install.sh` and `APP_MANAGE_MODE=ssh`, the installer tries to auto-generate this value from `SSH_HOST` and `SSH_PORT`.
 
             Paste the resulting `SHA256:…` value (or raw base64 / 64-char hex) into `.env`.
 
