@@ -148,6 +148,12 @@ Choose how you want to manage your MiroTalk instance:
             ssh-keyscan -t ed25519 <host> | ssh-keygen -lf - -E sha256
             ```
 
+            Or use the helper script:
+
+            ```bash
+            bash backend/scripts/getSshHostFingerprint.sh <host> [port] [key_type]
+            ```
+
             Paste the resulting `SHA256:…` value (or raw base64 / 64-char hex) into `.env`.
 
 - **Self-Hosted with Docker:**
