@@ -116,6 +116,11 @@ Open source self-hosted admin dashboard for managing, monitoring, updating, and 
         node backend/scripts/hashPassword.js
         ```
 
+        The hash contains `$` characters, so keep it wrapped in **single quotes** exactly as printed
+        (`ADMIN_PASSWORD_HASH='$2b$10$...'`). Do not paste it unquoted into a shell, `pm2` ecosystem file,
+        systemd unit or `docker-compose.yml`, where `$...` is expanded and the hash gets corrupted.
+        Restart the admin after editing `.env`.
+
     - `ADMIN_JWT_SECRET`
 
         👉 generate it by running:
@@ -133,8 +138,8 @@ Choose how you want to manage your MiroTalk instance:
     - Configure:
         - `SSH_HOST`
         - `SSH_PORT`
-        - `SSH_USERNAME`
-        - `SSH_PASSWORD` or `SSH_PRIVATE_KEY`
+        - `SSH_USER` (defaults to `root` if unset)
+        - `SSH_PASSWORD` or `SSH_PRIVATE_KEY_PATH` (absolute path to the private key file)
         - `SSH_HOST_FINGERPRINT_SHA256` — **required**. Pinned SHA-256 host-key fingerprint to prevent MITM.
 
             Obtain it with:
@@ -166,6 +171,11 @@ MIROTALK_ADMIN_DIR=/root/mirotalk-admin
 COTURN_DIR=/root/coturn
 WHISPER_DIR=/root/whisper
 ```
+
+> **Running as a non-root user?** The `*_DIR` defaults point to `/root/...`, so set each `*_DIR` to the
+> real location of your apps (e.g. `/home/<user>/mirotalksfu`) and set `SSH_USER` to that user.
+> The dashboard's **Install / Update / Uninstall** scripts require root (`id -u` must be `0`), and the
+> server update/reboot actions use `sudo` (passwordless sudo is needed over SSH).
 
 `COTURN_DIR` and `WHISPER_DIR` configure supporting-service locations and should not be added to `APP_NAME`.
 
