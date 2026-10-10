@@ -10,7 +10,7 @@ readonly CONFIG_FILE='backend/config/index.js'
 readonly CONFIG_TEMPLATE='backend/config/index.template.js'
 readonly ENV_FILE='.env'
 readonly ENV_TEMPLATE='.env.template'
-readonly DEFAULT_ADMIN_PASSWORD_HASH='$2b$10$h5m4gYHTowNMAAAgqT1rO.kOkFBwrKIG1sYCyDp2HPPjkhEKLFxWy'
+readonly DEFAULT_ADMIN_PASSWORD_HASH='$2b$10$Pu98LQoCemSLOlU/uYe9B.6rn6eWT5p66NyJiIU5smYuPdgK0AWji'
 readonly DEFAULT_ADMIN_JWT_SECRET='supersecret'
 readonly DEFAULT_SSH_HOST_FINGERPRINT='SHA256:***'
 
