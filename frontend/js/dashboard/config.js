@@ -13,6 +13,7 @@
      * Load the configuration file and set the editor value.
      */
     async function loadConfig() {
+        if (window.Dashboard.hasConfig === false) return;
         showLoader();
         try {
             const json = await apiGetConfig();

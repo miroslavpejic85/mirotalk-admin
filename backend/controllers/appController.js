@@ -52,7 +52,7 @@ const setAppName = (req, res) => {
 
         const appNameSettings = appService.setAppName(appName);
         logger.info('Setting app name:', { appNameSettings });
-        res.json({ success: true, appName });
+        res.json({ success: true, appName, hasConfig: Boolean(appNameSettings.config) });
     } catch (error) {
         logger.error('Failed to set app name', { error });
         res.status(500).json({ error: 'Failed to set app name', details: error.message });

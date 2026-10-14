@@ -22,6 +22,22 @@
     ];
 
     /**
+     * Show or hide the Configuration menu item depending on whether the project has a config file.
+     * Falls back to the System section if the Configuration section is currently open.
+     * @param {boolean} hasConfig - Whether the selected project has a config file.
+     */
+    function updateConfigMenu(hasConfig) {
+        window.Dashboard.hasConfig = hasConfig !== false;
+        const menuConfig = document.getElementById('menu-config');
+        if (menuConfig) menuConfig.classList.toggle('hidden', !window.Dashboard.hasConfig);
+
+        const configSection = document.getElementById('config-section');
+        if (!window.Dashboard.hasConfig && configSection && !configSection.classList.contains('hidden')) {
+            window.Dashboard.showSection('system');
+        }
+    }
+
+    /**
      * Load available app/project names, update the UI, and handle selection.
      * Sets the current project in sessionStorage and updates project cards.
      */
@@ -61,7 +77,8 @@
 
             // Sync the backend with the frontend's remembered project
             try {
-                await apiSetAppName(currentAppName);
+                const res = await apiSetAppName(currentAppName);
+                updateConfigMenu(res.hasConfig);
             } catch (err) {
                 console.error('Failed to sync app name on load', err);
             }
@@ -72,7 +89,8 @@
                 sessionStorage.setItem('currentAppName', appName);
                 showLoader();
                 try {
-                    await apiSetAppName(appName);
+                    const setRes = await apiSetAppName(appName);
+                    updateConfigMenu(setRes.hasConfig);
                     showToast('Project changed to ' + select.options[select.selectedIndex].text, 'success');
 
                     // Find the currently visible section

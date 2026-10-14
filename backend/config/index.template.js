@@ -61,7 +61,7 @@ const APP_CONFIG = {
         dir: MIROTALK_C2C_DIR,
         packageUrl: 'https://raw.githubusercontent.com/miroslavpejic85/mirotalkc2c/main/package.json',
         packagePath: `${MIROTALK_C2C_DIR}/package.json`,
-        config: '',
+        config: `${MIROTALK_C2C_DIR}/frontend/js/config.js`,
         env: `${MIROTALK_C2C_DIR}/.env`,
     }),
     mirotalkbro: makeConfig({
