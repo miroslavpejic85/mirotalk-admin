@@ -1,113 +1,99 @@
-/* ===== LOGIN ===== */
+/* =====================================================================
+   LOGIN
+   ===================================================================== */
 #login {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: var(--bg-body);
+    min-height: 100dvh;
+    max-width: none;
+    padding: var(--space-6) var(--space-4);
+    background:
+        radial-gradient(900px 480px at 15% -10%, rgba(var(--accent-rgb), 0.14), transparent 60%),
+        radial-gradient(700px 420px at 110% 110%, rgba(var(--accent-rgb), 0.1), transparent 60%), var(--bg-body);
 }
 
 .login-card {
     width: 100%;
-    max-width: 400px;
-    border-radius: var(--radius-lg);
+    max-width: 420px;
     overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    background: var(--bg-surface);
     box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-color) !important;
-    background: var(--bg-surface) !important;
 }
 
 .login-header {
-    background: var(--bg-surface-alt) !important;
-    color: var(--text-primary) !important;
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-8) var(--space-8) var(--space-2);
     text-align: center;
-    border-bottom: 1px solid var(--border-color) !important;
 }
 
-.login-header .fa-user-shield {
-    color: var(--accent);
+.login-logo {
+    display: block;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto var(--space-4);
+    border-radius: 50%;
+    box-shadow: 0 6px 18px -6px rgba(var(--accent-rgb), 0.6);
 }
 
-.login-header h3 {
-    color: var(--text-heading);
-    font-size: 1.25rem;
+.login-header h1 {
     margin-bottom: var(--space-1);
+    font-size: 1.375rem;
 }
 
 .login-header p {
-    color: var(--text-secondary);
-    font-size: 0.875rem;
     margin-bottom: 0;
+    color: var(--text-muted);
+    font-size: var(--text-base);
 }
 
 .login-body {
-    padding: var(--space-6);
-    background: var(--bg-surface) !important;
-    color: var(--text-primary) !important;
-}
-
-.login-body .form-control {
-    color: var(--text-primary) !important;
-    background: var(--bg-input) !important;
-    border: 1px solid var(--border-color) !important;
-}
-
-.login-body .form-control:focus {
-    color: var(--text-primary) !important;
-    background: var(--bg-input) !important;
-    border-color: var(--accent) !important;
-    box-shadow: 0 0 0 3px var(--accent-muted) !important;
-}
-
-input::placeholder,
-.form-control::placeholder {
-    color: var(--text-muted) !important;
+    padding: var(--space-6) var(--space-8) var(--space-8);
 }
 
 .login-body .input-group-text {
-    background: var(--bg-surface-alt) !important;
-    border: 1px solid var(--border-color) !important;
-    color: var(--accent);
+    min-width: 42px;
+    justify-content: center;
 }
 
 .login-body .password-toggle-btn {
     width: 44px;
-    margin-bottom: 0;
-    border-color: var(--border-color) !important;
+    border-color: var(--border-strong);
+    background: var(--bg-input);
+}
+
+.login-body .btn-primary {
+    min-height: 42px;
+    font-size: var(--text-md);
 }
 
 .caps-lock-status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
     margin-top: var(--space-2);
     color: var(--warning);
-    font-size: 0.8125rem;
-}
-
-.login-body .form-label {
-    color: var(--text-primary);
+    font-size: var(--text-sm);
     font-weight: 500;
-    font-size: 0.875rem;
 }
 
 .login-footer {
     padding: var(--space-4);
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-surface-alt);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
     text-align: center;
-    background: var(--bg-surface-alt) !important;
-    border-top: 1px solid var(--border-color) !important;
-    color: var(--text-secondary);
 }
 
-.login-footer .text-muted {
-    color: var(--text-muted) !important;
-    font-size: 0.8125rem;
-}
+@media (max-width: 576px) {
+    .login-header {
+        padding: var(--space-6) var(--space-5) var(--space-2);
+    }
 
-a,
-.link {
-    color: var(--text-link);
-}
-
-a:hover,
-.link:hover {
-    color: var(--accent-hover);
+    .login-body {
+        padding: var(--space-5);
+    }
 }

@@ -1,9 +1,10 @@
+/* Order matters: tokens → components → layout → feature styles */
 @import 'base.css';
+@import 'components.css';
+@import 'alert.css';
 @import 'editor-theme.css';
+@import 'layout.css';
 @import 'sidebar.css';
 @import 'login.css';
-@import 'layout.css';
-@import 'components.css';
 @import 'loader.css';
 @import 'dashboard.css';
-@import 'alert.css';

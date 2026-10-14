@@ -13,6 +13,8 @@ function appendToPre(id, text, highlight = false) {
     const pre = $(id);
     if (pre) {
         pre.textContent += text;
+        // Follow the output whether the <pre> itself or its wrapper is the scroll container
+        pre.scrollTop = pre.scrollHeight;
         pre.parentElement.scrollTop = pre.parentElement.scrollHeight;
         if (highlight) hljs.highlightElement(pre);
     }

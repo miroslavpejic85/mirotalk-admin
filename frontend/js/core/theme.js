@@ -23,20 +23,28 @@
         return 'mirotalk-dark';
     }
 
+    function getCurrentTheme() {
+        return document.documentElement.getAttribute('data-theme') || 'light';
+    }
+
     function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-bs-theme', theme);
         updateIcon(theme);
     }
 
-    function updateIcon(theme) {
+    function updateIcon(theme = getCurrentTheme()) {
         const btn = document.getElementById('theme-toggle-btn');
         if (!btn) return;
         const iconName = theme === 'dark' ? 'sun' : 'moon';
+        const label = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
         btn.innerHTML = `<i class="fas fa-${iconName}" id="theme-icon"></i>`;
+        btn.title = label;
+        btn.setAttribute('aria-label', label);
     }
 
     function toggleTheme() {
-        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const current = getCurrentTheme();
         const next = current === 'dark' ? 'light' : 'dark';
         localStorage.setItem(STORAGE_KEY, next);
         applyTheme(next);
@@ -54,5 +62,5 @@
     });
 
     // Expose for event binding
-    window.ThemeManager = { toggleTheme, getEditorTheme };
+    window.ThemeManager = { toggleTheme, getEditorTheme, syncIcon: () => updateIcon() };
 })();

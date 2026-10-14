@@ -80,7 +80,8 @@ async function showDefaultSection() {
  * Logout the user, clear token, and reload the page.
  */
 async function logout() {
-    if (!(await showConfirmModal('Are you sure you want to logout?'))) return;
+    if (!(await showConfirmModal('Are you sure you want to logout?', { title: 'Log out', confirmText: 'Log out' })))
+        return;
     setToken('');
     location.reload();
 }

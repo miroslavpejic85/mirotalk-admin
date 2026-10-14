@@ -250,6 +250,7 @@
             },
         ];
         bindEvents(bindings);
+        window.ThemeManager.syncIcon();
         window.Dashboard.initializeNavigation();
     }
 

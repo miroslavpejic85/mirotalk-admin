@@ -1,12 +1,10 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" data-bs-theme="light">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-        />
-        <title>Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <meta name="color-scheme" content="light dark" />
+        <title>MiroTalk Admin</title>
 
         <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
@@ -45,8 +43,8 @@
         <div id="dashboard-modal"></div>
 
         <!-- Loader (visible by default, hidden by JS when ready) -->
-        <div id="dashboard-loader">
-            <div class="spinner-border text-primary" role="status">
+        <div id="dashboard-loader" aria-busy="true">
+            <div class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
             <div class="loading-text">Loading</div>

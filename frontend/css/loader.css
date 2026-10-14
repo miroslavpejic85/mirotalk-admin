@@ -1,17 +1,17 @@
-/* ===== LOADER ===== */
+/* =====================================================================
+   GLOBAL LOADER
+   ===================================================================== */
 #dashboard-loader {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
+    z-index: 2000;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background: var(--bg-overlay);
-    backdrop-filter: blur(4px);
-    z-index: 2000;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     opacity: 1;
     visibility: visible;
     transition:
@@ -25,35 +25,29 @@
     pointer-events: none;
 }
 
-/* Spinner */
 #dashboard-loader .spinner-border {
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 3px solid #ffffff;
-    border-right-color: transparent;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-top-color: #ffffff;
     border-radius: 50%;
-    animation: spin 0.75s linear infinite !important;
+    animation: spin 0.7s linear infinite !important;
 }
 
 @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
     to {
         transform: rotate(360deg);
     }
 }
 
-/* Loading text */
 #dashboard-loader .loading-text {
     margin-top: var(--space-4);
     color: #ffffff;
-    font-size: 0.875rem;
+    font-size: var(--text-base);
     font-weight: 500;
     letter-spacing: 0.02em;
 }
 
-/* Dots animation */
 #dashboard-loader .loading-dots {
     display: inline-flex;
     gap: var(--space-2);
@@ -66,10 +60,6 @@
     border-radius: 50%;
     background: #ffffff;
     animation: bounce 1.4s ease-in-out infinite;
-}
-
-#dashboard-loader .loading-dots span:nth-child(1) {
-    animation-delay: 0s;
 }
 
 #dashboard-loader .loading-dots span:nth-child(2) {

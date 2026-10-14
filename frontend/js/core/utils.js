@@ -58,13 +58,26 @@ function highlightSearchTerm(logs, searchTerm) {
 /**
  * Show a confirmation modal with a message.
  * @param {string} message - The message to display in the modal.
+ * @param {Object} [options] - Optional presentation settings.
+ * @param {string} [options.title='Please Confirm'] - Modal title.
+ * @param {string} [options.confirmText='Confirm'] - Label of the confirm button.
+ * @param {boolean} [options.danger=false] - Style the confirmation as a destructive action.
  * @returns {Promise<boolean>} Resolves true if OK, false if cancelled.
  */
-async function showConfirmModal(message) {
+async function showConfirmModal(message, options = {}) {
+    const { title = 'Please Confirm', confirmText = 'Confirm', danger = false } = options;
     return new Promise((resolve) => {
         $('confirmModalBody').textContent = message;
+        $('confirmModalLabel').textContent = title;
+        const icon = $('confirmModalIcon');
+        if (icon) {
+            icon.className = `icon-chip${danger ? ' is-danger' : ''}`;
+            icon.innerHTML = `<i class="fas ${danger ? 'fa-exclamation-triangle' : 'fa-question'}"></i>`;
+        }
         const modal = new bootstrap.Modal($('confirmModal'));
         const okBtn = $('confirmModalOk');
+        okBtn.textContent = confirmText;
+        okBtn.className = `btn ${danger ? 'btn-danger' : 'btn-primary'}`;
         function cleanup(result) {
             okBtn.removeEventListener('click', onOk);
             $('confirmModal').removeEventListener('hidden.bs.modal', onCancel);
@@ -83,33 +96,40 @@ async function showConfirmModal(message) {
     });
 }
 
+const TOAST_ICONS = {
+    success: 'fa-check-circle',
+    danger: 'fa-exclamation-circle',
+    warning: 'fa-exclamation-triangle',
+    info: 'fa-info-circle',
+};
+
 /**
  * Show a toast notification with a message and type.
  * @param {string} message - The message to display.
- * @param {string} [type='success'] - The type of toast ('success', 'danger', etc.).
+ * @param {string} [type='success'] - The type of toast ('success', 'danger', 'warning', 'info').
  */
 function showToast(message, type = 'success') {
+    const variant = TOAST_ICONS[type] ? type : 'info';
+    const container = $('dashboard-toast') || document.body;
     const toastEl = document.createElement('div');
-    toastEl.className = `toast show align-items-center text-white bg-${type} border-0 mb-3`;
-    toastEl.setAttribute('role', 'alert');
-    toastEl.setAttribute('aria-live', 'assertive');
+    toastEl.className = `app-toast app-toast-${variant}`;
+    toastEl.setAttribute('role', variant === 'danger' ? 'alert' : 'status');
+    toastEl.setAttribute('aria-live', variant === 'danger' ? 'assertive' : 'polite');
     toastEl.setAttribute('aria-atomic', 'true');
-    toastEl.style.position = 'fixed';
-    toastEl.style.top = '5px';
-    toastEl.style.right = '20px';
-    toastEl.style.left = 'auto';
-    toastEl.style.zIndex = '99999';
     toastEl.innerHTML = `
-        <div class="d-flex">
-            <div class="toast-body">${message}</div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
+        <span class="app-toast-icon"><i class="fas ${TOAST_ICONS[variant]}"></i></span>
+        <div class="app-toast-body"></div>
+        <button type="button" class="app-toast-close" aria-label="Close"><i class="fas fa-times"></i></button>
     `;
-    document.body.appendChild(toastEl);
-    setTimeout(() => {
-        toastEl.classList.remove('show');
-        setTimeout(() => toastEl.remove(), 300);
-    }, 5000);
+    toastEl.querySelector('.app-toast-body').textContent = message;
+    const dismiss = () => {
+        if (toastEl.classList.contains('is-leaving')) return;
+        toastEl.classList.add('is-leaving');
+        setTimeout(() => toastEl.remove(), 250);
+    };
+    toastEl.querySelector('.app-toast-close').addEventListener('click', dismiss);
+    container.appendChild(toastEl);
+    setTimeout(dismiss, 5000);
 }
 
 /**

@@ -37,7 +37,13 @@
      */
     async function serverUpdate() {
         try {
-            if (!(await showConfirmModal('Are you sure you want to update the server?'))) return;
+            if (
+                !(await showConfirmModal('Are you sure you want to update the server?', {
+                    title: 'Update server',
+                    confirmText: 'Update',
+                }))
+            )
+                return;
             const token = getToken();
             if (!token) {
                 showToast('Authentication token missing. Please log in again.', 'danger');
@@ -56,7 +62,14 @@
      */
     async function serverReboot() {
         try {
-            if (!(await showConfirmModal('Are you sure you want to reboot the server?'))) return;
+            if (
+                !(await showConfirmModal('Are you sure you want to reboot the server?', {
+                    title: 'Reboot server',
+                    confirmText: 'Reboot',
+                    danger: true,
+                }))
+            )
+                return;
             showLoader();
             await apiServerReboot();
             showToast('Server rebooted successfully');

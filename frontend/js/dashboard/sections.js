@@ -17,8 +17,9 @@
     function updateSidebarControls(isOpen) {
         const btn = $('sidebar-toggle-btn');
         btn.setAttribute('aria-expanded', String(isOpen));
-        btn.innerHTML = isOpen ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
-        $('sidebar-backdrop').classList.toggle('visible', mobileNavigation.matches && isOpen);
+        const isDrawerOpen = mobileNavigation.matches && isOpen;
+        btn.innerHTML = isDrawerOpen ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+        $('sidebar-backdrop').classList.toggle('visible', isDrawerOpen);
     }
 
     function closeMobileSidebar() {

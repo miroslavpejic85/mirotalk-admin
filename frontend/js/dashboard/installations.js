@@ -190,7 +190,13 @@
             update: `update ${productLabel}`,
             uninstall: `uninstall ${productLabel} and remove its managed services`,
         };
-        if (!(await showConfirmModal(`Are you sure you want to ${descriptions[action]}?`))) return;
+        const actionLabel = action.charAt(0).toUpperCase() + action.slice(1);
+        const confirmed = await showConfirmModal(`Are you sure you want to ${descriptions[action]}?`, {
+            title: `${actionLabel} ${productLabel}`,
+            confirmText: actionLabel,
+            danger: action === 'uninstall',
+        });
+        if (!confirmed) return;
 
         const token = getToken();
         if (!token) {

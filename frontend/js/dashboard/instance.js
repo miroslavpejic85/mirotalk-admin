@@ -45,7 +45,14 @@
      */
     async function restartInstance() {
         try {
-            if (!(await showConfirmModal('Are you sure you want to restart the instance?'))) return;
+            if (
+                !(await showConfirmModal('Are you sure you want to restart the instance?', {
+                    title: 'Restart instance',
+                    confirmText: 'Restart',
+                    danger: true,
+                }))
+            )
+                return;
             const json = await apiRestartInstance();
             showToast(json.message || 'Instance restarted successfully');
             window.Dashboard.loadStatus();
@@ -59,7 +66,13 @@
      */
     async function performUpdate() {
         try {
-            if (!(await showConfirmModal('Are you sure you want to update MiroTalk?'))) return;
+            if (
+                !(await showConfirmModal('Are you sure you want to update MiroTalk?', {
+                    title: 'Update instance',
+                    confirmText: 'Update',
+                }))
+            )
+                return;
             const token = getToken();
             if (!token) {
                 showToast('Authentication token missing. Please log in again.', 'danger');

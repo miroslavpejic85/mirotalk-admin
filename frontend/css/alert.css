@@ -1,29 +1,107 @@
-/* ===== ALERT TEXT ===== */
-.alert {
-    color: var(--text-primary) !important;
+/* =====================================================================
+   TOAST NOTIFICATIONS
+   ===================================================================== */
+#dashboard-toast {
+    position: fixed;
+    right: var(--space-5);
+    bottom: var(--space-5);
+    z-index: 2100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-2);
+    width: min(380px, calc(100vw - 2 * var(--space-4)));
+    pointer-events: none;
 }
 
-.alert strong {
-    font-weight: 600;
+.app-toast {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--toast-color, var(--accent));
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-size: var(--text-base);
+    line-height: 1.45;
+    box-shadow: var(--shadow-lg);
+    pointer-events: auto;
+    animation: toast-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition:
+        opacity var(--transition-base),
+        transform var(--transition-base);
 }
 
-.alert-info {
-    color: var(--text-primary) !important;
+.app-toast.is-leaving {
+    opacity: 0;
+    transform: translateX(12px);
 }
 
-.alert-info .fas,
-.alert-info .fa {
-    color: var(--accent);
+.app-toast-icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-top: 2px;
+    color: var(--toast-color, var(--accent));
 }
 
-.alert-success {
-    color: var(--success) !important;
+.app-toast-body {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
-.alert-warning {
-    color: var(--text-primary) !important;
+.app-toast-close {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    line-height: 1;
 }
 
-.alert-danger {
-    color: var(--danger) !important;
+.app-toast-close:hover {
+    background: var(--bg-hover);
+    color: var(--text-heading);
+}
+
+.app-toast-success {
+    --toast-color: var(--success);
+}
+
+.app-toast-danger {
+    --toast-color: var(--danger);
+}
+
+.app-toast-warning {
+    --toast-color: var(--warning);
+}
+
+.app-toast-info {
+    --toast-color: var(--accent);
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    #dashboard-toast {
+        right: var(--space-3);
+        bottom: var(--space-3);
+        left: var(--space-3);
+        width: auto;
+    }
 }
