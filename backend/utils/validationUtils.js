@@ -87,11 +87,11 @@ function validateAppName(appName, allowedApps) {
 /**
  * Validate file content (config, env files)
  * @param {string} content - File content to validate
- * @param {number} maxSize - Maximum size in bytes (default 100KB)
+ * @param {number} maxSize - Maximum size in bytes (default 2MB)
  * @returns {boolean} True if valid
  * @throws {Error} If validation fails
  */
-function validateFileContent(content, maxSize = 100000) {
+function validateFileContent(content, maxSize = 2 * 1024 * 1024) {
     if (content === undefined || content === null) {
         throw new Error('Content is required');
     }
