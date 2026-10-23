@@ -110,6 +110,14 @@ async function apiSaveEnv(content) {
 }
 
 /**
+ * Get the environment template (.env.template) of the installed app.
+ * @returns {Promise<Object>} - Resolves with template content.
+ */
+async function apiGetEnvTemplate() {
+    return apiRequest('/admin/api/env/template');
+}
+
+/**
  * Get configuration file.
  * @returns {Promise<Object>} - Resolves with config content.
  */
@@ -124,6 +132,14 @@ async function apiGetConfig() {
  */
 async function apiSaveConfig(content) {
     return apiRequest('/admin/api/config', { method: 'POST', body: { content } });
+}
+
+/**
+ * Get the configuration template (config.template.js) of the installed app.
+ * @returns {Promise<Object>} - Resolves with template content.
+ */
+async function apiGetConfigTemplate() {
+    return apiRequest('/admin/api/config/template');
 }
 
 /**

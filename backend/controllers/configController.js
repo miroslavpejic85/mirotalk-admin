@@ -58,4 +58,24 @@ const saveConfig = async (req, res) => {
     }
 };
 
-module.exports = { getConfig, saveConfig };
+/**
+ * Get the configuration template content (config.template.js) of the installed app.
+ *
+ * @route GET /admin/api/config/template
+ * @param {express.Request} req - Express request object
+ * @param {express.Response} res - Express response object
+ * @returns {Object} 200 - JSON object with template content
+ * @returns {Object} 500 - JSON error object
+ */
+const getConfigTemplate = async (req, res) => {
+    try {
+        const content = await configService.getConfigTemplate();
+        logger.info('Config template read successfully');
+        res.json({ content });
+    } catch (err) {
+        logger.error('Config template read failed', { error: err });
+        res.status(500).json({ error: 'Config template read failed', details: err.message });
+    }
+};
+
+module.exports = { getConfig, saveConfig, getConfigTemplate };

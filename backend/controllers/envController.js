@@ -58,4 +58,24 @@ const saveEnv = async (req, res) => {
     }
 };
 
-module.exports = { getEnv, saveEnv };
+/**
+ * Get the environment template content (.env.template) of the installed app.
+ *
+ * @route GET /admin/api/env/template
+ * @param {express.Request} req - Express request object
+ * @param {express.Response} res - Express response object
+ * @returns {Object} 200 - JSON object with template content
+ * @returns {Object} 500 - JSON error object
+ */
+const getEnvTemplate = async (req, res) => {
+    try {
+        const content = await envService.getEnvTemplate();
+        logger.info('Env template read successfully');
+        res.json({ content });
+    } catch (err) {
+        logger.error('Failed to read .env.template file', { error: err });
+        res.status(500).json({ error: 'Failed to read .env.template file', details: err.message });
+    }
+};
+
+module.exports = { getEnv, saveEnv, getEnvTemplate };

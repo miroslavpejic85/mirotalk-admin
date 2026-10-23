@@ -97,10 +97,12 @@ module.exports = function (app) {
     // Env
     app.get('/admin/api/env', envController.getEnv);
     app.post('/admin/api/env', envController.saveEnv);
+    app.get('/admin/api/env/template', envController.getEnvTemplate);
 
     // Config
     app.get('/admin/api/config', configController.getConfig);
     app.post('/admin/api/config', configController.saveConfig);
+    app.get('/admin/api/config/template', configController.getConfigTemplate);
 
     // Logs
     app.get('/admin/api/logs', logsController.getLogs);

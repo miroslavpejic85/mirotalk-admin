@@ -37,4 +37,16 @@ async function saveEnv(content) {
     await writeFile(config.APP_DEFAULTS.env, content);
 }
 
-module.exports = { getEnv, saveEnv };
+/**
+ * Get the environment template content (.env.template) shipped with the installed app version.
+ * @returns {Promise<string>} The content of the environment template file.
+ * @throws {Error} If the env path is not set or the template cannot be read.
+ */
+async function getEnvTemplate() {
+    if (!config.APP_DEFAULTS.env) {
+        throw new Error('Env path not set for current app');
+    }
+    return await readFile(`${config.APP_DEFAULTS.env}.template`);
+}
+
+module.exports = { getEnv, saveEnv, getEnvTemplate };

@@ -926,3 +926,24 @@ pre {
 .text-muted {
     color: var(--text-muted) !important;
 }
+
+/* =====================================================================
+   TOOLTIPS (Bootstrap, themed — inverted against the surface)
+   ===================================================================== */
+.tooltip {
+    --bs-tooltip-bg: var(--text-heading);
+    --bs-tooltip-color: var(--bg-surface);
+    --bs-tooltip-opacity: 1;
+    --bs-tooltip-padding-x: var(--space-2);
+    --bs-tooltip-padding-y: 5px;
+    --bs-tooltip-font-size: var(--text-sm);
+    --bs-tooltip-border-radius: var(--radius-sm);
+    --bs-tooltip-max-width: 280px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.tooltip .tooltip-inner {
+    box-shadow: var(--shadow-md);
+}

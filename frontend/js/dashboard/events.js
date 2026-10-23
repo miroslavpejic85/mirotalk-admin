@@ -135,6 +135,11 @@
                 id: 'env-backup-btn',
                 handler: window.Dashboard.backupEnv,
             },
+            {
+                type: 'click',
+                id: 'env-sync-btn',
+                handler: window.Dashboard.syncEnvTemplate,
+            },
             { type: 'click', id: 'env-save-btn', handler: window.Dashboard.saveEnv },
             {
                 type: 'click',
@@ -145,6 +150,11 @@
                 type: 'click',
                 id: 'config-backup-btn',
                 handler: window.Dashboard.backupConfig,
+            },
+            {
+                type: 'click',
+                id: 'config-sync-btn',
+                handler: window.Dashboard.syncConfigTemplate,
             },
             {
                 type: 'click',

@@ -91,9 +91,41 @@
         }
     }
 
+    /**
+     * Replace the editor content with the installed app's config template.
+     * Downloads a backup of the current content first; changes are applied only after Save.
+     */
+    async function syncConfigTemplate() {
+        if (window.Dashboard.hasConfig === false) return;
+        const confirmed = await showConfirmModal(
+            'This will replace the current configuration with the default config.template.js of the installed version. ' +
+                'All your custom changes will be overwritten. A backup of the current configuration will be downloaded first. ' +
+                'The template is only loaded into the editor: review it and click "Save Config" to apply.',
+            { title: 'Sync config template', confirmText: 'Overwrite', danger: true }
+        );
+        if (!confirmed) return;
+        showLoader();
+        try {
+            const { content } = await apiGetConfigTemplate();
+            if (!content || !content.trim()) throw new Error('Config template is empty');
+            downloadFile(
+                window.Dashboard.configEditor.getValue(),
+                `${window.Dashboard.getCurrentProjectName()}-config-before-sync-${new Date().toISOString().split('T')[0]}.js`,
+                'text/javascript'
+            );
+            window.Dashboard.setEditorValue(window.Dashboard.configEditor, content);
+            showToast('Template loaded and backup downloaded. Review it and click "Save Config" to apply.', 'warning');
+        } catch (error) {
+            handleError(error, 'Failed to load the configuration template.');
+        } finally {
+            hideLoader();
+        }
+    }
+
     window.Dashboard = window.Dashboard || {};
     window.Dashboard.loadConfig = loadConfig;
     window.Dashboard.saveConfig = saveConfig;
     window.Dashboard.backupConfig = backupConfig;
     window.Dashboard.validateConfig = validateConfig;
+    window.Dashboard.syncConfigTemplate = syncConfigTemplate;
 })();
