@@ -38,8 +38,10 @@ app.use(
         preload: false,
     })
 );
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// Config/env files edited in the dashboard can exceed the default 100kb body limit
+const BODY_LIMIT = '5mb';
+app.use(express.urlencoded({ extended: true, limit: BODY_LIMIT }));
+app.use(express.json({ limit: BODY_LIMIT }));
 
 // Routes
 routes(app);

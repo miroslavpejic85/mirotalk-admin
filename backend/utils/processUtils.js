@@ -69,7 +69,11 @@ function parseDockerStatus(stdout) {
         const state = JSON.parse(stdout);
         status = state.Status || status;
         startedAt = state.StartedAt ? new Date(state.StartedAt).toLocaleString() : startedAt;
-        finishedAt = state.FinishedAt ? new Date(state.FinishedAt).toLocaleString() : startedAt;
+        // Docker reports "0001-01-01T00:00:00Z" when the container has never stopped
+        const finishedDate = state.FinishedAt ? new Date(state.FinishedAt) : null;
+        if (finishedDate && !isNaN(finishedDate) && finishedDate.getUTCFullYear() > 1) {
+            finishedAt = finishedDate.toLocaleString();
+        }
         if (state.StartedAt) {
             const uptimeMs = new Date() - new Date(state.StartedAt);
             uptime = new Date(uptimeMs).toISOString().substr(11, 8);
