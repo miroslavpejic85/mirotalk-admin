@@ -11,7 +11,9 @@
  */
 
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
+const packageJson = require('../../package.json');
 const middleware = require('../middleware');
 const controllers = require('../controllers');
 
@@ -31,6 +33,8 @@ const {
 
 const frontendPath = path.join(__dirname, '../../', 'frontend');
 const index = path.join(frontendPath, 'index.html');
+const loginView = path.join(frontendPath, 'views', 'login.html');
+const APP_VERSION = `v${packageJson.version}`;
 
 /**
  * Register all admin dashboard routes and middleware.
@@ -52,6 +56,23 @@ module.exports = function (app) {
     // would still be served even with the dashboard administratively
     // disabled).
     app.use(dashboardEnabledAndHttps);
+
+    /**
+     * GET /admin/views/login.html
+     * Serve the login view with the app version and current year injected.
+     */
+    app.get('/admin/views/login.html', async (req, res, next) => {
+        try {
+            const html = await fs.promises.readFile(loginView, 'utf8');
+            res.type('html').send(
+                html
+                    .replace(/{{APP_VERSION}}/g, APP_VERSION)
+                    .replace(/{{CURRENT_YEAR}}/g, String(new Date().getFullYear()))
+            );
+        } catch (error) {
+            next(error);
+        }
+    });
 
     // Serve static frontend files for /admin (guarded by the two
     // middlewares above).
